@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# виртуальное окружение
+venv/
+env/
+ENV/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Локальные файлы
+*.log
+*.sqlite
+*.csv
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# MacOS
+.DS_Store

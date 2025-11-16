@@ -1,0 +1,12 @@
+{
+  "summary": {
+    "total_rows": 106,
+    "good_rows": 51,
+    "outliers": 43,
+    "anomalies": 12,
+    "good_percent": 48.1,
+    "outliers_percent": 39.8,
+    "anomalies_percent": 12.0
+  },
+  "ids": [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010]
+}

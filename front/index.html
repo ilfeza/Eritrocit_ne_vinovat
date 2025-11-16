@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Круговая диаграмма Chart.js</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+    canvas {
+      max-width: 500px;
+      margin: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h2>Статистика строк</h2>
+  <canvas id="myPieChart"></canvas>
+
+  <script>
+    // Функция загрузки JSON
+    async function fetchData() {
+      const response = await fetch('data.json'); // Берем JSON из файла
+      const data = await response.json();
+      return data;
+    }
+
+    // Построение диаграммы
+    async function createChart() {
+      const data = await fetchData();
+      const ctx = document.getElementById('myPieChart').getContext('2d');
+
+      const chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Good Rows', 'Outliers', 'Anomalies'],
+          datasets: [{
+            label: 'Процент строк',
+            data: [
+              data.summary.good_percent,
+              data.summary.outliers_percent,
+              data.summary.anomalies_percent
+            ],
+            backgroundColor: [
+              'rgba(75, 192, 192, 0.7)',
+              'rgba(255, 205, 86, 0.7)',
+              'rgba(255, 99, 132, 0.7)'
+            ],
+            borderColor: [
+              'rgba(75, 192, 192, 1)',
+              'rgba(255, 205, 86, 1)',
+              'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.label + ': ' + context.raw + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    createChart();
+  </script>
+</body>
+</html>

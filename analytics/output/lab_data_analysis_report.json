@@ -1,0 +1,4776 @@
+{
+  "schema_suggestions": {
+    "cohort.cohortGuid": "cohort_id",
+    "subject.subjectGuid": "patient_id",
+    "sample.sampleKitGuid": "sample_id",
+    "subject.biologicalSex": "sex",
+    "subject.birthYear": "birth_year",
+    "subject.ageAtFirstDraw": "age_at_first_draw",
+    "subject.ageGroup": "age_group",
+    "subject.race": "race",
+    "subject.ethnicity": "ethnicity",
+    "sample.visitName": "visit_name",
+    "sample.visitDetails": "visit_details",
+    "sample.drawYear": "draw_year",
+    "sample.subjectAgeAtDraw": "age_at_draw",
+    "sample.daysSinceFirstVisit": "days_since_first_visit",
+    "sample.diseaseStatesRecordedAtVisit": "disease_states",
+    "am.bmi": "test_am_bmi",
+    "am.height": "test_am_height",
+    "am.weight": "test_am_weight",
+    "chem.alt": "test_chem_alt",
+    "chem.albumin": "test_chem_albumin",
+    "chem.alkaline_phosphatase": "test_chem_alkaline_phosphatase",
+    "chem.ast": "test_chem_ast",
+    "chem.t_bili": "test_chem_t_bili",
+    "chem.bun": "test_chem_bun",
+    "chem.calcium": "test_chem_calcium",
+    "chem.co2": "test_chem_co2",
+    "chem.cl": "test_chem_cl",
+    "chem.creatinine": "test_chem_creatinine",
+    "chem.egfr_aa": "test_chem_egfr_aa",
+    "chem.egfr_non_aa": "test_chem_egfr_non_aa",
+    "chem.globin": "test_chem_globin",
+    "chem.glucose": "test_chem_glucose",
+    "chem.ldh": "test_chem_ldh",
+    "chem.magnesium": "test_chem_magnesium",
+    "chem.phosphate": "test_chem_phosphate",
+    "chem.potassium": "test_chem_potassium",
+    "chem.protein": "test_chem_protein",
+    "chem.sodium": "test_chem_sodium",
+    "bc.perc_basophils": "test_bc_perc_basophils",
+    "bc.perc_eosinophils": "test_bc_perc_eosinophils",
+    "bc.perc_lymphocytes": "test_bc_perc_lymphocytes",
+    "bc.perc_monocytes": "test_bc_perc_monocytes",
+    "bc.perc_neutrophils": "test_bc_perc_neutrophils",
+    "bc.basophil_count": "test_bc_basophil_count",
+    "bc.eosinophil_count": "test_bc_eosinophil_count",
+    "bc.lymphocyte_count": "test_bc_lymphocyte_count",
+    "bc.monocyte_count": "test_bc_monocyte_count",
+    "bc.neutrophil_count": "test_bc_neutrophil_count",
+    "bc.hematocrit": "test_bc_hematocrit",
+    "bc.hemoglobin": "test_bc_hemoglobin",
+    "bc.mch": "test_bc_mch",
+    "bc.mchc": "test_bc_mchc",
+    "bc.mcv": "test_bc_mcv",
+    "bc.mpv": "test_bc_mpv",
+    "bc.platelet_count": "test_bc_platelet_count",
+    "bc.red_blood_cell_count": "test_bc_red_blood_cell_count",
+    "bc.rdw": "test_bc_rdw",
+    "bc.wbc": "test_bc_wbc",
+    "cmv.igg_serology": "test_cmv_igg_serology",
+    "cmv.igg_serology_interpretation": "test_cmv_igg_serology_interpretation",
+    "infl.anti_ccp3": "test_infl_anti_ccp3",
+    "infl.anti_ccp31": "test_infl_anti_ccp31",
+    "infl.hs_crp": "test_infl_hs_crp",
+    "infl.rf_iga_interpretation": "test_infl_rf_iga_interpretation",
+    "infl.rf_iga_result": "test_infl_rf_iga_result",
+    "infl.rf_igm_interpretation": "test_infl_rf_igm_interpretation",
+    "infl.rf_igm_result": "test_infl_rf_igm_result",
+    "infl.esr": "test_infl_esr",
+    "lip.cholesterol_hdl": "test_lip_cholesterol_hdl",
+    "lip.cholesterol_ldl": "test_lip_cholesterol_ldl",
+    "lip.cholesterol_non_hdl": "test_lip_cholesterol_non_hdl",
+    "lip.cholesterol_total": "test_lip_cholesterol_total",
+    "lip.chlesterol_hdl_ratio": "test_lip_chlesterol_hdl_ratio",
+    "lip.triglycerides": "test_lip_triglycerides"
+  },
+  "cleaning_report": {
+    "rows_before": 108,
+    "removed_duplicates": 0,
+    "suspect_count": 1,
+    "examples_suspect": [
+      {
+        "row_index": 104,
+        "column": "test_bc_lymphocyte_count",
+        "value": 47600.0,
+        "reason": "extreme_value",
+        "median": 1724.5,
+        "std": 4442.553265498098
+      }
+    ],
+    "rows_after": 108
+  },
+  "stats_by_test": {
+    "test_am_bmi": {
+      "count": 74,
+      "mean": 26.72972972972973,
+      "median": 27.0,
+      "std": 4.9026056736909585,
+      "min": 19.0,
+      "max": 43.0,
+      "p1": 19.73,
+      "p2_5": 20.0,
+      "p25": 23.0,
+      "p75": 29.0,
+      "p97_5": 38.175,
+      "p99": 40.079999999999984,
+      "iqr": 6.0
+    },
+    "test_am_height": {
+      "count": 74,
+      "mean": 169.66283783783783,
+      "median": 169.95,
+      "std": 9.12463435488401,
+      "min": 148.59,
+      "max": 189.5,
+      "p1": 150.2763,
+      "p2_5": 152.6325,
+      "p25": 162.225,
+      "p75": 175.9,
+      "p97_5": 186.5875,
+      "p99": 187.67499999999998,
+      "iqr": 13.675000000000011
+    },
+    "test_am_weight": {
+      "count": 86,
+      "mean": 76.52093023255816,
+      "median": 74.85,
+      "std": 14.263801294177549,
+      "min": 51.3,
+      "max": 112.5,
+      "p1": 54.445,
+      "p2_5": 55.6875,
+      "p25": 65.675,
+      "p75": 84.925,
+      "p97_5": 104.375,
+      "p99": 107.48500000000003,
+      "iqr": 19.25
+    },
+    "test_chem_alt": {
+      "count": 107,
+      "mean": 18.635514018691588,
+      "median": 16.0,
+      "std": 10.681841869446405,
+      "min": 5.0,
+      "max": 77.0,
+      "p1": 7.0600000000000005,
+      "p2_5": 8.0,
+      "p25": 12.5,
+      "p75": 21.5,
+      "p97_5": 39.39999999999998,
+      "p99": 74.89999999999992,
+      "iqr": 9.0
+    },
+    "test_chem_albumin": {
+      "count": 107,
+      "mean": 4.465420560747663,
+      "median": 4.5,
+      "std": 0.2750995715922666,
+      "min": 3.7,
+      "max": 5.1,
+      "p1": 3.806,
+      "p2_5": 3.9,
+      "p25": 4.3,
+      "p75": 4.6,
+      "p97_5": 5.0,
+      "p99": 5.093999999999999,
+      "iqr": 0.2999999999999998
+    },
+    "test_chem_alkaline_phosphatase": {
+      "count": 107,
+      "mean": 83.90654205607477,
+      "median": 57.0,
+      "std": 70.51448836944994,
+      "min": 25.0,
+      "max": 363.0,
+      "p1": 32.06,
+      "p2_5": 33.65,
+      "p25": 47.0,
+      "p75": 79.0,
+      "p97_5": 278.09999999999974,
+      "p99": 338.0799999999999,
+      "iqr": 32.0
+    },
+    "test_chem_ast": {
+      "count": 107,
+      "mean": 19.261682242990656,
+      "median": 19.0,
+      "std": 5.546265867039667,
+      "min": 10.0,
+      "max": 42.0,
+      "p1": 11.06,
+      "p2_5": 12.0,
+      "p25": 15.0,
+      "p75": 22.0,
+      "p97_5": 32.04999999999998,
+      "p99": 39.639999999999986,
+      "iqr": 7.0
+    },
+    "test_chem_t_bili": {
+      "count": 107,
+      "mean": 0.5401869158878504,
+      "median": 0.5,
+      "std": 0.26665638021658106,
+      "min": 0.2,
+      "max": 1.8,
+      "p1": 0.20600000000000002,
+      "p2_5": 0.3,
+      "p25": 0.4,
+      "p75": 0.6,
+      "p97_5": 1.3,
+      "p99": 1.675999999999999,
+      "iqr": 0.19999999999999996
+    },
+    "test_chem_bun": {
+      "count": 107,
+      "mean": 14.785046728971963,
+      "median": 14.0,
+      "std": 3.9882564341561912,
+      "min": 7.0,
+      "max": 26.0,
+      "p1": 8.0,
+      "p2_5": 8.65,
+      "p25": 12.0,
+      "p75": 17.0,
+      "p97_5": 24.0,
+      "p99": 25.879999999999995,
+      "iqr": 5.0
+    },
+    "test_chem_calcium": {
+      "count": 107,
+      "mean": 9.439252336448597,
+      "median": 9.4,
+      "std": 0.31495941917272713,
+      "min": 8.8,
+      "max": 10.4,
+      "p1": 8.806000000000001,
+      "p2_5": 8.9,
+      "p25": 9.2,
+      "p75": 9.6,
+      "p97_5": 10.2,
+      "p99": 10.2,
+      "iqr": 0.40000000000000036
+    },
+    "test_chem_co2": {
+      "count": 107,
+      "mean": 24.7196261682243,
+      "median": 25.0,
+      "std": 2.8377322613723255,
+      "min": 17.0,
+      "max": 31.0,
+      "p1": 18.0,
+      "p2_5": 18.65,
+      "p25": 23.0,
+      "p75": 27.0,
+      "p97_5": 29.349999999999994,
+      "p99": 30.0,
+      "iqr": 4.0
+    },
+    "test_chem_cl": {
+      "count": 107,
+      "mean": 104.51401869158879,
+      "median": 105.0,
+      "std": 2.1516316142455505,
+      "min": 99.0,
+      "max": 109.0,
+      "p1": 100.0,
+      "p2_5": 100.0,
+      "p25": 103.0,
+      "p75": 106.0,
+      "p97_5": 108.0,
+      "p99": 108.94,
+      "iqr": 3.0
+    },
+    "test_chem_creatinine": {
+      "count": 107,
+      "mean": 0.8136448598130841,
+      "median": 0.83,
+      "std": 0.1778455579903927,
+      "min": 0.45,
+      "max": 1.42,
+      "p1": 0.4512,
+      "p2_5": 0.47,
+      "p25": 0.715,
+      "p75": 0.93,
+      "p97_5": 1.1434999999999997,
+      "p99": 1.2251999999999998,
+      "iqr": 0.21500000000000008
+    },
+    "test_chem_egfr_aa": {
+      "count": 33,
+      "mean": 114.24242424242425,
+      "median": 117.0,
+      "std": 19.998484791088394,
+      "min": 73.0,
+      "max": 153.0,
+      "p1": 73.64,
+      "p2_5": 74.6,
+      "p25": 100.0,
+      "p75": 130.0,
+      "p97_5": 144.2,
+      "p99": 149.48,
+      "iqr": 30.0
+    },
+    "test_chem_egfr_non_aa": {
+      "count": 34,
+      "mean": 98.11764705882354,
+      "median": 100.0,
+      "std": 17.272792944804323,
+      "min": 63.0,
+      "max": 132.0,
+      "p1": 63.66,
+      "p2_5": 64.65,
+      "p25": 82.25,
+      "p75": 111.5,
+      "p97_5": 124.57499999999997,
+      "p99": 129.03000000000003,
+      "iqr": 29.25
+    },
+    "test_chem_globin": {
+      "count": 92,
+      "mean": 2.5663043478260867,
+      "median": 2.6,
+      "std": 0.30751652288782877,
+      "min": 1.8,
+      "max": 3.5,
+      "p1": 1.982,
+      "p2_5": 2.0275,
+      "p25": 2.4,
+      "p75": 2.7,
+      "p97_5": 3.2,
+      "p99": 3.3180000000000005,
+      "iqr": 0.30000000000000027
+    },
+    "test_chem_glucose": {
+      "count": 107,
+      "mean": 89.76635514018692,
+      "median": 87.0,
+      "std": 18.927159002619,
+      "min": 33.0,
+      "max": 160.0,
+      "p1": 44.18,
+      "p2_5": 49.6,
+      "p25": 80.5,
+      "p75": 99.5,
+      "p97_5": 124.35,
+      "p99": 130.64,
+      "iqr": 19.0
+    },
+    "test_chem_potassium": {
+      "count": 107,
+      "mean": 4.100934579439252,
+      "median": 4.1,
+      "std": 0.3280863114414346,
+      "min": 3.0,
+      "max": 5.3,
+      "p1": 3.306,
+      "p2_5": 3.465,
+      "p25": 3.9,
+      "p75": 4.3,
+      "p97_5": 4.7,
+      "p99": 4.888,
+      "iqr": 0.3999999999999999
+    },
+    "test_chem_protein": {
+      "count": 107,
+      "mean": 7.02803738317757,
+      "median": 7.0,
+      "std": 0.39947947086917723,
+      "min": 6.0,
+      "max": 8.0,
+      "p1": 6.0,
+      "p2_5": 6.0,
+      "p25": 7.0,
+      "p75": 7.0,
+      "p97_5": 8.0,
+      "p99": 8.0,
+      "iqr": 0.0
+    },
+    "test_chem_sodium": {
+      "count": 107,
+      "mean": 139.70093457943926,
+      "median": 140.0,
+      "std": 2.1021774572374974,
+      "min": 135.0,
+      "max": 147.0,
+      "p1": 135.06,
+      "p2_5": 136.0,
+      "p25": 138.0,
+      "p75": 141.0,
+      "p97_5": 144.35,
+      "p99": 145.94,
+      "iqr": 3.0
+    },
+    "test_bc_perc_basophils": {
+      "count": 107,
+      "mean": 0.7317757009345796,
+      "median": 0.7,
+      "std": 0.30916751606352644,
+      "min": 0.2,
+      "max": 1.8,
+      "p1": 0.2,
+      "p2_5": 0.2,
+      "p25": 0.5,
+      "p75": 0.9,
+      "p97_5": 1.5,
+      "p99": 1.5,
+      "iqr": 0.4
+    },
+    "test_bc_perc_eosinophils": {
+      "count": 107,
+      "mean": 2.6747663551401875,
+      "median": 2.4,
+      "std": 1.6065369680778405,
+      "min": 0.1,
+      "max": 7.4,
+      "p1": 0.3,
+      "p2_5": 0.3,
+      "p25": 1.6,
+      "p75": 3.7,
+      "p97_5": 6.534999999999999,
+      "p99": 7.163999999999999,
+      "iqr": 2.1
+    },
+    "test_bc_perc_lymphocytes": {
+      "count": 107,
+      "mean": 33.60467289719627,
+      "median": 32.8,
+      "std": 9.63280933548885,
+      "min": 15.6,
+      "max": 61.1,
+      "p1": 17.806,
+      "p2_5": 18.419999999999998,
+      "p25": 26.45,
+      "p75": 39.35,
+      "p97_5": 54.915,
+      "p99": 56.064,
+      "iqr": 12.900000000000002
+    },
+    "test_bc_perc_monocytes": {
+      "count": 107,
+      "mean": 8.05233644859813,
+      "median": 7.9,
+      "std": 1.8660494944998425,
+      "min": 4.3,
+      "max": 12.6,
+      "p1": 4.406000000000001,
+      "p2_5": 4.760000000000001,
+      "p25": 6.75,
+      "p75": 9.350000000000001,
+      "p97_5": 11.835,
+      "p99": 12.088,
+      "iqr": 2.6000000000000014
+    },
+    "test_bc_perc_neutrophils": {
+      "count": 107,
+      "mean": 54.93644859813084,
+      "median": 55.3,
+      "std": 9.995342240956154,
+      "min": 28.7,
+      "max": 77.5,
+      "p1": 29.157999999999998,
+      "p2_5": 33.915,
+      "p25": 48.8,
+      "p75": 62.099999999999994,
+      "p97_5": 70.79499999999999,
+      "p99": 75.002,
+      "iqr": 13.299999999999997
+    },
+    "test_bc_basophil_count": {
+      "count": 107,
+      "mean": 38.700934579439256,
+      "median": 38.0,
+      "std": 23.22661735671603,
+      "min": 0.0,
+      "max": 103.0,
+      "p1": 0.0,
+      "p2_5": 0.0,
+      "p25": 27.0,
+      "p75": 50.0,
+      "p97_5": 100.0,
+      "p99": 100.0,
+      "iqr": 23.0
+    },
+    "test_bc_eosinophil_count": {
+      "count": 107,
+      "mean": 148.61682242990653,
+      "median": 120.0,
+      "std": 97.72860426556079,
+      "min": 0.0,
+      "max": 429.0,
+      "p1": 7.24,
+      "p2_5": 11.65,
+      "p25": 80.5,
+      "p75": 200.0,
+      "p97_5": 372.44999999999993,
+      "p99": 398.61999999999995,
+      "iqr": 119.5
+    },
+    "test_bc_lymphocyte_count": {
+      "count": 107,
+      "mean": 1819.9252336448599,
+      "median": 1723.0,
+      "std": 577.6690261656917,
+      "min": 587.0,
+      "max": 3723.0,
+      "p1": 823.22,
+      "p2_5": 884.0,
+      "p25": 1421.0,
+      "p75": 2179.5,
+      "p97_5": 3090.9,
+      "p99": 3169.56,
+      "iqr": 758.5
+    },
+    "test_bc_monocyte_count": {
+      "count": 107,
+      "mean": 442.13084112149534,
+      "median": 416.0,
+      "std": 130.16224158407653,
+      "min": 181.0,
+      "max": 885.0,
+      "p1": 200.66,
+      "p2_5": 215.55,
+      "p25": 365.5,
+      "p75": 504.0,
+      "p97_5": 699.35,
+      "p99": 827.8399999999997,
+      "iqr": 138.5
+    },
+    "test_bc_neutrophil_count": {
+      "count": 107,
+      "mean": 3139.6355140186915,
+      "median": 3036.0,
+      "std": 1294.5630383400764,
+      "min": 1035.0,
+      "max": 8913.0,
+      "p1": 1121.98,
+      "p2_5": 1214.3,
+      "p25": 2159.0,
+      "p75": 3900.0,
+      "p97_5": 6212.999999999999,
+      "p99": 6680.319999999999,
+      "iqr": 1741.0
+    },
+    "test_bc_hematocrit": {
+      "count": 107,
+      "mean": 40.271028037383175,
+      "median": 40.4,
+      "std": 4.075374953135043,
+      "min": 12.2,
+      "max": 48.9,
+      "p1": 33.606,
+      "p2_5": 34.545,
+      "p25": 38.2,
+      "p75": 42.3,
+      "p97_5": 46.404999999999994,
+      "p99": 48.66799999999999,
+      "iqr": 4.099999999999994
+    },
+    "test_bc_hemoglobin": {
+      "count": 107,
+      "mean": 13.91588785046729,
+      "median": 14.0,
+      "std": 2.371694304520774,
+      "min": 11.0,
+      "max": 35.0,
+      "p1": 11.0,
+      "p2_5": 11.0,
+      "p25": 13.0,
+      "p75": 14.0,
+      "p97_5": 16.0,
+      "p99": 16.939999999999998,
+      "iqr": 1.0
+    },
+    "test_bc_mch": {
+      "count": 107,
+      "mean": 29.921495327102807,
+      "median": 30.2,
+      "std": 2.101168948573545,
+      "min": 18.1,
+      "max": 33.8,
+      "p1": 23.426000000000002,
+      "p2_5": 25.919999999999998,
+      "p25": 29.0,
+      "p75": 31.25,
+      "p97_5": 32.775,
+      "p99": 33.757999999999996,
+      "iqr": 2.25
+    },
+    "test_bc_mchc": {
+      "count": 107,
+      "mean": 33.820560747663556,
+      "median": 33.9,
+      "std": 1.091626648263698,
+      "min": 29.1,
+      "max": 36.3,
+      "p1": 31.218,
+      "p2_5": 31.759999999999998,
+      "p25": 33.25,
+      "p75": 34.45,
+      "p97_5": 35.934999999999995,
+      "p99": 36.094,
+      "iqr": 1.2000000000000028
+    },
+    "test_bc_mcv": {
+      "count": 107,
+      "mean": 88.48598130841121,
+      "median": 89.4,
+      "std": 5.2577068069237045,
+      "min": 57.9,
+      "max": 99.2,
+      "p1": 77.402,
+      "p2_5": 79.65,
+      "p25": 85.95,
+      "p75": 91.7,
+      "p97_5": 96.705,
+      "p99": 97.088,
+      "iqr": 5.75
+    },
+    "test_bc_mpv": {
+      "count": 92,
+      "mean": 10.729347826086956,
+      "median": 10.6,
+      "std": 0.8088165338195291,
+      "min": 8.8,
+      "max": 12.9,
+      "p1": 8.891,
+      "p2_5": 9.355,
+      "p25": 10.2,
+      "p75": 11.3,
+      "p97_5": 12.444999999999999,
+      "p99": 12.809000000000001,
+      "iqr": 1.1000000000000014
+    },
+    "test_bc_platelet_count": {
+      "count": 107,
+      "mean": 257.0373831775701,
+      "median": 254.0,
+      "std": 54.389740506210565,
+      "min": 145.0,
+      "max": 449.0,
+      "p1": 154.96,
+      "p2_5": 173.25,
+      "p25": 218.5,
+      "p75": 290.0,
+      "p97_5": 368.49999999999994,
+      "p99": 375.94,
+      "iqr": 71.5
+    },
+    "test_bc_red_blood_cell_count": {
+      "count": 107,
+      "mean": 4.626168224299065,
+      "median": 5.0,
+      "std": 0.5750039292069412,
+      "min": 4.0,
+      "max": 7.0,
+      "p1": 4.0,
+      "p2_5": 4.0,
+      "p25": 4.0,
+      "p75": 5.0,
+      "p97_5": 5.349999999999994,
+      "p99": 6.0,
+      "iqr": 1.0
+    },
+    "test_bc_rdw": {
+      "count": 107,
+      "mean": 12.714018691588786,
+      "median": 12.7,
+      "std": 0.8931023518993124,
+      "min": 11.3,
+      "max": 17.8,
+      "p1": 11.7,
+      "p2_5": 11.7,
+      "p25": 12.1,
+      "p75": 13.0,
+      "p97_5": 14.514999999999993,
+      "p99": 15.758,
+      "iqr": 0.9000000000000004
+    },
+    "test_bc_wbc": {
+      "count": 107,
+      "mean": 5.5897196261682245,
+      "median": 5.5,
+      "std": 1.6031181043510088,
+      "min": 2.6,
+      "max": 11.5,
+      "p1": 2.9,
+      "p2_5": 3.095,
+      "p25": 4.45,
+      "p75": 6.45,
+      "p97_5": 8.974999999999998,
+      "p99": 10.051999999999998,
+      "iqr": 2.0
+    },
+    "test_cmv_igg_serology": {
+      "count": 14,
+      "mean": 0.6491428571428572,
+      "median": 0.063,
+      "std": 1.151832309986862,
+      "min": 0.034,
+      "max": 3.199,
+      "p1": 0.03413,
+      "p2_5": 0.034325,
+      "p25": 0.043750000000000004,
+      "p75": 0.19775,
+      "p97_5": 3.0423499999999994,
+      "p99": 3.1363399999999997,
+      "iqr": 0.154
+    },
+    "test_infl_anti_ccp3": {
+      "count": 40,
+      "mean": 1.9,
+      "median": 0.0,
+      "std": 4.589843860815601,
+      "min": 0.0,
+      "max": 26.0,
+      "p1": 0.0,
+      "p2_5": 0.0,
+      "p25": 0.0,
+      "p75": 2.0,
+      "p97_5": 13.324999999999982,
+      "p99": 20.929999999999993,
+      "iqr": 2.0
+    },
+    "test_infl_anti_ccp31": {
+      "count": 40,
+      "mean": 4.45,
+      "median": 4.0,
+      "std": 3.419026702110352,
+      "min": 2.0,
+      "max": 20.0,
+      "p1": 2.0,
+      "p2_5": 2.0,
+      "p25": 3.0,
+      "p75": 4.0,
+      "p97_5": 16.099999999999994,
+      "p99": 18.439999999999998,
+      "iqr": 1.0
+    },
+    "test_infl_hs_crp": {
+      "count": 92,
+      "mean": 1.5532608695652177,
+      "median": 0.7,
+      "std": 1.9763130889878582,
+      "min": 0.3,
+      "max": 10.0,
+      "p1": 0.3,
+      "p2_5": 0.3,
+      "p25": 0.375,
+      "p75": 1.8,
+      "p97_5": 7.907499999999996,
+      "p99": 8.908000000000005,
+      "iqr": 1.425
+    },
+    "test_infl_rf_iga_result": {
+      "count": 40,
+      "mean": 0.34445000000000003,
+      "median": 0.0,
+      "std": 1.9079141375885487,
+      "min": 0.0,
+      "max": 12.027,
+      "p1": 0.0,
+      "p2_5": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p97_5": 1.6559249999999848,
+      "p99": 7.878569999999994,
+      "iqr": 0.0
+    },
+    "test_infl_rf_igm_result": {
+      "count": 40,
+      "mean": 1.340025,
+      "median": 0.0,
+      "std": 3.15854139890389,
+      "min": 0.0,
+      "max": 16.503,
+      "p1": 0.0,
+      "p2_5": 0.0,
+      "p25": 0.0,
+      "p75": 0.763,
+      "p97_5": 7.1498249999999866,
+      "p99": 12.761729999999995,
+      "iqr": 0.763
+    },
+    "test_infl_esr": {
+      "count": 92,
+      "mean": 5.228260869565218,
+      "median": 2.0,
+      "std": 6.020301297395257,
+      "min": 2.0,
+      "max": 34.0,
+      "p1": 2.0,
+      "p2_5": 2.0,
+      "p25": 2.0,
+      "p75": 6.0,
+      "p97_5": 21.174999999999983,
+      "p99": 33.09,
+      "iqr": 4.0
+    },
+    "test_lip_cholesterol_hdl": {
+      "count": 92,
+      "mean": 58.92391304347826,
+      "median": 56.5,
+      "std": 16.358775375087685,
+      "min": 29.0,
+      "max": 108.0,
+      "p1": 29.91,
+      "p2_5": 32.275,
+      "p25": 47.0,
+      "p75": 67.25,
+      "p97_5": 95.725,
+      "p99": 102.54000000000002,
+      "iqr": 20.25
+    },
+    "test_lip_cholesterol_ldl": {
+      "count": 91,
+      "mean": 113.79120879120879,
+      "median": 114.0,
+      "std": 33.12351178493961,
+      "min": 15.0,
+      "max": 212.0,
+      "p1": 51.0,
+      "p2_5": 59.25,
+      "p25": 90.5,
+      "p75": 135.5,
+      "p97_5": 176.0,
+      "p99": 181.3999999999998,
+      "iqr": 45.0
+    },
+    "test_lip_cholesterol_non_hdl": {
+      "count": 92,
+      "mean": 136.65217391304347,
+      "median": 134.5,
+      "std": 38.25663334929211,
+      "min": 29.0,
+      "max": 245.0,
+      "p1": 66.31,
+      "p2_5": 76.275,
+      "p25": 107.75,
+      "p75": 159.25,
+      "p97_5": 220.79999999999995,
+      "p99": 242.27,
+      "iqr": 51.5
+    },
+    "test_lip_cholesterol_total": {
+      "count": 92,
+      "mean": 195.57608695652175,
+      "median": 194.0,
+      "std": 41.17671210386599,
+      "min": 82.0,
+      "max": 288.0,
+      "p1": 106.57000000000001,
+      "p2_5": 123.55,
+      "p25": 168.25,
+      "p75": 221.0,
+      "p97_5": 274.725,
+      "p99": 286.18,
+      "iqr": 52.75
+    },
+    "test_lip_chlesterol_hdl_ratio": {
+      "count": 92,
+      "mean": 3.5195652173913046,
+      "median": 3.3,
+      "std": 1.1138724777993454,
+      "min": 1.5,
+      "max": 7.0,
+      "p1": 2.0460000000000003,
+      "p2_5": 2.1275,
+      "p25": 2.7,
+      "p75": 4.0,
+      "p97_5": 6.272499999999999,
+      "p99": 7.0,
+      "iqr": 1.2999999999999998
+    },
+    "test_lip_triglycerides": {
+      "count": 92,
+      "mean": 123.66304347826087,
+      "median": 94.5,
+      "std": 81.40244308425885,
+      "min": 45.0,
+      "max": 506.0,
+      "p1": 45.91,
+      "p2_5": 47.0,
+      "p25": 66.75,
+      "p75": 157.0,
+      "p97_5": 349.525,
+      "p99": 393.1600000000004,
+      "iqr": 90.25
+    }
+  },
+  "provisional_refs": {
+    "test_am_bmi": {
+      "by": "overall",
+      "low": 20.0,
+      "high": 38.175,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс, требует замены на официальный"
+    },
+    "test_am_bmi_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 20.0,
+      "high": 38.949999999999996,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_bmi_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 21.0,
+      "high": 32.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_bmi_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 19.875,
+      "high": 34.625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_bmi_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 21.0,
+      "high": 38.37499999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_height": {
+      "by": "overall",
+      "low": 152.6325,
+      "high": 186.5875,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс, требует замены на официальный"
+    },
+    "test_am_height_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 151.005,
+      "high": 179.86999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_height_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 165.775,
+      "high": 187.625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_height_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 150.61125,
+      "high": 187.3125,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_height_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 156.79,
+      "high": 182.255,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_weight": {
+      "by": "overall",
+      "low": 55.6875,
+      "high": 104.375,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс, требует замены на официальный"
+    },
+    "test_am_weight_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 55.125,
+      "high": 103.67500000000001,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_weight_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 63.650000000000006,
+      "high": 104.56,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_weight_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 55.0125,
+      "high": 104.13250000000001,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_am_weight_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 57.0525,
+      "high": 106.20249999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alt": {
+      "by": "overall",
+      "low": 8.0,
+      "high": 39.39999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс, требует замены на официальный"
+    },
+    "test_chem_alt_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 8.0,
+      "high": 36.64999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alt_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 9.4,
+      "high": 68.59999999999988,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alt_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 8.0,
+      "high": 70.40000000000006,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alt_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 10.0,
+      "high": 37.699999999999996,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alt_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 7.25,
+      "high": 24.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_albumin": {
+      "low": 3.5,
+      "high": 5.7,
+      "name": "Albumin",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_albumin_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 3.8449999999999998,
+      "high": 4.9,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_albumin_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 4.1,
+      "high": 5.079999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_albumin_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 4.114999999999999,
+      "high": 5.085,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_albumin_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 3.9,
+      "high": 4.79,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_albumin_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 4.3,
+      "high": 4.9,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alkaline_phosphatase": {
+      "low": 39.0,
+      "high": 117.0,
+      "name": "Alkaline Phosphatase",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_alkaline_phosphatase_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 33.45,
+      "high": 325.5999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alkaline_phosphatase_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 35.0,
+      "high": 251.2,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alkaline_phosphatase_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 32.15,
+      "high": 78.7,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alkaline_phosphatase_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 39.4,
+      "high": 103.1,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_alkaline_phosphatase_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 181.125,
+      "high": 354.375,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_ast": {
+      "low": 12.0,
+      "high": 39.0,
+      "name": "Aspartate Aminotransferase (AST)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_ast_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 11.45,
+      "high": 25.549999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_ast_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 13.2,
+      "high": 33.39999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_ast_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 12.0,
+      "high": 38.500000000000014,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_ast_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 12.0,
+      "high": 25.9,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_ast_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 19.0,
+      "high": 29.875,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_t_bili": {
+      "low": 0.1,
+      "high": 1.3,
+      "name": "Bilirubin, Total (T-Bili)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_t_bili_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.3,
+      "high": 1.1199999999999988,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_t_bili_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.3,
+      "high": 1.2799999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_t_bili_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 0.3,
+      "high": 1.6400000000000006,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_t_bili_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 0.3,
+      "high": 1.1599999999999995,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_t_bili_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 0.2375,
+      "high": 0.6875,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_bun": {
+      "low": 7.0,
+      "high": 25.0,
+      "name": "Blood Urea Nitrogen (BUN)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_bun_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 8.0,
+      "high": 22.64999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_bun_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 9.4,
+      "high": 23.599999999999994,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_bun_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 8.0,
+      "high": 20.700000000000003,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_bun_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 10.1,
+      "high": 25.799999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_bun_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 9.0,
+      "high": 17.625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_calcium": {
+      "low": 8.6,
+      "high": 10.3,
+      "name": "Calcium",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_calcium_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 9.0,
+      "high": 10.065,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_calcium_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 8.82,
+      "high": 10.18,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_calcium_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 8.915000000000001,
+      "high": 10.184999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_calcium_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 9.0,
+      "high": 9.99,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_calcium_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 8.9125,
+      "high": 10.0125,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_co2": {
+      "low": 21.0,
+      "high": 31.0,
+      "name": "Carbon Dioxide (CO2)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_co2_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 18.0,
+      "high": 29.549999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_co2_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 20.4,
+      "high": 29.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_co2_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 18.15,
+      "high": 30.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_co2_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 20.0,
+      "high": 29.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_co2_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 24.375,
+      "high": 28.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_cl": {
+      "low": 98.0,
+      "high": 108.0,
+      "name": "Chloride (Cl)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_cl_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 100.45,
+      "high": 108.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_cl_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 100.2,
+      "high": 107.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_cl_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 100.15,
+      "high": 107.85,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_cl_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 101.0,
+      "high": 108.9,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_cl_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 100.375,
+      "high": 107.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_creatinine": {
+      "low": 0.7,
+      "high": 1.3,
+      "name": "Creatinine",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_creatinine_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.479,
+      "high": 1.0394999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_creatinine_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.472,
+      "high": 1.2139999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_creatinine_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 0.6215,
+      "high": 1.1205,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_creatinine_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 0.642,
+      "high": 1.1449999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_creatinine_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 0.45,
+      "high": 0.7124999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_egfr_aa": {
+      "by": "overall",
+      "low": 74.6,
+      "high": 144.2,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс, требует замены на официальный"
+    },
+    "test_chem_egfr_aa_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 73.95,
+      "high": 147.77499999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_egfr_aa_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 91.3,
+      "high": 133.7,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_egfr_aa_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 81.4,
+      "high": 146.39999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_egfr_non_aa": {
+      "by": "overall",
+      "low": 64.65,
+      "high": 124.57499999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс, требует замены на официальный"
+    },
+    "test_chem_egfr_non_aa_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 63.95,
+      "high": 127.725,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_egfr_non_aa_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 79.325,
+      "high": 115.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_egfr_non_aa_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 70.2,
+      "high": 126.6,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_globin": {
+      "low": 2.0,
+      "high": 3.5,
+      "name": "Globin",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_globin_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 2.1,
+      "high": 3.275,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_globin_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 2.0,
+      "high": 3.2,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_globin_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 2.015,
+      "high": 3.2,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_globin_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 2.1,
+      "high": 3.19,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_glucose": {
+      "low": 70.0,
+      "high": 199.0,
+      "name": "Glucose",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_glucose_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 45.35,
+      "high": 121.84999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_glucose_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 64.2,
+      "high": 124.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_glucose_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 44.45,
+      "high": 124.85,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_glucose_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 72.4,
+      "high": 123.69999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_glucose_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 53.625,
+      "high": 104.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_potassium": {
+      "low": 3.5,
+      "high": 5.1,
+      "name": "Potassium",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_potassium_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 3.445,
+      "high": 4.764999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_potassium_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 3.54,
+      "high": 4.68,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_potassium_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 3.5300000000000002,
+      "high": 4.585,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_potassium_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 3.44,
+      "high": 4.88,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_potassium_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 3.575,
+      "high": 4.425,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_protein": {
+      "low": 6.4,
+      "high": 8.9,
+      "name": "Protein, Total",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_protein_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 6.0,
+      "high": 8.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_protein_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 6.0,
+      "high": 8.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_protein_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 7.0,
+      "high": 8.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_protein_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 6.0,
+      "high": 7.899999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_protein_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 6.0,
+      "high": 7.625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_sodium": {
+      "low": 133.0,
+      "high": 145.0,
+      "name": "Sodium",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_sodium_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 135.45,
+      "high": 144.55,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_sodium_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 137.0,
+      "high": 142.8,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_sodium_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 136.15,
+      "high": 142.85,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_sodium_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 136.1,
+      "high": 145.7,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_sodium_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 135.75,
+      "high": 144.25,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_basophils": {
+      "low": NaN,
+      "high": NaN,
+      "name": "% Basophils",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_perc_basophils_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.3,
+      "high": 1.3549999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_basophils_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.2,
+      "high": 1.5,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_basophils_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 0.315,
+      "high": 1.4700000000000002,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_basophils_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 0.21000000000000002,
+      "high": 1.4899999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_basophils_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 0.275,
+      "high": 1.1625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_eosinophils": {
+      "low": NaN,
+      "high": NaN,
+      "name": "% Eosinophils",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_perc_eosinophils_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.39,
+      "high": 6.184999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_eosinophils_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.3,
+      "high": 6.919999999999996,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_eosinophils_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 0.41500000000000004,
+      "high": 6.48,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_eosinophils_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 0.3,
+      "high": 5.569999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_eosinophils_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 0.30624999999999997,
+      "high": 6.2375,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_lymphocytes": {
+      "low": NaN,
+      "high": NaN,
+      "name": "% Lymphocytes",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_perc_lymphocytes_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 18.835,
+      "high": 54.92999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_lymphocytes_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 17.82,
+      "high": 53.639999999999986,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_lymphocytes_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 18.745,
+      "high": 49.65,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_lymphocytes_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 18.049999999999997,
+      "high": 42.6,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_lymphocytes_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 14.31875,
+      "high": 59.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_monocytes": {
+      "low": NaN,
+      "high": NaN,
+      "name": "% Monocytes",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_perc_monocytes_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 4.445,
+      "high": 11.165,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_monocytes_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 5.92,
+      "high": 11.88,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_monocytes_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 5.2,
+      "high": 12.07,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_monocytes_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 4.91,
+      "high": 10.86,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_monocytes_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 4.675,
+      "high": 9.425,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_neutrophils": {
+      "low": NaN,
+      "high": NaN,
+      "name": "% Neutrophils",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_perc_neutrophils_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 34.48,
+      "high": 69.75,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_neutrophils_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 33.6375,
+      "high": 71.09499999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_neutrophils_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 36.015,
+      "high": 70.00500000000001,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_neutrophils_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 46.9,
+      "high": 71.63,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_perc_neutrophils_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 28.77,
+      "high": 54.775,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_basophil_count": {
+      "low": 0.0,
+      "high": 202.0,
+      "name": "Absolute Basophil Count",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_basophil_count_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.0,
+      "high": 81.1,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_basophil_count_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.0,
+      "high": 100.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_basophil_count_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 13.9,
+      "high": 70.35000000000002,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_basophil_count_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 12.700000000000001,
+      "high": 78.29999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_basophil_count_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 0.0,
+      "high": 100.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_eosinophil_count": {
+      "low": 0.0,
+      "high": 400.0,
+      "name": "Absolute Eosinophil Count (AEC)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_eosinophil_count_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 9.25,
+      "high": 373.84999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_eosinophil_count_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 22.0,
+      "high": 410.7999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_eosinophil_count_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 20.5,
+      "high": 367.45000000000005,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_eosinophil_count_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 12.8,
+      "high": 347.8999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_eosinophil_count_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 37.5,
+      "high": 1337.5,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_lymphocyte_count": {
+      "low": 1000.0,
+      "high": 4800.0,
+      "name": "Absolute Lymphocyte Count (ALC)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_lymphocyte_count_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 908.4,
+      "high": 3047.2999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_lymphocyte_count_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 922.2,
+      "high": 3613.1999999999985,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_lymphocyte_count_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 1052.3,
+      "high": 3123.3000000000006,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_lymphocyte_count_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 824.7,
+      "high": 2445.2,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_lymphocyte_count_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 2000.0,
+      "high": 30912.5,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_monocyte_count": {
+      "low": 200.0,
+      "high": 900.0,
+      "name": "Absolute Monocyte Count (AMC)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_monocyte_count_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 204.95,
+      "high": 678.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_monocyte_count_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 264.6,
+      "high": 699.8,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_monocyte_count_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 263.3,
+      "high": 810.6500000000002,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_monocyte_count_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 216.0,
+      "high": 685.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_monocyte_count_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 222.5,
+      "high": 662.5,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_neutrophil_count": {
+      "low": 1800.0,
+      "high": 6600.0,
+      "name": "Absolute Neutrophil Count (ANC)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_neutrophil_count_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 1399.45,
+      "high": 6513.399999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_neutrophil_count_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 1204.4,
+      "high": 4815.8,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_neutrophil_count_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 1132.75,
+      "high": 6641.8,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_neutrophil_count_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 1650.6,
+      "high": 5232.8,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_neutrophil_count_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 1275.0,
+      "high": 4062.5,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hematocrit": {
+      "low": 39.2,
+      "high": 50.2,
+      "name": "Hematocrit",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_hematocrit_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 34.285000000000004,
+      "high": 43.55,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hematocrit_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 36.2,
+      "high": 48.35999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hematocrit_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 34.195,
+      "high": 46.555,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hematocrit_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 35.379999999999995,
+      "high": 44.79,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hematocrit_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 20.75,
+      "high": 40.625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hemoglobin": {
+      "low": 12.1,
+      "high": 18.1,
+      "name": "Hemoglobin",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_hemoglobin_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 11.0,
+      "high": 15.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hemoglobin_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 13.0,
+      "high": 16.799999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hemoglobin_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 11.3,
+      "high": 16.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hemoglobin_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 11.1,
+      "high": 15.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_hemoglobin_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 12.0,
+      "high": 27.125,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mch": {
+      "low": 27.5,
+      "high": 35.1,
+      "name": "Mean Corpuscular Hemoglobin (MCH)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_mch_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 26.425,
+      "high": 32.455,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mch_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 25.619999999999997,
+      "high": 33.66,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mch_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 26.5,
+      "high": 32.585,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mch_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 23.59,
+      "high": 33.589999999999996,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mch_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 27.375,
+      "high": 30.625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mchc": {
+      "low": 32.0,
+      "high": 36.0,
+      "name": "Mean Corpuscular Hemoglobin Concentration (MCHC)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_mchc_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 31.68,
+      "high": 35.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mchc_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 32.160000000000004,
+      "high": 36.08,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mchc_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 32.4,
+      "high": 36.07,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mchc_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 31.23,
+      "high": 35.08,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mchc_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 34.0,
+      "high": 35.625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mcv": {
+      "low": 80.0,
+      "high": 100.0,
+      "name": "Mean Corpuscular Volume (MCV)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_mcv_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 80.56,
+      "high": 96.765,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mcv_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 77.64,
+      "high": 94.42,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mcv_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 81.435,
+      "high": 96.6,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mcv_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 80.38000000000001,
+      "high": 96.66,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mcv_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 79.375,
+      "high": 90.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mpv": {
+      "low": 7.2,
+      "high": 11.7,
+      "name": "Mean Platelet Volume (MPV)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_mpv_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 9.525,
+      "high": 12.675,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mpv_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 8.9,
+      "high": 12.1,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mpv_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 9.5,
+      "high": 12.255,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_mpv_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 9.33,
+      "high": 12.459999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_platelet_count": {
+      "low": 150.0,
+      "high": 400.0,
+      "name": "Platelet Count",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_platelet_count_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 179.35,
+      "high": 375.55,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_platelet_count_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 157.2,
+      "high": 326.19999999999993,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_platelet_count_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 174.20000000000002,
+      "high": 348.55,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_platelet_count_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 175.3,
+      "high": 374.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_platelet_count_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 205.25,
+      "high": 355.75,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_red_blood_cell_count": {
+      "low": 4.18,
+      "high": 6.09,
+      "name": "Red Blood Cell Count",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_red_blood_cell_count_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 4.0,
+      "high": 5.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_red_blood_cell_count_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 4.0,
+      "high": 6.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_red_blood_cell_count_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 4.0,
+      "high": 5.850000000000001,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_red_blood_cell_count_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 4.0,
+      "high": 5.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_red_blood_cell_count_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 4.0,
+      "high": 5.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_rdw": {
+      "low": 11.7,
+      "high": 14.2,
+      "name": "Red Cell Distribution Width (RDW)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_rdw_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 11.7,
+      "high": 14.694999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_rdw_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 11.82,
+      "high": 13.98,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_rdw_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 11.7,
+      "high": 13.985,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_rdw_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 11.8,
+      "high": 15.639999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_rdw_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 12.4375,
+      "high": 13.925,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_wbc": {
+      "low": 4.0,
+      "high": 11.1,
+      "name": "White Blood Cell Count (WBC)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_bc_wbc_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 3.2,
+      "high": 9.739999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_wbc_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 2.98,
+      "high": 7.839999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_wbc_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 2.945,
+      "high": 9.98,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_wbc_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 3.21,
+      "high": 8.499999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_bc_wbc_age_Children": {
+      "by": "age_group",
+      "age_group": "Children",
+      "low": 4.0125,
+      "high": 7.75,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_cmv_igg_serology": {
+      "low": NaN,
+      "high": NaN,
+      "name": "CMV IgG Serology Result (ELISA)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_anti_ccp3": {
+      "low": NaN,
+      "high": NaN,
+      "name": "Anti-CCP3",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_anti_ccp3_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.0,
+      "high": 13.999999999999972,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_anti_ccp3_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.0,
+      "high": 10.550000000000002,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_anti_ccp3_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 0.0,
+      "high": 4.299999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_anti_ccp3_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 0.0,
+      "high": 19.174999999999972,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_anti_ccp31": {
+      "low": NaN,
+      "high": NaN,
+      "name": "Anti-CCP31",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_anti_ccp31_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 2.0,
+      "high": 11.59999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_anti_ccp31_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 2.0,
+      "high": 13.200000000000003,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_anti_ccp31_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 2.0,
+      "high": 6.724999999999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_anti_ccp31_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 2.0,
+      "high": 17.89999999999999,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_hs_crp": {
+      "low": NaN,
+      "high": NaN,
+      "name": "C-Reactive Protein, High-Sensitivity (HS-CRP)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_hs_crp_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.3,
+      "high": 8.625,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_hs_crp_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.3,
+      "high": 3.8,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_hs_crp_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 0.3,
+      "high": 7.995000000000001,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_hs_crp_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 0.3,
+      "high": 7.1999999999999975,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_rf_iga_result": {
+      "low": NaN,
+      "high": NaN,
+      "name": "RFIgA Result",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_rf_iga_result_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.0,
+      "high": 0.14439999999999947,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_rf_iga_result_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.0,
+      "high": 8.304050000000004,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_rf_iga_result_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 0.0,
+      "high": 0.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_rf_iga_result_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 0.0,
+      "high": 6.442574999999977,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_rf_igm_result": {
+      "low": NaN,
+      "high": NaN,
+      "name": "RFIgM Result",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_rf_igm_result_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 0.0,
+      "high": 10.747199999999987,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_rf_igm_result_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 0.0,
+      "high": 4.017150000000001,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_rf_igm_result_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 0.0,
+      "high": 6.31485,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_rf_igm_result_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 0.0,
+      "high": 11.46667499999998,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_esr": {
+      "low": NaN,
+      "high": NaN,
+      "name": "SED Rate-Westergren (ESR)",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_esr_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 2.0,
+      "high": 30.25,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_esr_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 2.0,
+      "high": 11.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_esr_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 2.0,
+      "high": 30.150000000000027,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_infl_esr_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 2.0,
+      "high": 18.799999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_hdl": {
+      "low": 40.0,
+      "high": 59.0,
+      "name": "Cholesterol, HDL",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_lip_cholesterol_hdl_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 41.0,
+      "high": 95.75,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_hdl_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 30.0,
+      "high": 86.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_hdl_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 33.3,
+      "high": 84.7,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_hdl_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 32.5,
+      "high": 95.9,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_ldl": {
+      "low": 57.0,
+      "high": 129.0,
+      "name": "Cholesterol, LDL",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_lip_cholesterol_ldl_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 64.75,
+      "high": 177.75,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_ldl_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 54.0,
+      "high": 161.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_ldl_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 56.2,
+      "high": 172.85,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_ldl_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 77.15,
+      "high": 176.24999999999997,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_non_hdl": {
+      "low": 0.0,
+      "high": 189.0,
+      "name": "Cholesterol, Non-HDL",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_lip_cholesterol_non_hdl_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 84.0,
+      "high": 237.25,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_non_hdl_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 70.0,
+      "high": 181.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_non_hdl_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 70.9,
+      "high": 195.65,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_non_hdl_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 93.3,
+      "high": 222.2,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_total": {
+      "low": 136.0,
+      "high": 239.0,
+      "name": "Cholesterol, Total",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_lip_cholesterol_total_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 147.0,
+      "high": 283.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_total_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 109.0,
+      "high": 260.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_total_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 111.4,
+      "high": 258.4,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_cholesterol_total_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 130.4,
+      "high": 274.9,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_chlesterol_hdl_ratio": {
+      "low": NaN,
+      "high": NaN,
+      "name": "Cholesterol/HDL Ratio",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_lip_chlesterol_hdl_ratio_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 2.225,
+      "high": 6.275,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_chlesterol_hdl_ratio_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 2.1,
+      "high": 6.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_chlesterol_hdl_ratio_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 2.13,
+      "high": 5.970000000000001,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_chlesterol_hdl_ratio_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 2.23,
+      "high": 6.29,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_triglycerides": {
+      "low": 48.0,
+      "high": 149.0,
+      "name": "Triglycerides",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_lip_triglycerides_sex_Female": {
+      "by": "sex",
+      "sex": "Female",
+      "low": 46.25,
+      "high": 327.25,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_triglycerides_sex_Male": {
+      "by": "sex",
+      "sex": "Male",
+      "low": 50.0,
+      "high": 352.0,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_triglycerides_age_Young Adult": {
+      "by": "age_group",
+      "age_group": "Young Adult",
+      "low": 46.15,
+      "high": 227.60000000000005,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_lip_triglycerides_age_Older Adult": {
+      "by": "age_group",
+      "age_group": "Older Adult",
+      "low": 51.3,
+      "high": 378.99999999999994,
+      "method": "percentile_2.5_97.5",
+      "note": "PROVISIONAL - временный референс"
+    },
+    "test_chem_ldh": {
+      "low": 0.0,
+      "high": 210.0,
+      "name": "Lactate Dehydrogenase",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_magnesium": {
+      "low": 1.8,
+      "high": 2.4,
+      "name": "Magnesium",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_chem_phosphate": {
+      "low": 2.5,
+      "high": 4.5,
+      "name": "Phosphate",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_cmv_igg_serology_interpretation": {
+      "low": NaN,
+      "high": NaN,
+      "name": "CMV IgG Serology Result Interpretation",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_rf_iga_interpretation": {
+      "low": NaN,
+      "high": NaN,
+      "name": "RFIgA Interpretation",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    },
+    "test_infl_rf_igm_interpretation": {
+      "low": NaN,
+      "high": NaN,
+      "name": "RFIgM Interpretation",
+      "by": "overall",
+      "method": "official_reference",
+      "note": "Официальный референс из Excel",
+      "is_official": true
+    }
+  },
+  "anomaly_detection": {
+    "report": {
+      "total_anomalies_if": 11,
+      "total_anomalies_dbscan": 14,
+      "total_anomalies_lof": 11,
+      "total_anomalies_consensus": 13,
+      "tests_analyzed": 52,
+      "examples": [
+        {
+          "row_index": 14,
+          "patient_id": "BR1013",
+          "sample_id": "KT00030",
+          "methods_detected": [
+            "DBSCAN",
+            "LOF"
+          ],
+          "anomaly_score_if": 0.4415755218953595,
+          "anomaly_score_lof": 1.4472823563456472
+        },
+        {
+          "row_index": 18,
+          "patient_id": "BR2009",
+          "sample_id": "KT00334",
+          "methods_detected": [
+            "IsolationForest",
+            "LOF"
+          ],
+          "anomaly_score_if": 0.5050667603328028,
+          "anomaly_score_lof": 1.5174286738542944
+        },
+        {
+          "row_index": 26,
+          "patient_id": "BR1024",
+          "sample_id": "KT00350",
+          "methods_detected": [
+            "IsolationForest",
+            "DBSCAN"
+          ],
+          "anomaly_score_if": 0.49419150337794493,
+          "anomaly_score_lof": 1.2801938084034707
+        },
+        {
+          "row_index": 39,
+          "patient_id": "BR1016",
+          "sample_id": "KT00384",
+          "methods_detected": [
+            "IsolationForest",
+            "DBSCAN",
+            "LOF"
+          ],
+          "anomaly_score_if": 0.47742325804086017,
+          "anomaly_score_lof": 1.5417762878909855
+        },
+        {
+          "row_index": 44,
+          "patient_id": "BR1044",
+          "sample_id": "KT00391",
+          "methods_detected": [
+            "IsolationForest",
+            "DBSCAN"
+          ],
+          "anomaly_score_if": 0.4954712795313858,
+          "anomaly_score_lof": 1.2654491579975882
+        },
+        {
+          "row_index": 46,
+          "patient_id": "BR2040",
+          "sample_id": "KT00394",
+          "methods_detected": [
+            "DBSCAN",
+            "LOF"
+          ],
+          "anomaly_score_if": 0.4748456951184795,
+          "anomaly_score_lof": 1.316304075992169
+        },
+        {
+          "row_index": 56,
+          "patient_id": "BR2048",
+          "sample_id": "KT00523",
+          "methods_detected": [
+            "IsolationForest",
+            "DBSCAN",
+            "LOF"
+          ],
+          "anomaly_score_if": 0.500703189486053,
+          "anomaly_score_lof": 1.580642361738725
+        },
+        {
+          "row_index": 61,
+          "patient_id": "BR1048",
+          "sample_id": "KT00532",
+          "methods_detected": [
+            "IsolationForest",
+            "DBSCAN",
+            "LOF"
+          ],
+          "anomaly_score_if": 0.4888755920171773,
+          "anomaly_score_lof": 1.369210807828471
+        },
+        {
+          "row_index": 69,
+          "patient_id": "BR2024",
+          "sample_id": "KT00552",
+          "methods_detected": [
+            "IsolationForest",
+            "DBSCAN",
+            "LOF"
+          ],
+          "anomaly_score_if": 0.5625456345413465,
+          "anomaly_score_lof": 1.886650573870455
+        },
+        {
+          "row_index": 70,
+          "patient_id": "BR2045",
+          "sample_id": "KT00557",
+          "methods_detected": [
+            "IsolationForest",
+            "DBSCAN",
+            "LOF"
+          ],
+          "anomaly_score_if": 0.5120889039223834,
+          "anomaly_score_lof": 1.5746211646765351
+        }
+      ]
+    },
+    "anomalies_to_highlight": [
+      {
+        "row_index": 104,
+        "patient_id": "UP1026",
+        "sample_id": "KT00928",
+        "flag_type": "suspect",
+        "action": "highlight",
+        "reasons": [
+          "artifactual_value"
+        ]
+      },
+      {
+        "row_index": 14,
+        "patient_id": "BR1013",
+        "sample_id": "KT00030",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.4415755218953595,
+        "anomaly_score_lof": 1.4472823563456472
+      },
+      {
+        "row_index": 18,
+        "patient_id": "BR2009",
+        "sample_id": "KT00334",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.5050667603328028,
+        "anomaly_score_lof": 1.5174286738542944
+      },
+      {
+        "row_index": 26,
+        "patient_id": "BR1024",
+        "sample_id": "KT00350",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN"
+        ],
+        "anomaly_score_if": 0.49419150337794493,
+        "anomaly_score_lof": 1.2801938084034707
+      },
+      {
+        "row_index": 39,
+        "patient_id": "BR1016",
+        "sample_id": "KT00384",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.47742325804086017,
+        "anomaly_score_lof": 1.5417762878909855
+      },
+      {
+        "row_index": 44,
+        "patient_id": "BR1044",
+        "sample_id": "KT00391",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN"
+        ],
+        "anomaly_score_if": 0.4954712795313858,
+        "anomaly_score_lof": 1.2654491579975882
+      },
+      {
+        "row_index": 46,
+        "patient_id": "BR2040",
+        "sample_id": "KT00394",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.4748456951184795,
+        "anomaly_score_lof": 1.316304075992169
+      },
+      {
+        "row_index": 56,
+        "patient_id": "BR2048",
+        "sample_id": "KT00523",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.500703189486053,
+        "anomaly_score_lof": 1.580642361738725
+      },
+      {
+        "row_index": 61,
+        "patient_id": "BR1048",
+        "sample_id": "KT00532",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.4888755920171773,
+        "anomaly_score_lof": 1.369210807828471
+      },
+      {
+        "row_index": 69,
+        "patient_id": "BR2024",
+        "sample_id": "KT00552",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.5625456345413465,
+        "anomaly_score_lof": 1.886650573870455
+      },
+      {
+        "row_index": 70,
+        "patient_id": "BR2045",
+        "sample_id": "KT00557",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.5120889039223834,
+        "anomaly_score_lof": 1.5746211646765351
+      },
+      {
+        "row_index": 81,
+        "patient_id": "BR2028",
+        "sample_id": "KT00588",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.5866209450858841,
+        "anomaly_score_lof": 1.9899873968568005
+      },
+      {
+        "row_index": 99,
+        "patient_id": "UP1021",
+        "sample_id": "KT00884",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.5225280182723269,
+        "anomaly_score_lof": 1.8548753837977265
+      },
+      {
+        "row_index": 104,
+        "patient_id": "UP1026",
+        "sample_id": "KT00928",
+        "flag_type": "anomaly",
+        "action": "highlight",
+        "reasons": [
+          "IsolationForest",
+          "DBSCAN",
+          "LOF"
+        ],
+        "anomaly_score_if": 0.536071803914183,
+        "anomaly_score_lof": 2.263004099151862
+      }
+    ],
+    "total_anomalies": 14,
+    "methods_used": [
+      "IsolationForest",
+      "DBSCAN",
+      "LocalOutlierFactor"
+    ],
+    "note": "Аномалии обнаружены методами кластеризации - подсвечивать в дашборде"
+  },
+  "outlier_detection": {
+    "outliers_to_remove": [
+      {
+        "row_index": 0,
+        "patient_id": "BR1001",
+        "sample_id": "KT00001",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 2,
+        "patient_id": "BR1003",
+        "sample_id": "KT00003",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict",
+          "outlier_zscore_strict"
+        ]
+      },
+      {
+        "row_index": 6,
+        "patient_id": "BR1008",
+        "sample_id": "KT00012",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 7,
+        "patient_id": "BR1007",
+        "sample_id": "KT00014",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 10,
+        "patient_id": "BR1010",
+        "sample_id": "KT00022",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 14,
+        "patient_id": "BR1013",
+        "sample_id": "KT00030",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict",
+          "outlier_zscore_strict"
+        ]
+      },
+      {
+        "row_index": 17,
+        "patient_id": "BR1033",
+        "sample_id": "KT00166",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 18,
+        "patient_id": "BR2009",
+        "sample_id": "KT00334",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict",
+          "outlier_zscore_strict"
+        ]
+      },
+      {
+        "row_index": 22,
+        "patient_id": "BR2025",
+        "sample_id": "KT00342",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 24,
+        "patient_id": "BR1026",
+        "sample_id": "KT00347",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_zscore_strict"
+        ]
+      },
+      {
+        "row_index": 26,
+        "patient_id": "BR1024",
+        "sample_id": "KT00350",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict",
+          "outlier_zscore_strict"
+        ]
+      },
+      {
+        "row_index": 28,
+        "patient_id": "BR2008",
+        "sample_id": "KT00353",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 30,
+        "patient_id": "BR1032",
+        "sample_id": "KT00357",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 31,
+        "patient_id": "BR1028",
+        "sample_id": "KT00362",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 39,
+        "patient_id": "BR1016",
+        "sample_id": "KT00384",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict",
+          "outlier_zscore_strict"
+        ]
+      },
+      {
+        "row_index": 44,
+        "patient_id": "BR1044",
+        "sample_id": "KT00391",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict",
+          "outlier_zscore_strict"
+        ]
+      },
+      {
+        "row_index": 46,
+        "patient_id": "BR2040",
+        "sample_id": "KT00394",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict",
+          "outlier_zscore_strict"
+        ]
+      },
+      {
+        "row_index": 47,
+        "patient_id": "BR1042",
+        "sample_id": "KT00398",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 48,
+        "patient_id": "BR2034",
+        "sample_id": "KT00501",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict"
+        ]
+      },
+      {
+        "row_index": 49,
+        "patient_id": "BR1045",
+        "sample_id": "KT00504",
+        "flag_type": "outlier",
+        "action": "remove",
+        "reasons": [
+          "outlier_iqr_strict",
+          "outlier_zscore_strict"
+        ]
+      }
+    ],
+    "total_outliers": 56,
+    "examples": [
+      {
+        "row_index": 39,
+        "test": "test_chem_alt",
+        "value": 77.0,
+        "method": "IQR_strict",
+        "lower_bound": -14.5,
+        "upper_bound": 48.5
+      },
+      {
+        "row_index": 44,
+        "test": "test_chem_alt",
+        "value": 77.0,
+        "method": "IQR_strict",
+        "lower_bound": -14.5,
+        "upper_bound": 48.5
+      },
+      {
+        "row_index": 92,
+        "test": "test_chem_alkaline_phosphatase",
+        "value": 363.0,
+        "method": "IQR_strict",
+        "lower_bound": -49.0,
+        "upper_bound": 175.0
+      },
+      {
+        "row_index": 93,
+        "test": "test_chem_alkaline_phosphatase",
+        "value": 340.0,
+        "method": "IQR_strict",
+        "lower_bound": -49.0,
+        "upper_bound": 175.0
+      },
+      {
+        "row_index": 94,
+        "test": "test_chem_alkaline_phosphatase",
+        "value": 180.0,
+        "method": "IQR_strict",
+        "lower_bound": -49.0,
+        "upper_bound": 175.0
+      },
+      {
+        "row_index": 95,
+        "test": "test_chem_alkaline_phosphatase",
+        "value": 308.0,
+        "method": "IQR_strict",
+        "lower_bound": -49.0,
+        "upper_bound": 175.0
+      },
+      {
+        "row_index": 96,
+        "test": "test_chem_alkaline_phosphatase",
+        "value": 248.0,
+        "method": "IQR_strict",
+        "lower_bound": -49.0,
+        "upper_bound": 175.0
+      },
+      {
+        "row_index": 24,
+        "test": "test_chem_ast",
+        "value": 42.0,
+        "method": "Z-score_strict",
+        "z_score": 4.099752572652269,
+        "mean": 19.261682242990656,
+        "std": 5.546265867039667
+      },
+      {
+        "row_index": 2,
+        "test": "test_chem_t_bili",
+        "value": 1.7,
+        "method": "IQR_strict",
+        "lower_bound": -0.19999999999999984,
+        "upper_bound": 1.1999999999999997
+      },
+      {
+        "row_index": 28,
+        "test": "test_chem_t_bili",
+        "value": 1.3,
+        "method": "IQR_strict",
+        "lower_bound": -0.19999999999999984,
+        "upper_bound": 1.1999999999999997
+      }
+    ],
+    "methods_used": [
+      "IQR_strict",
+      "Z-score_strict"
+    ],
+    "note": "Выбросы обнаружены строгими статистическими методами - рекомендуется удалить"
+  },
+  "flagged_rows": [
+    {
+      "row_index": 104,
+      "patient_id": "UP1026",
+      "sample_id": "KT00928",
+      "flag_type": "suspect",
+      "action": "highlight",
+      "reasons": [
+        "artifactual_value"
+      ]
+    },
+    {
+      "row_index": 14,
+      "patient_id": "BR1013",
+      "sample_id": "KT00030",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.4415755218953595,
+      "anomaly_score_lof": 1.4472823563456472
+    },
+    {
+      "row_index": 18,
+      "patient_id": "BR2009",
+      "sample_id": "KT00334",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.5050667603328028,
+      "anomaly_score_lof": 1.5174286738542944
+    },
+    {
+      "row_index": 26,
+      "patient_id": "BR1024",
+      "sample_id": "KT00350",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN"
+      ],
+      "anomaly_score_if": 0.49419150337794493,
+      "anomaly_score_lof": 1.2801938084034707
+    },
+    {
+      "row_index": 39,
+      "patient_id": "BR1016",
+      "sample_id": "KT00384",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.47742325804086017,
+      "anomaly_score_lof": 1.5417762878909855
+    },
+    {
+      "row_index": 44,
+      "patient_id": "BR1044",
+      "sample_id": "KT00391",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN"
+      ],
+      "anomaly_score_if": 0.4954712795313858,
+      "anomaly_score_lof": 1.2654491579975882
+    },
+    {
+      "row_index": 46,
+      "patient_id": "BR2040",
+      "sample_id": "KT00394",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.4748456951184795,
+      "anomaly_score_lof": 1.316304075992169
+    },
+    {
+      "row_index": 56,
+      "patient_id": "BR2048",
+      "sample_id": "KT00523",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.500703189486053,
+      "anomaly_score_lof": 1.580642361738725
+    },
+    {
+      "row_index": 61,
+      "patient_id": "BR1048",
+      "sample_id": "KT00532",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.4888755920171773,
+      "anomaly_score_lof": 1.369210807828471
+    },
+    {
+      "row_index": 69,
+      "patient_id": "BR2024",
+      "sample_id": "KT00552",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.5625456345413465,
+      "anomaly_score_lof": 1.886650573870455
+    },
+    {
+      "row_index": 70,
+      "patient_id": "BR2045",
+      "sample_id": "KT00557",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.5120889039223834,
+      "anomaly_score_lof": 1.5746211646765351
+    },
+    {
+      "row_index": 81,
+      "patient_id": "BR2028",
+      "sample_id": "KT00588",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.5866209450858841,
+      "anomaly_score_lof": 1.9899873968568005
+    },
+    {
+      "row_index": 99,
+      "patient_id": "UP1021",
+      "sample_id": "KT00884",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.5225280182723269,
+      "anomaly_score_lof": 1.8548753837977265
+    },
+    {
+      "row_index": 104,
+      "patient_id": "UP1026",
+      "sample_id": "KT00928",
+      "flag_type": "anomaly",
+      "action": "highlight",
+      "reasons": [
+        "IsolationForest",
+        "DBSCAN",
+        "LOF"
+      ],
+      "anomaly_score_if": 0.536071803914183,
+      "anomaly_score_lof": 2.263004099151862
+    },
+    {
+      "row_index": 0,
+      "patient_id": "BR1001",
+      "sample_id": "KT00001",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 2,
+      "patient_id": "BR1003",
+      "sample_id": "KT00003",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 6,
+      "patient_id": "BR1008",
+      "sample_id": "KT00012",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 7,
+      "patient_id": "BR1007",
+      "sample_id": "KT00014",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 10,
+      "patient_id": "BR1010",
+      "sample_id": "KT00022",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 14,
+      "patient_id": "BR1013",
+      "sample_id": "KT00030",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 17,
+      "patient_id": "BR1033",
+      "sample_id": "KT00166",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 18,
+      "patient_id": "BR2009",
+      "sample_id": "KT00334",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 22,
+      "patient_id": "BR2025",
+      "sample_id": "KT00342",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 24,
+      "patient_id": "BR1026",
+      "sample_id": "KT00347",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 26,
+      "patient_id": "BR1024",
+      "sample_id": "KT00350",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 28,
+      "patient_id": "BR2008",
+      "sample_id": "KT00353",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 30,
+      "patient_id": "BR1032",
+      "sample_id": "KT00357",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 31,
+      "patient_id": "BR1028",
+      "sample_id": "KT00362",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 39,
+      "patient_id": "BR1016",
+      "sample_id": "KT00384",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 44,
+      "patient_id": "BR1044",
+      "sample_id": "KT00391",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 46,
+      "patient_id": "BR2040",
+      "sample_id": "KT00394",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 47,
+      "patient_id": "BR1042",
+      "sample_id": "KT00398",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 48,
+      "patient_id": "BR2034",
+      "sample_id": "KT00501",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 49,
+      "patient_id": "BR1045",
+      "sample_id": "KT00504",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 51,
+      "patient_id": "BR2022",
+      "sample_id": "KT00510",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 52,
+      "patient_id": "BR1015",
+      "sample_id": "KT00514",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 55,
+      "patient_id": "BR2047",
+      "sample_id": "KT00520",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 56,
+      "patient_id": "BR2048",
+      "sample_id": "KT00523",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 57,
+      "patient_id": "BR1030",
+      "sample_id": "KT00525",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 61,
+      "patient_id": "BR1048",
+      "sample_id": "KT00532",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 65,
+      "patient_id": "BR2020",
+      "sample_id": "KT00539",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 68,
+      "patient_id": "BR1051",
+      "sample_id": "KT00549",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 69,
+      "patient_id": "BR2024",
+      "sample_id": "KT00552",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 70,
+      "patient_id": "BR2045",
+      "sample_id": "KT00557",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 71,
+      "patient_id": "BR2029",
+      "sample_id": "KT00561",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 76,
+      "patient_id": "BR2026",
+      "sample_id": "KT00566",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 77,
+      "patient_id": "BR2021",
+      "sample_id": "KT00568",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 78,
+      "patient_id": "BR2018",
+      "sample_id": "KT00569",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 79,
+      "patient_id": "BR1041",
+      "sample_id": "KT00575",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 81,
+      "patient_id": "BR2028",
+      "sample_id": "KT00588",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 84,
+      "patient_id": "BR2030",
+      "sample_id": "KT00600",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 86,
+      "patient_id": "BR1056",
+      "sample_id": "KT00621",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 88,
+      "patient_id": "BR2053",
+      "sample_id": "KT00625",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 91,
+      "patient_id": "BR1059",
+      "sample_id": "KT01446",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 92,
+      "patient_id": "UP1008",
+      "sample_id": "KT00809",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 93,
+      "patient_id": "UP1011",
+      "sample_id": "KT00811",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 94,
+      "patient_id": "UP1012",
+      "sample_id": "KT00193",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 95,
+      "patient_id": "UP1014",
+      "sample_id": "KT00841",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 96,
+      "patient_id": "UP1015",
+      "sample_id": "KT00842",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 97,
+      "patient_id": "UP1017",
+      "sample_id": "KT00833",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 98,
+      "patient_id": "UP1018",
+      "sample_id": "KT00910",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 99,
+      "patient_id": "UP1021",
+      "sample_id": "KT00884",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 100,
+      "patient_id": "UP1022",
+      "sample_id": "KT00892",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 101,
+      "patient_id": "UP1023",
+      "sample_id": "KT00914",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 102,
+      "patient_id": "UP1024",
+      "sample_id": "KT00913",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 103,
+      "patient_id": "UP1025",
+      "sample_id": "KT00927",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 104,
+      "patient_id": "UP1026",
+      "sample_id": "KT00928",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict",
+        "outlier_zscore_strict"
+      ]
+    },
+    {
+      "row_index": 105,
+      "patient_id": "UP1031",
+      "sample_id": "KT02391",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 106,
+      "patient_id": "UP1032",
+      "sample_id": "KT02392",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    },
+    {
+      "row_index": 107,
+      "patient_id": "UP1034",
+      "sample_id": "KT03223",
+      "flag_type": "outlier",
+      "action": "remove",
+      "reasons": [
+        "outlier_iqr_strict"
+      ]
+    }
+  ],
+  "sample_dashboard_payload": {
+    "patient_id": "BR1001",
+    "time_series": [
+      {
+        "visit_date": "2019",
+        "days_since_first": 0,
+        "tests": {
+          "test_chem_creatinine": {
+            "value": 0.93,
+            "status": "NORMAL",
+            "unit": ""
+          },
+          "test_chem_glucose": {
+            "value": 33.0,
+            "status": "LOW",
+            "unit": ""
+          },
+          "test_bc_hemoglobin": {
+            "value": 11.0,
+            "status": "NORMAL",
+            "unit": ""
+          }
+        }
+      }
+    ],
+    "current_snapshot": {
+      "test_chem_creatinine": {
+        "value": 0.93,
+        "status": "NORMAL",
+        "color": "green",
+        "unit": ""
+      },
+      "test_chem_glucose": {
+        "value": 33.0,
+        "status": "LOW",
+        "color": "yellow",
+        "unit": ""
+      },
+      "test_bc_hemoglobin": {
+        "value": 11.0,
+        "status": "NORMAL",
+        "color": "green",
+        "unit": ""
+      }
+    }
+  },
+  "suspect_examples": [
+    {
+      "row_index": 104,
+      "column": "test_bc_lymphocyte_count",
+      "value": 47600.0,
+      "reason": "extreme_value",
+      "median": 1724.5,
+      "std": 4442.553265498098
+    }
+  ],
+  "metadata": {
+    "generated_at": "2025-11-15T16:06:22.935813",
+    "total_tests": 53,
+    "total_provisional_refs": 298,
+    "total_anomalies": 14,
+    "total_outliers": 56,
+    "note": "Все референсы помечены как PROVISIONAL и требуют замены на официальные"
+  }
+}
