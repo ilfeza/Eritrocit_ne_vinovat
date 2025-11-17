@@ -1,0 +1,14 @@
+# Dockerfile для nginx (reverse proxy)
+FROM nginx:alpine
+
+# Копируем конфигурацию nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Копируем статические файлы фронтенда
+COPY front/ /usr/share/nginx/html/
+
+# Открываем порт
+EXPOSE 80
+
+# Nginx запускается автоматически
+

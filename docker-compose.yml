@@ -6,10 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     container_name: biodash_backend
-    ports:
-      - "8000:8000"  # Порт доступен только внутри Docker сети (через nginx)
-      # Для прямого доступа к API раскомментируйте (не рекомендуется для продакшена):
-      # - "8000:8000"
+    # Порт доступен только внутри Docker сети (через nginx)
+    expose:
+      - "8000"
     volumes:
       # Монтируем директорию с данными для сохранения загруженных файлов
       - ./back/data:/app/data
@@ -30,10 +29,26 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
     container_name: biodash_frontend
+    # Порт доступен только внутри Docker сети (через nginx)
+    expose:
+      - "80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: biodash_nginx
     ports:
       - "80:80"      # HTTP порт
     depends_on:
       - backend
+      - frontend
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
