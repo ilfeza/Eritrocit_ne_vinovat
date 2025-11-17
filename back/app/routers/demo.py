@@ -22,6 +22,8 @@ DEMO_FILES = {
 }
 # Путь к файлу с несколькими пациентами для demo2
 MORE_PATIENTS_FILE = Path(__file__).parent.parent.parent / "data" / "more_patients.csv"
+# Путь к файлу test_table.csv с несколькими пациентами
+TEST_TABLE_FILE = Path(__file__).parent.parent.parent / "data" / "test_table.csv"
 # Путь по умолчанию (для обратной совместимости)
 TEST_TABLE_PATH = DEMO_FILES['1']
 
@@ -586,6 +588,210 @@ async def get_patient_data_by_id(patient_id: str) -> Dict[str, Any]:
         
         return {
             'patient_id': patient_id,
+            'groups': groups,
+            'abnormal_tests': abnormal_tests,
+            'charts': charts
+        }
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Ошибка обработки данных пациента: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Ошибка обработки данных: {str(e)}"
+        )
+
+
+@router.get("/patients-list-from-test-table")
+async def get_patients_list_from_test_table() -> List[Dict[str, Any]]:
+    """
+    Получает список всех пациентов из файла test_table.csv
+    Файл имеет long format: patient_id, test_name, test_code, value, unit, date, status
+    """
+    if not TEST_TABLE_FILE.exists():
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Файл {TEST_TABLE_FILE.name} не найден"
+        )
+    
+    try:
+        df = pd.read_csv(TEST_TABLE_FILE)
+        
+        # Получаем уникальных пациентов и их статистику
+        patients = []
+        patient_id_column = None
+        
+        # Определяем колонку с ID пациента
+        possible_columns = ['subjectGuid', 'subject_guid', 'patient_id', 'patientId', 'id']
+        for col in possible_columns:
+            if col in df.columns:
+                patient_id_column = col
+                break
+        
+        if not patient_id_column:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Не найдена колонка с ID пациента"
+            )
+        
+        for patient_id in df[patient_id_column].unique():
+            patient_data = df[df[patient_id_column] == patient_id]
+            
+            # Получаем первую и последнюю дату
+            date_column = None
+            for col in ['date', 'Date', 'DATE', 'draw_date', 'analysis_date']:
+                if col in df.columns:
+                    date_column = col
+                    break
+            
+            if date_column:
+                dates = sorted(patient_data[date_column].dropna().unique())
+                first_date = dates[0] if dates else None
+                last_date = dates[-1] if dates else None
+            else:
+                first_date = None
+                last_date = None
+            
+            # Подсчитываем количество уникальных тестов (по test_code или test_name)
+            test_code_column = None
+            for col in ['test_code', 'original_column']:
+                if col in df.columns:
+                    test_code_column = col
+                    break
+            
+            if test_code_column:
+                test_count = len(patient_data[test_code_column].dropna().unique())
+            else:
+                # Если нет test_code, считаем по test_name
+                test_name_column = None
+                for col in ['test_name', 'test_short']:
+                    if col in df.columns:
+                        test_name_column = col
+                        break
+                if test_name_column:
+                    test_count = len(patient_data[test_name_column].dropna().unique())
+                else:
+                    test_count = 0
+            
+            patients.append({
+                'patient_id': str(patient_id),
+                'first_date': str(first_date) if first_date else None,
+                'last_date': str(last_date) if last_date else None,
+                'test_count': test_count,
+                'record_count': len(patient_data)
+            })
+        
+        # Сортируем по ID пациента
+        patients.sort(key=lambda x: x['patient_id'])
+        
+        return patients
+    
+    except Exception as e:
+        logger.error(f"Ошибка получения списка пациентов: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Ошибка обработки данных: {str(e)}"
+        )
+
+
+@router.get("/patient-data-from-test-table")
+async def get_patient_data_from_test_table(patient_id: str) -> Dict[str, Any]:
+    """
+    Получает обработанные данные конкретного пациента из файла test_table.csv
+    Файл имеет long format: patient_id, test_name, test_code, value, unit, date, status
+    
+    Args:
+        patient_id: ID пациента
+    """
+    if not TEST_TABLE_FILE.exists():
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Файл {TEST_TABLE_FILE.name} не найден"
+        )
+    
+    try:
+        # Загружаем данные из CSV
+        df = pd.read_csv(TEST_TABLE_FILE)
+        
+        # Определяем колонку с ID пациента
+        patient_id_column = None
+        possible_columns = ['subjectGuid', 'subject_guid', 'patient_id', 'patientId', 'id']
+        for col in possible_columns:
+            if col in df.columns:
+                patient_id_column = col
+                break
+        
+        if not patient_id_column:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Не найдена колонка с ID пациента"
+            )
+        
+        # Фильтруем по patient_id
+        patient_df = df[df[patient_id_column].astype(str) == str(patient_id)]
+        
+        if patient_df.empty:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Пациент {patient_id} не найден"
+            )
+        
+        # Загружаем нормы
+        norms = load_norms()
+        
+        # Нормализуем структуру данных (long format)
+        data = []
+        for _, row in patient_df.iterrows():
+            # Получаем значения из строки
+            test_code = row.get('test_code', '') or row.get('original_column', '')
+            test_name = row.get('test_name', '') or row.get('test_short', '')
+            value = row.get('value', None)
+            date_value = row.get('date', '')
+            unit = row.get('unit', '')
+            
+            # Пропускаем строки с невалидными значениями
+            try:
+                float_value = float(value)
+            except (ValueError, TypeError):
+                continue
+            
+            # Если test_name пустое, пытаемся найти в нормах
+            if not test_name and test_code:
+                norm_info = get_norm_info(test_code, '', norms)
+                if norm_info and norm_info.get('name'):
+                    test_name = norm_info.get('name', test_code)
+                else:
+                    test_name = test_code
+            
+            # Если unit пустое, пытаемся найти в нормах
+            if not unit and test_code:
+                norm_info = get_norm_info(test_code, test_name, norms)
+                if norm_info and norm_info.get('unit'):
+                    unit = norm_info.get('unit', '')
+            
+            normalized_row = {
+                'patient_id': str(row[patient_id_column]),
+                'test_code': test_code,
+                'test_name': test_name,
+                'value': float_value,
+                'date': str(date_value) if date_value else '',
+                'unit': unit
+            }
+            
+            data.append(normalized_row)
+        
+        # Группируем по категориям
+        groups = group_by_category(data, norms)
+        
+        # Получаем анализы не в норме
+        abnormal_tests = get_abnormal_tests(data, norms)
+        
+        # Подготавливаем данные для графиков
+        charts = prepare_chart_data(data, norms)
+        
+        return {
+            'patient_id': str(patient_id),
             'groups': groups,
             'abnormal_tests': abnormal_tests,
             'charts': charts
