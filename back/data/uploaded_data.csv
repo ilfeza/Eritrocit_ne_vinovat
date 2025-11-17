@@ -1,0 +1,25 @@
+patient_id,test_code,test_name,value,unit,date,status
+PATIENT_001,chem.alt,Alanine Transaminase,52.3,U/L,2024-01-15,HIGH
+PATIENT_001,chem.ast,Aspartate Transaminase,41.2,U/L,2024-01-15,NORMAL
+PATIENT_001,chem.chol,Total Cholesterol,245.8,mg/dL,2024-01-15,HIGH
+PATIENT_001,chem.glucose,Glucose,95.4,mg/dL,2024-01-15,NORMAL
+PATIENT_001,bc.wbc,White Blood Cell Count,7.8,10^3/μL,2024-01-15,NORMAL
+PATIENT_001,bc.rbc,Red Blood Cell Count,4.5,10^6/μL,2024-01-15,NORMAL
+PATIENT_001,bc.hemoglobin,Hemoglobin,14.2,g/dL,2024-01-15,NORMAL
+PATIENT_001,bc.platelets,Platelet Count,280.0,10^3/μL,2024-01-15,NORMAL
+PATIENT_001,chem.alt,Alanine Transaminase,48.1,U/L,2024-02-15,HIGH
+PATIENT_001,chem.ast,Aspartate Transaminase,38.9,U/L,2024-02-15,NORMAL
+PATIENT_001,chem.chol,Total Cholesterol,238.5,mg/dL,2024-02-15,HIGH
+PATIENT_001,chem.glucose,Glucose,92.1,mg/dL,2024-02-15,NORMAL
+PATIENT_001,bc.wbc,White Blood Cell Count,8.1,10^3/μL,2024-02-15,NORMAL
+PATIENT_001,bc.rbc,Red Blood Cell Count,4.6,10^6/μL,2024-02-15,NORMAL
+PATIENT_001,bc.hemoglobin,Hemoglobin,14.5,g/dL,2024-02-15,NORMAL
+PATIENT_001,bc.platelets,Platelet Count,275.0,10^3/μL,2024-02-15,NORMAL
+PATIENT_001,chem.alt,Alanine Transaminase,45.7,U/L,2024-03-15,NORMAL
+PATIENT_001,chem.ast,Aspartate Transaminase,35.2,U/L,2024-03-15,NORMAL
+PATIENT_001,chem.chol,Total Cholesterol,225.3,mg/dL,2024-03-15,HIGH
+PATIENT_001,chem.glucose,Glucose,88.7,mg/dL,2024-03-15,NORMAL
+PATIENT_001,bc.wbc,White Blood Cell Count,7.9,10^3/μL,2024-03-15,NORMAL
+PATIENT_001,bc.rbc,Red Blood Cell Count,4.7,10^6/μL,2024-03-15,NORMAL
+PATIENT_001,bc.hemoglobin,Hemoglobin,14.8,g/dL,2024-03-15,NORMAL
+PATIENT_001,bc.platelets,Platelet Count,290.0,10^3/μL,2024-03-15,NORMAL

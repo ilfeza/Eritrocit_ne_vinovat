@@ -16,7 +16,9 @@ ENV/
 # Локальные файлы
 *.log
 *.sqlite
+# Исключаем CSV из игнора для back/data/ (нужны для демо)
 *.csv
+!back/data/*.csv
 
 # VSCode
 .vscode/

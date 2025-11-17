@@ -16,18 +16,22 @@ COPY back/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Копируем код бэкенда (включая back/analytics/ с data.json)
+# Исключаем entrypoint.sh, скопируем его отдельно
 COPY back/ .
 
-# Копируем файлы данных в образ (они будут перезаписаны volume, если он смонтирован)
-# Это гарантирует, что файлы будут доступны даже если volume не смонтирован
-COPY back/data/ /app/data/
+# Копируем файлы данных в резервную директорию (для инициализации volume)
+COPY back/data/ /app/data_backup/
 
-# Создаем директории для данных (на случай, если они не были скопированы)
-RUN mkdir -p /app/data /app/analytics
+# Создаем директории для данных
+RUN mkdir -p /app/data /app/analytics /app/data_backup
+
+# Делаем исполняемым entrypoint скрипт (он уже скопирован через COPY back/ .)
+RUN chmod +x /app/entrypoint.sh || true
 
 # Открываем порт
 EXPOSE 8000
 
-# Запускаем приложение
+# Используем entrypoint для инициализации данных перед запуском
+ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 

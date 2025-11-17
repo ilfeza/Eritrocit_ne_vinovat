@@ -1,0 +1,101 @@
+subjectGuid,date,test_short,value,original_column
+BR1001,2023-01-01,bmi,23.0,am.bmi
+BR1001,2023-01-11,height,177.4,am.height
+BR1001,2023-01-22,weight,71.1,am.weight
+BR1001,2023-02-01,alt,8.0,chem.alt
+BR1001,2023-02-12,albumin,2025-07-04 00:00:00,chem.albumin
+BR1001,2023-02-22,alkaline_phosphatase,47.0,chem.alkaline_phosphatase
+BR1001,2023-03-05,ast,16.0,chem.ast
+BR1001,2023-03-16,t_bili,0.5,chem.t_bili
+BR1001,2023-03-26,bun,11.0,chem.bun
+BR1001,2023-04-06,calcium,2025-05-09 00:00:00,chem.calcium
+BR1001,2023-04-16,co2,22.0,chem.co2
+BR1001,2023-04-27,cl,106.0,chem.cl
+BR1001,2023-05-08,creatinine,0.93,chem.creatinine
+BR1001,2023-05-18,egfr_aa,94.0,chem.egfr_aa
+BR1001,2023-05-29,egfr_non_aa,81.0,chem.egfr_non_aa
+BR1001,2023-06-08,globin,2025-06-02 00:00:00,chem.globin
+BR1001,2023-06-19,glucose,33.0,chem.glucose
+BR1001,2023-06-30,potassium,2025-09-03 00:00:00,chem.potassium
+BR1001,2023-07-10,protein,7.0,chem.protein
+BR1001,2023-07-21,sodium,143.0,chem.sodium
+BR1001,2023-07-31,perc_basophils,0.5,bc.perc_basophils
+BR1001,2023-08-11,perc_eosinophils,2025-06-01 00:00:00,bc.perc_eosinophils
+BR1001,2023-08-22,perc_lymphocytes,2025-01-31 00:00:00,bc.perc_lymphocytes
+BR1001,2023-09-01,perc_monocytes,2025-07-07 00:00:00,bc.perc_monocytes
+BR1001,2023-09-12,perc_neutrophils,59.1,bc.perc_neutrophils
+BR1001,2023-09-22,basophil_count,22.0,bc.basophil_count
+BR1001,2023-10-03,eosinophil_count,69.0,bc.eosinophil_count
+BR1001,2023-10-14,lymphocyte_count,1337.0,bc.lymphocyte_count
+BR1001,2023-10-24,monocyte_count,331.0,bc.monocyte_count
+BR1001,2023-11-04,neutrophil_count,2541.0,bc.neutrophil_count
+BR1001,2023-11-14,hematocrit,33.6,bc.hematocrit
+BR1001,2023-11-25,hemoglobin,11.0,bc.hemoglobin
+BR1001,2023-12-06,mch,2025-07-26 00:00:00,bc.mch
+BR1001,2023-12-16,mchc,32.4,bc.mchc
+BR1001,2023-12-27,mcv,82.2,bc.mcv
+BR1001,2024-01-06,mpv,2025-08-12 00:00:00,bc.mpv
+BR1001,2024-01-17,platelet_count,226.0,bc.platelet_count
+BR1001,2024-01-28,red_blood_cell_count,4.0,bc.red_blood_cell_count
+BR1001,2024-02-07,rdw,2025-01-15 00:00:00,bc.rdw
+BR1001,2024-02-18,wbc,2025-03-04 00:00:00,bc.wbc
+BR1001,2024-02-28,anti_ccp3,2.0,infl.anti_ccp3
+BR1001,2024-03-10,anti_ccp31,4.0,infl.anti_ccp31
+BR1001,2024-03-21,hs_crp,0.3,infl.hs_crp
+BR1001,2024-03-31,rf_iga_interpretation,Negative,infl.rf_iga_interpretation
+BR1001,2024-04-11,rf_iga_result,0.0,infl.rf_iga_result
+BR1001,2024-04-21,rf_igm_interpretation,Negative,infl.rf_igm_interpretation
+BR1001,2024-05-02,rf_igm_result,5.902,infl.rf_igm_result
+BR1001,2024-05-13,esr,2.0,infl.esr
+BR1001,2024-05-23,cholesterol_hdl,65.0,lip.cholesterol_hdl
+BR1001,2024-06-03,cholesterol_ldl,85.0,lip.cholesterol_ldl
+BR1001,2024-06-13,cholesterol_non_hdl,104.0,lip.cholesterol_non_hdl
+BR1001,2024-06-24,cholesterol_total,169.0,lip.cholesterol_total
+BR1001,2024-07-04,chlesterol_hdl_ratio,2025-06-02 00:00:00,lip.chlesterol_hdl_ratio
+BR1001,2024-07-15,triglycerides,94.0,lip.triglycerides
+BR1001,2024-07-26,bmi,23.0,am.bmi
+BR1001,2024-08-05,height,177.4,am.height
+BR1001,2024-08-16,weight,71.1,am.weight
+BR1001,2024-08-26,alt,8.0,chem.alt
+BR1001,2024-09-06,albumin,2025-07-04 00:00:00,chem.albumin
+BR1001,2024-09-17,alkaline_phosphatase,47.0,chem.alkaline_phosphatase
+BR1001,2024-09-27,ast,16.0,chem.ast
+BR1001,2024-10-08,t_bili,0.5,chem.t_bili
+BR1001,2024-10-18,bun,11.0,chem.bun
+BR1001,2024-10-29,calcium,2025-05-09 00:00:00,chem.calcium
+BR1001,2024-11-09,co2,22.0,chem.co2
+BR1001,2024-11-19,cl,106.0,chem.cl
+BR1001,2024-11-30,creatinine,0.93,chem.creatinine
+BR1001,2024-12-10,egfr_aa,94.0,chem.egfr_aa
+BR1001,2024-12-21,egfr_non_aa,81.0,chem.egfr_non_aa
+BR1001,2025-01-01,globin,2025-06-02 00:00:00,chem.globin
+BR1001,2025-01-11,glucose,33.0,chem.glucose
+BR1001,2025-01-22,potassium,2025-09-03 00:00:00,chem.potassium
+BR1001,2025-02-01,protein,7.0,chem.protein
+BR1001,2025-02-12,sodium,143.0,chem.sodium
+BR1001,2025-02-23,perc_basophils,0.5,bc.perc_basophils
+BR1001,2025-03-05,perc_eosinophils,2025-06-01 00:00:00,bc.perc_eosinophils
+BR1001,2025-03-16,perc_lymphocytes,2025-01-31 00:00:00,bc.perc_lymphocytes
+BR1001,2025-03-26,perc_monocytes,2025-07-07 00:00:00,bc.perc_monocytes
+BR1001,2025-04-06,perc_neutrophils,59.1,bc.perc_neutrophils
+BR1001,2025-04-17,basophil_count,22.0,bc.basophil_count
+BR1001,2025-04-27,eosinophil_count,69.0,bc.eosinophil_count
+BR1001,2025-05-08,lymphocyte_count,1337.0,bc.lymphocyte_count
+BR1001,2025-05-18,monocyte_count,331.0,bc.monocyte_count
+BR1001,2025-05-29,neutrophil_count,2541.0,bc.neutrophil_count
+BR1001,2025-06-09,hematocrit,33.6,bc.hematocrit
+BR1001,2025-06-19,hemoglobin,11.0,bc.hemoglobin
+BR1001,2025-06-30,mch,2025-07-26 00:00:00,bc.mch
+BR1001,2025-07-10,mchc,32.4,bc.mchc
+BR1001,2025-07-21,mcv,82.2,bc.mcv
+BR1001,2025-08-01,mpv,2025-08-12 00:00:00,bc.mpv
+BR1001,2025-08-11,platelet_count,226.0,bc.platelet_count
+BR1001,2025-08-22,red_blood_cell_count,4.0,bc.red_blood_cell_count
+BR1001,2025-09-01,rdw,2025-01-15 00:00:00,bc.rdw
+BR1001,2025-09-12,wbc,2025-03-04 00:00:00,bc.wbc
+BR1001,2025-09-23,anti_ccp3,2.0,infl.anti_ccp3
+BR1001,2025-10-03,anti_ccp31,4.0,infl.anti_ccp31
+BR1001,2025-10-14,hs_crp,0.3,infl.hs_crp
+BR1001,2025-10-24,rf_iga_interpretation,Negative,infl.rf_iga_interpretation
+BR1001,2025-11-04,rf_iga_result,0.0,infl.rf_iga_result
+BR1001,2025-11-15,rf_igm_interpretation,Negative,infl.rf_igm_interpretation

@@ -1,0 +1,22 @@
+patient_id,test_name,test_code,value,unit,date,status
+BR1002,Alanine Transaminase,chem.alt,45.8,U/L,2024-01-16,HIGH
+BR1002,Aspartate Transaminase,chem.ast,38.9,U/L,2024-01-16,NORMAL
+BR1002,Total Cholesterol,chem.chol,220.3,mg/dL,2024-01-16,HIGH
+BR1002,White Blood Cell Count,bc.wbc,8.2,10^3/μL,2024-01-16,NORMAL
+BR1002,Red Blood Cell Count,bc.rbc,4.5,10^6/μL,2024-01-16,NORMAL
+BR1003,Alanine Transaminase,chem.alt,18.2,U/L,2024-01-17,NORMAL
+BR1003,Aspartate Transaminase,chem.ast,22.1,U/L,2024-01-17,NORMAL
+BR1003,Total Cholesterol,chem.chol,165.0,mg/dL,2024-01-17,NORMAL
+BR1003,White Blood Cell Count,bc.wbc,5.8,10^3/μL,2024-01-17,NORMAL
+BR1003,Red Blood Cell Count,bc.rbc,5.1,10^6/μL,2024-01-17,NORMAL
+BR1004,Alanine Transaminase,chem.alt,12.5,U/L,2024-01-18,LOW
+BR1004,Aspartate Transaminase,chem.ast,15.3,U/L,2024-01-18,LOW
+BR1004,Total Cholesterol,chem.chol,140.2,mg/dL,2024-01-18,NORMAL
+BR1004,White Blood Cell Count,bc.wbc,4.2,10^3/μL,2024-01-18,LOW
+BR1004,Red Blood Cell Count,bc.rbc,4.9,10^6/μL,2024-01-18,NORMAL
+BR1005,Alanine Transaminase,chem.alt,55.3,U/L,2024-01-19,HIGH
+BR1005,Aspartate Transaminase,chem.ast,52.7,U/L,2024-01-19,HIGH
+BR1005,Total Cholesterol,chem.chol,250.8,mg/dL,2024-01-19,HIGH
+BR1005,White Blood Cell Count,bc.wbc,9.5,10^3/μL,2024-01-19,HIGH
+BR1005,Red Blood Cell Count,bc.rbc,4.3,10^6/μL,2024-01-19,NORMAL
+

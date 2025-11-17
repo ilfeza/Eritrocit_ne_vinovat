@@ -1,0 +1,301 @@
+subjectGuid,date,test_short,value,original_column
+BR1001,2023-02-12,albumin,2025-07-04 00:00:00,chem.albumin
+BR1001,2023-03-14,albumin,2025-07-04 00:00:00,chem.albumin
+BR1001,2023-04-13,albumin,2025-07-04 00:00:00,chem.albumin
+BR1001,2024-09-06,albumin,2025-07-04 00:00:00,chem.albumin
+BR1001,2024-10-06,albumin,2025-07-04 00:00:00,chem.albumin
+BR1001,2024-11-05,albumin,2025-07-04 00:00:00,chem.albumin
+BR1001,2023-02-22,alkaline_phosphatase,47.0,chem.alkaline_phosphatase
+BR1001,2023-03-24,alkaline_phosphatase,44.51,chem.alkaline_phosphatase
+BR1001,2023-04-23,alkaline_phosphatase,49.92,chem.alkaline_phosphatase
+BR1001,2024-09-17,alkaline_phosphatase,47.0,chem.alkaline_phosphatase
+BR1001,2024-10-17,alkaline_phosphatase,45.11,chem.alkaline_phosphatase
+BR1001,2024-11-16,alkaline_phosphatase,50.41,chem.alkaline_phosphatase
+BR1001,2023-02-01,alt,8.0,chem.alt
+BR1001,2023-03-03,alt,7.66,chem.alt
+BR1001,2023-04-02,alt,7.46,chem.alt
+BR1001,2024-08-26,alt,8.0,chem.alt
+BR1001,2024-09-25,alt,8.51,chem.alt
+BR1001,2024-10-25,alt,7.61,chem.alt
+BR1001,2024-02-28,anti_ccp3,2.0,infl.anti_ccp3
+BR1001,2024-03-29,anti_ccp3,1.94,infl.anti_ccp3
+BR1001,2024-04-28,anti_ccp3,1.88,infl.anti_ccp3
+BR1001,2025-09-23,anti_ccp3,2.0,infl.anti_ccp3
+BR1001,2025-10-23,anti_ccp3,2.19,infl.anti_ccp3
+BR1001,2025-11-22,anti_ccp3,1.91,infl.anti_ccp3
+BR1001,2024-03-10,anti_ccp31,4.0,infl.anti_ccp31
+BR1001,2024-04-09,anti_ccp31,4.03,infl.anti_ccp31
+BR1001,2024-05-09,anti_ccp31,3.69,infl.anti_ccp31
+BR1001,2025-10-03,anti_ccp31,4.0,infl.anti_ccp31
+BR1001,2025-11-02,anti_ccp31,3.77,infl.anti_ccp31
+BR1001,2025-12-02,anti_ccp31,3.9,infl.anti_ccp31
+BR1001,2023-03-05,ast,16.0,chem.ast
+BR1001,2023-04-04,ast,14.83,chem.ast
+BR1001,2023-05-04,ast,15.65,chem.ast
+BR1001,2024-09-27,ast,16.0,chem.ast
+BR1001,2024-10-27,ast,14.88,chem.ast
+BR1001,2024-11-26,ast,15.99,chem.ast
+BR1001,2023-09-22,basophil_count,22.0,bc.basophil_count
+BR1001,2023-10-22,basophil_count,22.33,bc.basophil_count
+BR1001,2023-11-21,basophil_count,22.61,bc.basophil_count
+BR1001,2025-04-17,basophil_count,22.0,bc.basophil_count
+BR1001,2025-05-17,basophil_count,20.77,bc.basophil_count
+BR1001,2025-06-16,basophil_count,22.9,bc.basophil_count
+BR1001,2023-01-01,bmi,23.0,am.bmi
+BR1001,2023-01-31,bmi,21.02,am.bmi
+BR1001,2023-03-02,bmi,24.62,am.bmi
+BR1001,2024-07-26,bmi,23.0,am.bmi
+BR1001,2024-08-25,bmi,21.98,am.bmi
+BR1001,2024-09-24,bmi,22.81,am.bmi
+BR1001,2023-03-26,bun,11.0,chem.bun
+BR1001,2023-04-25,bun,11.72,chem.bun
+BR1001,2023-05-25,bun,11.8,chem.bun
+BR1001,2024-10-18,bun,11.0,chem.bun
+BR1001,2024-11-17,bun,11.71,chem.bun
+BR1001,2024-12-17,bun,11.59,chem.bun
+BR1001,2023-04-06,calcium,2025-05-09 00:00:00,chem.calcium
+BR1001,2023-05-06,calcium,2025-05-09 00:00:00,chem.calcium
+BR1001,2023-06-05,calcium,2025-05-09 00:00:00,chem.calcium
+BR1001,2024-10-29,calcium,2025-05-09 00:00:00,chem.calcium
+BR1001,2024-11-28,calcium,2025-05-09 00:00:00,chem.calcium
+BR1001,2024-12-28,calcium,2025-05-09 00:00:00,chem.calcium
+BR1001,2024-07-04,chlesterol_hdl_ratio,2025-06-02 00:00:00,lip.chlesterol_hdl_ratio
+BR1001,2024-08-03,chlesterol_hdl_ratio,2025-06-02 00:00:00,lip.chlesterol_hdl_ratio
+BR1001,2024-09-02,chlesterol_hdl_ratio,2025-06-02 00:00:00,lip.chlesterol_hdl_ratio
+BR1001,2024-05-23,cholesterol_hdl,65.0,lip.cholesterol_hdl
+BR1001,2024-06-22,cholesterol_hdl,64.08,lip.cholesterol_hdl
+BR1001,2024-07-22,cholesterol_hdl,69.41,lip.cholesterol_hdl
+BR1001,2024-06-03,cholesterol_ldl,85.0,lip.cholesterol_ldl
+BR1001,2024-07-03,cholesterol_ldl,79.93,lip.cholesterol_ldl
+BR1001,2024-08-02,cholesterol_ldl,81.22,lip.cholesterol_ldl
+BR1001,2024-06-13,cholesterol_non_hdl,104.0,lip.cholesterol_non_hdl
+BR1001,2024-07-13,cholesterol_non_hdl,112.32,lip.cholesterol_non_hdl
+BR1001,2024-08-12,cholesterol_non_hdl,107.39,lip.cholesterol_non_hdl
+BR1001,2024-06-24,cholesterol_total,169.0,lip.cholesterol_total
+BR1001,2024-07-24,cholesterol_total,161.87,lip.cholesterol_total
+BR1001,2024-08-23,cholesterol_total,167.74,lip.cholesterol_total
+BR1001,2023-04-27,cl,106.0,chem.cl
+BR1001,2023-05-27,cl,95.82,chem.cl
+BR1001,2023-06-26,cl,104.43,chem.cl
+BR1001,2024-11-19,cl,106.0,chem.cl
+BR1001,2024-12-19,cl,111.09,chem.cl
+BR1001,2025-01-18,cl,107.41,chem.cl
+BR1001,2023-04-16,co2,22.0,chem.co2
+BR1001,2023-05-16,co2,21.79,chem.co2
+BR1001,2023-06-15,co2,21.09,chem.co2
+BR1001,2024-11-09,co2,22.0,chem.co2
+BR1001,2024-12-09,co2,21.85,chem.co2
+BR1001,2025-01-08,co2,22.81,chem.co2
+BR1001,2023-05-08,creatinine,0.93,chem.creatinine
+BR1001,2023-06-07,creatinine,0.89,chem.creatinine
+BR1001,2023-07-07,creatinine,0.96,chem.creatinine
+BR1001,2024-11-30,creatinine,0.93,chem.creatinine
+BR1001,2024-12-30,creatinine,0.91,chem.creatinine
+BR1001,2025-01-29,creatinine,0.89,chem.creatinine
+BR1001,2023-05-18,egfr_aa,94.0,chem.egfr_aa
+BR1001,2023-06-17,egfr_aa,85.35,chem.egfr_aa
+BR1001,2023-07-17,egfr_aa,96.69,chem.egfr_aa
+BR1001,2024-12-10,egfr_aa,94.0,chem.egfr_aa
+BR1001,2025-01-09,egfr_aa,102.96,chem.egfr_aa
+BR1001,2025-02-08,egfr_aa,90.43,chem.egfr_aa
+BR1001,2023-05-29,egfr_non_aa,81.0,chem.egfr_non_aa
+BR1001,2023-06-28,egfr_non_aa,73.39,chem.egfr_non_aa
+BR1001,2023-07-28,egfr_non_aa,77.08,chem.egfr_non_aa
+BR1001,2024-12-21,egfr_non_aa,81.0,chem.egfr_non_aa
+BR1001,2025-01-20,egfr_non_aa,77.99,chem.egfr_non_aa
+BR1001,2025-02-19,egfr_non_aa,82.65,chem.egfr_non_aa
+BR1001,2023-10-03,eosinophil_count,69.0,bc.eosinophil_count
+BR1001,2023-11-02,eosinophil_count,70.66,bc.eosinophil_count
+BR1001,2023-12-02,eosinophil_count,62.45,bc.eosinophil_count
+BR1001,2025-04-27,eosinophil_count,69.0,bc.eosinophil_count
+BR1001,2025-05-27,eosinophil_count,63.04,bc.eosinophil_count
+BR1001,2025-06-26,eosinophil_count,63.22,bc.eosinophil_count
+BR1001,2024-05-13,esr,2.0,infl.esr
+BR1001,2024-06-12,esr,1.9,infl.esr
+BR1001,2024-07-12,esr,2.13,infl.esr
+BR1001,2023-06-08,globin,2025-06-02 00:00:00,chem.globin
+BR1001,2023-07-08,globin,2025-06-02 00:00:00,chem.globin
+BR1001,2023-08-07,globin,2025-06-02 00:00:00,chem.globin
+BR1001,2025-01-01,globin,2025-06-02 00:00:00,chem.globin
+BR1001,2025-01-31,globin,2025-06-02 00:00:00,chem.globin
+BR1001,2025-03-02,globin,2025-06-02 00:00:00,chem.globin
+BR1001,2023-06-19,glucose,33.0,chem.glucose
+BR1001,2023-07-19,glucose,35.5,chem.glucose
+BR1001,2023-08-18,glucose,31.67,chem.glucose
+BR1001,2025-01-11,glucose,33.0,chem.glucose
+BR1001,2025-02-10,glucose,31.5,chem.glucose
+BR1001,2025-03-12,glucose,35.03,chem.glucose
+BR1001,2023-01-11,height,177.4,am.height
+BR1001,2023-02-10,height,190.01,am.height
+BR1001,2023-03-12,height,168.05,am.height
+BR1001,2024-08-05,height,177.4,am.height
+BR1001,2024-09-04,height,168.79,am.height
+BR1001,2024-10-04,height,194.05,am.height
+BR1001,2023-11-14,hematocrit,33.6,bc.hematocrit
+BR1001,2023-12-14,hematocrit,33.09,bc.hematocrit
+BR1001,2024-01-13,hematocrit,36.84,bc.hematocrit
+BR1001,2025-06-09,hematocrit,33.6,bc.hematocrit
+BR1001,2025-07-09,hematocrit,35.78,bc.hematocrit
+BR1001,2025-08-08,hematocrit,36.29,bc.hematocrit
+BR1001,2023-11-25,hemoglobin,11.0,bc.hemoglobin
+BR1001,2023-12-25,hemoglobin,10.08,bc.hemoglobin
+BR1001,2024-01-24,hemoglobin,12.03,bc.hemoglobin
+BR1001,2025-06-19,hemoglobin,11.0,bc.hemoglobin
+BR1001,2025-07-19,hemoglobin,10.88,bc.hemoglobin
+BR1001,2025-08-18,hemoglobin,11.47,bc.hemoglobin
+BR1001,2024-03-21,hs_crp,0.3,infl.hs_crp
+BR1001,2024-04-20,hs_crp,0.33,infl.hs_crp
+BR1001,2024-05-20,hs_crp,0.29,infl.hs_crp
+BR1001,2025-10-14,hs_crp,0.3,infl.hs_crp
+BR1001,2025-11-13,hs_crp,0.31,infl.hs_crp
+BR1001,2025-12-13,hs_crp,0.3,infl.hs_crp
+BR1001,2023-10-14,lymphocyte_count,1337.0,bc.lymphocyte_count
+BR1001,2023-11-13,lymphocyte_count,1221.92,bc.lymphocyte_count
+BR1001,2023-12-13,lymphocyte_count,1336.93,bc.lymphocyte_count
+BR1001,2025-05-08,lymphocyte_count,1337.0,bc.lymphocyte_count
+BR1001,2025-06-07,lymphocyte_count,1388.67,bc.lymphocyte_count
+BR1001,2025-07-07,lymphocyte_count,1206.41,bc.lymphocyte_count
+BR1001,2023-12-06,mch,2025-07-26 00:00:00,bc.mch
+BR1001,2024-01-05,mch,2025-07-26 00:00:00,bc.mch
+BR1001,2024-02-04,mch,2025-07-26 00:00:00,bc.mch
+BR1001,2025-06-30,mch,2025-07-26 00:00:00,bc.mch
+BR1001,2025-07-30,mch,2025-07-26 00:00:00,bc.mch
+BR1001,2025-08-29,mch,2025-07-26 00:00:00,bc.mch
+BR1001,2023-12-16,mchc,32.4,bc.mchc
+BR1001,2024-01-15,mchc,29.54,bc.mchc
+BR1001,2024-02-14,mchc,31.18,bc.mchc
+BR1001,2025-07-10,mchc,32.4,bc.mchc
+BR1001,2025-08-09,mchc,29.29,bc.mchc
+BR1001,2025-09-08,mchc,33.86,bc.mchc
+BR1001,2023-12-27,mcv,82.2,bc.mcv
+BR1001,2024-01-26,mcv,84.62,bc.mcv
+BR1001,2024-02-25,mcv,87.62,bc.mcv
+BR1001,2025-07-21,mcv,82.2,bc.mcv
+BR1001,2025-08-20,mcv,88.53,bc.mcv
+BR1001,2025-09-19,mcv,85.33,bc.mcv
+BR1001,2023-10-24,monocyte_count,331.0,bc.monocyte_count
+BR1001,2023-11-23,monocyte_count,313.69,bc.monocyte_count
+BR1001,2023-12-23,monocyte_count,344.2,bc.monocyte_count
+BR1001,2025-05-18,monocyte_count,331.0,bc.monocyte_count
+BR1001,2025-06-17,monocyte_count,356.8,bc.monocyte_count
+BR1001,2025-07-17,monocyte_count,363.32,bc.monocyte_count
+BR1001,2024-01-06,mpv,2025-08-12 00:00:00,bc.mpv
+BR1001,2024-02-05,mpv,2025-08-12 00:00:00,bc.mpv
+BR1001,2024-03-06,mpv,2025-08-12 00:00:00,bc.mpv
+BR1001,2025-08-01,mpv,2025-08-12 00:00:00,bc.mpv
+BR1001,2025-08-31,mpv,2025-08-12 00:00:00,bc.mpv
+BR1001,2025-09-30,mpv,2025-08-12 00:00:00,bc.mpv
+BR1001,2023-11-04,neutrophil_count,2541.0,bc.neutrophil_count
+BR1001,2023-12-04,neutrophil_count,2414.6,bc.neutrophil_count
+BR1001,2024-01-03,neutrophil_count,2724.53,bc.neutrophil_count
+BR1001,2025-05-29,neutrophil_count,2541.0,bc.neutrophil_count
+BR1001,2025-06-28,neutrophil_count,2520.97,bc.neutrophil_count
+BR1001,2025-07-28,neutrophil_count,2478.4,bc.neutrophil_count
+BR1001,2023-07-31,perc_basophils,0.5,bc.perc_basophils
+BR1001,2023-08-30,perc_basophils,0.53,bc.perc_basophils
+BR1001,2023-09-29,perc_basophils,0.49,bc.perc_basophils
+BR1001,2025-02-23,perc_basophils,0.5,bc.perc_basophils
+BR1001,2025-03-25,perc_basophils,0.5,bc.perc_basophils
+BR1001,2025-04-24,perc_basophils,0.48,bc.perc_basophils
+BR1001,2023-08-11,perc_eosinophils,2025-06-01 00:00:00,bc.perc_eosinophils
+BR1001,2023-09-10,perc_eosinophils,2025-06-01 00:00:00,bc.perc_eosinophils
+BR1001,2023-10-10,perc_eosinophils,2025-06-01 00:00:00,bc.perc_eosinophils
+BR1001,2025-03-05,perc_eosinophils,2025-06-01 00:00:00,bc.perc_eosinophils
+BR1001,2025-04-04,perc_eosinophils,2025-06-01 00:00:00,bc.perc_eosinophils
+BR1001,2025-05-04,perc_eosinophils,2025-06-01 00:00:00,bc.perc_eosinophils
+BR1001,2023-08-22,perc_lymphocytes,2025-01-31 00:00:00,bc.perc_lymphocytes
+BR1001,2023-09-21,perc_lymphocytes,2025-01-31 00:00:00,bc.perc_lymphocytes
+BR1001,2023-10-21,perc_lymphocytes,2025-01-31 00:00:00,bc.perc_lymphocytes
+BR1001,2025-03-16,perc_lymphocytes,2025-01-31 00:00:00,bc.perc_lymphocytes
+BR1001,2025-04-15,perc_lymphocytes,2025-01-31 00:00:00,bc.perc_lymphocytes
+BR1001,2025-05-15,perc_lymphocytes,2025-01-31 00:00:00,bc.perc_lymphocytes
+BR1001,2023-09-01,perc_monocytes,2025-07-07 00:00:00,bc.perc_monocytes
+BR1001,2023-10-01,perc_monocytes,2025-07-07 00:00:00,bc.perc_monocytes
+BR1001,2023-10-31,perc_monocytes,2025-07-07 00:00:00,bc.perc_monocytes
+BR1001,2025-03-26,perc_monocytes,2025-07-07 00:00:00,bc.perc_monocytes
+BR1001,2025-04-25,perc_monocytes,2025-07-07 00:00:00,bc.perc_monocytes
+BR1001,2025-05-25,perc_monocytes,2025-07-07 00:00:00,bc.perc_monocytes
+BR1001,2023-09-12,perc_neutrophils,59.1,bc.perc_neutrophils
+BR1001,2023-10-12,perc_neutrophils,57.57,bc.perc_neutrophils
+BR1001,2023-11-11,perc_neutrophils,64.57,bc.perc_neutrophils
+BR1001,2025-04-06,perc_neutrophils,59.1,bc.perc_neutrophils
+BR1001,2025-05-06,perc_neutrophils,61.64,bc.perc_neutrophils
+BR1001,2025-06-05,perc_neutrophils,59.57,bc.perc_neutrophils
+BR1001,2024-01-17,platelet_count,226.0,bc.platelet_count
+BR1001,2024-02-16,platelet_count,215.7,bc.platelet_count
+BR1001,2024-03-17,platelet_count,218.48,bc.platelet_count
+BR1001,2025-08-11,platelet_count,226.0,bc.platelet_count
+BR1001,2025-09-10,platelet_count,229.23,bc.platelet_count
+BR1001,2025-10-10,platelet_count,222.94,bc.platelet_count
+BR1001,2023-06-30,potassium,2025-09-03 00:00:00,chem.potassium
+BR1001,2023-07-30,potassium,2025-09-03 00:00:00,chem.potassium
+BR1001,2023-08-29,potassium,2025-09-03 00:00:00,chem.potassium
+BR1001,2025-01-22,potassium,2025-09-03 00:00:00,chem.potassium
+BR1001,2025-02-21,potassium,2025-09-03 00:00:00,chem.potassium
+BR1001,2025-03-23,potassium,2025-09-03 00:00:00,chem.potassium
+BR1001,2023-07-10,protein,7.0,chem.protein
+BR1001,2023-08-09,protein,7.09,chem.protein
+BR1001,2023-09-08,protein,7.1,chem.protein
+BR1001,2025-02-01,protein,7.0,chem.protein
+BR1001,2025-03-03,protein,7.68,chem.protein
+BR1001,2025-04-02,protein,6.8,chem.protein
+BR1001,2024-02-07,rdw,2025-01-15 00:00:00,bc.rdw
+BR1001,2024-03-08,rdw,2025-01-15 00:00:00,bc.rdw
+BR1001,2024-04-07,rdw,2025-01-15 00:00:00,bc.rdw
+BR1001,2025-09-01,rdw,2025-01-15 00:00:00,bc.rdw
+BR1001,2025-10-01,rdw,2025-01-15 00:00:00,bc.rdw
+BR1001,2025-10-31,rdw,2025-01-15 00:00:00,bc.rdw
+BR1001,2024-01-28,red_blood_cell_count,4.0,bc.red_blood_cell_count
+BR1001,2024-02-27,red_blood_cell_count,3.64,bc.red_blood_cell_count
+BR1001,2024-03-28,red_blood_cell_count,4.03,bc.red_blood_cell_count
+BR1001,2025-08-22,red_blood_cell_count,4.0,bc.red_blood_cell_count
+BR1001,2025-09-21,red_blood_cell_count,4.17,bc.red_blood_cell_count
+BR1001,2025-10-21,red_blood_cell_count,4.11,bc.red_blood_cell_count
+BR1001,2024-03-31,rf_iga_interpretation,Negative,infl.rf_iga_interpretation
+BR1001,2024-04-30,rf_iga_interpretation,Negative,infl.rf_iga_interpretation
+BR1001,2024-05-30,rf_iga_interpretation,Negative,infl.rf_iga_interpretation
+BR1001,2025-10-24,rf_iga_interpretation,Negative,infl.rf_iga_interpretation
+BR1001,2025-11-23,rf_iga_interpretation,Negative,infl.rf_iga_interpretation
+BR1001,2025-12-23,rf_iga_interpretation,Negative,infl.rf_iga_interpretation
+BR1001,2024-04-11,rf_iga_result,0.0,infl.rf_iga_result
+BR1001,2024-05-11,rf_iga_result,0.0,infl.rf_iga_result
+BR1001,2024-06-10,rf_iga_result,0.0,infl.rf_iga_result
+BR1001,2025-11-04,rf_iga_result,0.0,infl.rf_iga_result
+BR1001,2025-12-04,rf_iga_result,0.0,infl.rf_iga_result
+BR1001,2026-01-03,rf_iga_result,0.0,infl.rf_iga_result
+BR1001,2024-04-21,rf_igm_interpretation,Negative,infl.rf_igm_interpretation
+BR1001,2024-05-21,rf_igm_interpretation,Negative,infl.rf_igm_interpretation
+BR1001,2024-06-20,rf_igm_interpretation,Negative,infl.rf_igm_interpretation
+BR1001,2025-11-15,rf_igm_interpretation,Negative,infl.rf_igm_interpretation
+BR1001,2025-12-15,rf_igm_interpretation,Negative,infl.rf_igm_interpretation
+BR1001,2026-01-14,rf_igm_interpretation,Negative,infl.rf_igm_interpretation
+BR1001,2024-05-02,rf_igm_result,5.902,infl.rf_igm_result
+BR1001,2024-06-01,rf_igm_result,5.59,infl.rf_igm_result
+BR1001,2024-07-01,rf_igm_result,5.48,infl.rf_igm_result
+BR1001,2023-07-21,sodium,143.0,chem.sodium
+BR1001,2023-08-20,sodium,142.63,chem.sodium
+BR1001,2023-09-19,sodium,147.64,chem.sodium
+BR1001,2025-02-12,sodium,143.0,chem.sodium
+BR1001,2025-03-14,sodium,148.36,chem.sodium
+BR1001,2025-04-13,sodium,147.97,chem.sodium
+BR1001,2023-03-16,t_bili,0.5,chem.t_bili
+BR1001,2023-04-15,t_bili,0.49,chem.t_bili
+BR1001,2023-05-15,t_bili,0.49,chem.t_bili
+BR1001,2024-10-08,t_bili,0.5,chem.t_bili
+BR1001,2024-11-07,t_bili,0.45,chem.t_bili
+BR1001,2024-12-07,t_bili,0.54,chem.t_bili
+BR1001,2024-07-15,triglycerides,94.0,lip.triglycerides
+BR1001,2024-08-14,triglycerides,87.56,lip.triglycerides
+BR1001,2024-09-13,triglycerides,96.79,lip.triglycerides
+BR1001,2024-02-18,wbc,2025-03-04 00:00:00,bc.wbc
+BR1001,2024-03-19,wbc,2025-03-04 00:00:00,bc.wbc
+BR1001,2024-04-18,wbc,2025-03-04 00:00:00,bc.wbc
+BR1001,2025-09-12,wbc,2025-03-04 00:00:00,bc.wbc
+BR1001,2025-10-12,wbc,2025-03-04 00:00:00,bc.wbc
+BR1001,2025-11-11,wbc,2025-03-04 00:00:00,bc.wbc
+BR1001,2023-01-22,weight,71.1,am.weight
+BR1001,2023-02-21,weight,74.85,am.weight
+BR1001,2023-03-23,weight,71.21,am.weight
+BR1001,2024-08-16,weight,71.1,am.weight
+BR1001,2024-09-15,weight,73.49,am.weight
+BR1001,2024-10-15,weight,70.0,am.weight
