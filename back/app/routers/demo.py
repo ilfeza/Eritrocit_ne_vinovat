@@ -16,22 +16,53 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/demo", tags=["demo"])
 
+# Определяем базовую директорию приложения
+# В Docker контейнере рабочая директория /app, в локальной разработке - корень back/
+BASE_DIR = Path(__file__).parent.parent.parent
+# Проверяем, находимся ли мы в Docker контейнере (путь /app)
+if str(BASE_DIR).startswith('/app'):
+    DATA_DIR = Path("/app/data")
+    ANALYTICS_DIR = Path("/app/analytics")
+else:
+    # Локальная разработка
+    DATA_DIR = BASE_DIR / "data"
+    ANALYTICS_DIR = BASE_DIR / "analytics"
+
 # Пути к файлам демо вариантов
 DEMO_FILES = {
-    '1': Path(__file__).parent.parent.parent / "data" / "patient_long_table_realistic_dynamic.csv",
-    '2': Path(__file__).parent.parent.parent / "data" / "patient_long_table2.csv"
+    '1': DATA_DIR / "patient_long_table_realistic_dynamic.csv",
+    '2': DATA_DIR / "patient_long_table2.csv"
 }
 # Путь к файлу с несколькими пациентами для demo2
-MORE_PATIENTS_FILE = Path(__file__).parent.parent.parent / "data" / "more_patients.csv"
+MORE_PATIENTS_FILE = DATA_DIR / "more_patients.csv"
 # Путь к файлу test_table.csv с несколькими пациентами
-TEST_TABLE_FILE = Path(__file__).parent.parent.parent / "data" / "test_table.csv"
+TEST_TABLE_FILE = DATA_DIR / "test_table.csv"
 # Путь к файлу с загруженными данными
-UPLOADED_DATA_FILE = Path(__file__).parent.parent.parent / "data" / "uploaded_data.csv"
+UPLOADED_DATA_FILE = DATA_DIR / "uploaded_data.csv"
 # Путь по умолчанию (для обратной совместимости)
 TEST_TABLE_PATH = DEMO_FILES['1']
 
 # Путь к файлу с нормами
-NORMS_PATH = Path(__file__).parent.parent.parent / "analytics" / "data.json"
+# Сначала пробуем /app/analytics/data.json (Docker), потом back/analytics/data.json (локально)
+NORMS_PATH = ANALYTICS_DIR / "data.json"
+if not NORMS_PATH.exists():
+    # Fallback: пробуем альтернативные пути
+    alternative_paths = [
+        BASE_DIR / "analytics" / "data.json",
+        Path("/app/analytics/data.json"),
+        Path("analytics/data.json")
+    ]
+    for alt_path in alternative_paths:
+        if alt_path.exists():
+            NORMS_PATH = alt_path
+            break
+
+# Логируем пути для отладки
+logger.info(f"BASE_DIR: {BASE_DIR}")
+logger.info(f"DATA_DIR: {DATA_DIR}")
+logger.info(f"ANALYTICS_DIR: {ANALYTICS_DIR}")
+logger.info(f"TEST_TABLE_FILE: {TEST_TABLE_FILE} (exists: {TEST_TABLE_FILE.exists()})")
+logger.info(f"NORMS_PATH: {NORMS_PATH} (exists: {NORMS_PATH.exists()})")
 
 
 def load_norms() -> Dict[str, Dict[str, Any]]:
@@ -831,9 +862,13 @@ async def get_patients_list_from_test_table() -> List[Dict[str, Any]]:
     Файл имеет long format: patient_id, test_name, test_code, value, unit, date, status
     """
     if not TEST_TABLE_FILE.exists():
+        logger.error(f"Файл не найден: {TEST_TABLE_FILE} (абсолютный путь)")
+        logger.error(f"DATA_DIR: {DATA_DIR} (существует: {DATA_DIR.exists()})")
+        if DATA_DIR.exists():
+            logger.error(f"Содержимое DATA_DIR: {list(DATA_DIR.iterdir())}")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Файл {TEST_TABLE_FILE.name} не найден"
+            detail=f"Файл {TEST_TABLE_FILE.name} не найден по пути {TEST_TABLE_FILE}. Проверьте, что файл существует в {DATA_DIR}"
         )
     
     try:
@@ -926,9 +961,13 @@ async def get_patient_data_from_test_table(patient_id: str) -> Dict[str, Any]:
         patient_id: ID пациента
     """
     if not TEST_TABLE_FILE.exists():
+        logger.error(f"Файл не найден: {TEST_TABLE_FILE} (абсолютный путь)")
+        logger.error(f"DATA_DIR: {DATA_DIR} (существует: {DATA_DIR.exists()})")
+        if DATA_DIR.exists():
+            logger.error(f"Содержимое DATA_DIR: {list(DATA_DIR.iterdir())}")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Файл {TEST_TABLE_FILE.name} не найден"
+            detail=f"Файл {TEST_TABLE_FILE.name} не найден по пути {TEST_TABLE_FILE}. Проверьте, что файл существует в {DATA_DIR}"
         )
     
     try:
@@ -1045,9 +1084,13 @@ async def get_patient_data(demo_version: str = "1") -> Dict[str, Any]:
     
     file_path = DEMO_FILES[demo_version]
     if not file_path.exists():
+        logger.error(f"Файл не найден: {file_path} (абсолютный путь)")
+        logger.error(f"DATA_DIR: {DATA_DIR} (существует: {DATA_DIR.exists()})")
+        if DATA_DIR.exists():
+            logger.error(f"Содержимое DATA_DIR: {list(DATA_DIR.iterdir())}")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Файл {file_path.name} не найден"
+            detail=f"Файл {file_path.name} не найден по пути {file_path}. Проверьте, что файл существует в {DATA_DIR}"
         )
     
     try:

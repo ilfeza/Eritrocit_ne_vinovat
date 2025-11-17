@@ -15,14 +15,15 @@ COPY back/requirements.txt .
 # Устанавливаем Python зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем код бэкенда
+# Копируем код бэкенда (включая back/analytics/ с data.json)
 COPY back/ .
 
-# Копируем папку analytics из корня проекта (нужна для импорта модулей)
-COPY analytics/ /app/analytics/
+# Копируем файлы данных в образ (они будут перезаписаны volume, если он смонтирован)
+# Это гарантирует, что файлы будут доступны даже если volume не смонтирован
+COPY back/data/ /app/data/
 
-# Создаем директории для данных
-RUN mkdir -p /app/data /app/back/data
+# Создаем директории для данных (на случай, если они не были скопированы)
+RUN mkdir -p /app/data /app/analytics
 
 # Открываем порт
 EXPOSE 8000
