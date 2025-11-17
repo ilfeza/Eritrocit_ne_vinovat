@@ -1,7 +1,7 @@
 """
 Роутер для демо варианта.
 """
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, UploadFile, File
 from fastapi.responses import FileResponse
 from typing import Dict, Any, List
 import logging
@@ -10,6 +10,7 @@ from pathlib import Path
 import csv
 import pandas as pd
 from datetime import datetime
+import shutil
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +25,8 @@ DEMO_FILES = {
 MORE_PATIENTS_FILE = Path(__file__).parent.parent.parent / "data" / "more_patients.csv"
 # Путь к файлу test_table.csv с несколькими пациентами
 TEST_TABLE_FILE = Path(__file__).parent.parent.parent / "data" / "test_table.csv"
+# Путь к файлу с загруженными данными
+UPLOADED_DATA_FILE = Path(__file__).parent.parent.parent / "data" / "uploaded_data.csv"
 # Путь по умолчанию (для обратной совместимости)
 TEST_TABLE_PATH = DEMO_FILES['1']
 
@@ -252,15 +255,26 @@ def get_abnormal_tests(data: List[Dict[str, Any]], norms: Dict[str, Dict[str, An
         norm_min = norm_info.get('min')
         norm_max = norm_info.get('max')
         
-        if norm_min is None and norm_max is None:
-            continue
+        # Check if status is provided in the row (from CSV)
+        status_from_row = row.get('status', '').strip().upper() if row.get('status') else ''
         
         try:
             value = float(row.get('value', 0))
-            status = check_value_against_norm(value, norm_min, norm_max)
             
-            # Проверяем, является ли отклонение значительным (более 10% от нормы)
-            if status != 'NORMAL' and is_significantly_abnormal(value, norm_min, norm_max):
+            # If status is provided from CSV, use it; otherwise calculate
+            if status_from_row in ['HIGH', 'LOW']:
+                status = status_from_row
+                # Include if status is HIGH or LOW from CSV
+                should_include = True
+            else:
+                # Calculate status from norms
+                if norm_min is None and norm_max is None:
+                    continue
+                status = check_value_against_norm(value, norm_min, norm_max)
+                # Проверяем, является ли отклонение значительным (более 10% от нормы)
+                should_include = status != 'NORMAL' and is_significantly_abnormal(value, norm_min, norm_max)
+            
+            if should_include:
                 test_date = row.get('date', '')
                 abnormal_data = {
                     'test_code': test_code,
@@ -878,4 +892,157 @@ async def get_patient_data(demo_version: str = "1") -> Dict[str, Any]:
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Ошибка обработки данных: {str(e)}"
         )
+
+
+@router.post("/upload-patient-data")
+async def upload_patient_data(file: UploadFile = File(...)) -> Dict[str, Any]:
+    """Загружает файл с данными пациента и добавляет их в систему."""
+    try:
+        if not file.filename.endswith('.csv'):
+            raise HTTPException(status_code=400, detail="Поддерживаются только CSV файлы")
+        contents = await file.read()
+        temp_file = Path(__file__).parent.parent.parent / "data" / f"temp_{file.filename}"
+        with open(temp_file, 'wb') as f:
+            f.write(contents)
+        try:
+            df = pd.read_csv(temp_file)
+            required_columns = ['patient_id', 'test_code', 'value']
+            missing = [col for col in required_columns if col not in df.columns]
+            if missing:
+                raise HTTPException(status_code=400, detail=f"Отсутствуют колонки: {', '.join(missing)}")
+            normalized_data = []
+            for _, row in df.iterrows():
+                patient_id = str(row.get('patient_id', ''))
+                test_code = str(row.get('test_code', ''))
+                value = row.get('value', None)
+                if not patient_id or not test_code or pd.isna(value):
+                    continue
+                try:
+                    float_value = float(value)
+                except:
+                    continue
+                normalized_data.append({
+                    'patient_id': patient_id,
+                    'test_code': test_code,
+                    'test_name': str(row.get('test_name', '')) if 'test_name' in df.columns else test_code,
+                    'value': float_value,
+                    'unit': str(row.get('unit', '')) if 'unit' in df.columns else '',
+                    'date': str(row.get('date', '')) if 'date' in df.columns else '',
+                    'status': str(row.get('status', '')) if 'status' in df.columns else ''
+                })
+            if not normalized_data:
+                raise HTTPException(status_code=400, detail="Нет валидных данных")
+            if UPLOADED_DATA_FILE.exists():
+                existing_df = pd.read_csv(UPLOADED_DATA_FILE)
+                new_df = pd.DataFrame(normalized_data)
+                combined_df = pd.concat([existing_df, new_df], ignore_index=True)
+                combined_df = combined_df.drop_duplicates(subset=['patient_id', 'test_code', 'date'], keep='last')
+            else:
+                combined_df = pd.DataFrame(normalized_data)
+            combined_df.to_csv(UPLOADED_DATA_FILE, index=False)
+            return {'success': True, 'message': f'Загружено записей: {len(normalized_data)}', 'total': len(combined_df)}
+        finally:
+            if temp_file.exists():
+                temp_file.unlink()
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Ошибка загрузки: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/patients-list-from-uploaded")
+async def get_patients_list_from_uploaded() -> List[Dict[str, Any]]:
+    """Получает список всех пациентов из загруженных файлов"""
+    if not UPLOADED_DATA_FILE.exists():
+        return []
+    try:
+        df = pd.read_csv(UPLOADED_DATA_FILE)
+        patients = []
+        for patient_id in df['patient_id'].unique():
+            patient_data = df[df['patient_id'] == patient_id]
+            date_column = 'date' if 'date' in df.columns else None
+            if date_column:
+                dates = sorted(patient_data[date_column].dropna().unique())
+                first_date = dates[0] if dates else None
+                last_date = dates[-1] if dates else None
+            else:
+                first_date = None
+                last_date = None
+            test_code_column = 'test_code' if 'test_code' in df.columns else None
+            if test_code_column:
+                test_count = len(patient_data[test_code_column].dropna().unique())
+            else:
+                test_count = 0
+            patients.append({
+                'patient_id': str(patient_id),
+                'first_date': str(first_date) if first_date else None,
+                'last_date': str(last_date) if last_date else None,
+                'test_count': test_count,
+                'record_count': len(patient_data)
+            })
+        patients.sort(key=lambda x: x['patient_id'])
+        return patients
+    except Exception as e:
+        logger.error(f"Ошибка получения списка пациентов из загруженных данных: {e}")
+        return []
+
+
+@router.get("/patient-data-from-uploaded")
+async def get_patient_data_from_uploaded(patient_id: str) -> Dict[str, Any]:
+    """Получает данные пациента из загруженных файлов"""
+    if not UPLOADED_DATA_FILE.exists():
+        raise HTTPException(status_code=404, detail="Загруженные данные не найдены")
+    try:
+        df = pd.read_csv(UPLOADED_DATA_FILE)
+        patient_df = df[df['patient_id'].astype(str) == str(patient_id)]
+        if patient_df.empty:
+            raise HTTPException(status_code=404, detail=f"Пациент {patient_id} не найден в загруженных данных")
+        norms = load_norms()
+        data = []
+        for _, row in patient_df.iterrows():
+            test_code = str(row.get('test_code', ''))
+            test_name = str(row.get('test_name', '')) if 'test_name' in patient_df.columns else test_code
+            value = row.get('value', None)
+            date_value = str(row.get('date', '')) if 'date' in patient_df.columns else ''
+            unit = str(row.get('unit', '')) if 'unit' in patient_df.columns else ''
+            try:
+                float_value = float(value)
+            except:
+                continue
+            if not test_name or test_name == test_code:
+                norm_info = get_norm_info(test_code, '', norms)
+                if norm_info and norm_info.get('name'):
+                    test_name = norm_info.get('name', test_code)
+            if not unit and test_code:
+                norm_info = get_norm_info(test_code, test_name, norms)
+                if norm_info and norm_info.get('unit'):
+                    unit = norm_info.get('unit', '')
+            # Get status from CSV if available
+            status_from_csv = str(row.get('status', '')).strip().upper() if 'status' in patient_df.columns else ''
+            
+            normalized_row = {
+                'patient_id': str(patient_id),
+                'test_code': test_code,
+                'test_name': test_name,
+                'value': float_value,
+                'date': date_value,
+                'unit': unit,
+                'status': status_from_csv if status_from_csv in ['HIGH', 'LOW', 'NORMAL'] else ''
+            }
+            data.append(normalized_row)
+        groups = group_by_category(data, norms)
+        abnormal_tests = get_abnormal_tests(data, norms)
+        charts = prepare_chart_data(data, norms)
+        return {
+            'patient_id': str(patient_id),
+            'groups': groups,
+            'abnormal_tests': abnormal_tests,
+            'charts': charts
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Ошибка обработки данных пациента: {e}")
+        raise HTTPException(status_code=500, detail=f"Ошибка обработки данных: {str(e)}")
 
