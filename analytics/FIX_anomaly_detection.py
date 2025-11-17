@@ -43,3 +43,5 @@
             if non_null_count >= 20:  # Минимум 20 значений
                 valid_test_cols.append(col)
 
+
+

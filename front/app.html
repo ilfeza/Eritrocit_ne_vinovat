@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="index/css/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <title>BioDash - Приложение</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+            <div class="logo">
+              <svg class="logo-icon" width="21" height="31" viewBox="0 0 21 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.97" fill-rule="evenodd" clip-rule="evenodd" d="M2.4948 0.0468782C3.83368 -0.163854 4.91953 0.335892 5.75219 1.54611C6.49114 3.00195 6.48037 4.45124 5.71994 5.89388C6.55983 7.29716 7.43062 8.67142 8.33231 10.0168C9.2416 9.63116 10.1554 9.61864 11.0737 9.97928C11.3838 10.1353 11.6848 10.2853 11.9767 10.429C12.6816 9.70065 13.3804 8.96355 14.0731 8.21768C14.0304 7.86866 13.9659 7.51889 13.8796 7.16822C13.7468 4.93887 14.5961 3.50208 16.4274 2.85793C18.7682 2.65518 20.0798 3.90455 20.3621 6.60601C20.1657 8.90815 19.08 10.145 17.1047 10.3166C16.4982 10.3403 15.9392 10.1654 15.4276 9.79187C14.6624 10.5566 13.9206 11.3437 13.2023 12.1532C13.6371 13.3013 13.7016 14.4758 13.3958 15.6764C14.3151 16.3542 15.2288 17.0413 16.1372 17.7378C16.7729 17.244 17.4717 17.0816 18.2335 17.2505C19.7831 17.84 20.4174 19.0768 20.1363 20.9611C19.736 22.3375 18.9082 23.0871 17.653 23.21C15.811 22.9297 14.9402 21.7054 15.0406 19.5369C14.159 18.8622 13.2775 18.1876 12.396 17.5129C11.3434 18.6076 10.1285 18.9573 8.75158 18.5624C7.86131 20.2229 7.02277 21.9221 6.23596 23.6598C7.38882 25.4855 7.3458 27.2721 6.10696 29.0195C5.25055 29.8759 4.26147 30.2007 3.13983 29.994C1.20835 29.266 0.380588 27.7293 0.656467 25.3839C1.30337 23.2275 2.6042 22.278 4.55889 22.5353C5.39227 20.8734 6.20926 19.1992 7.01 17.5129C5.73497 15.7986 5.53075 13.9246 6.39722 11.8908C6.51545 11.7034 6.63375 11.516 6.75199 11.3286C5.88907 9.93513 5.01828 8.54834 4.13962 7.16822C2.34438 7.68666 1.03284 6.98704 0.204947 5.0693C-0.26295 3.37784 0.0703164 1.94107 1.20474 0.759013C1.61517 0.457885 2.04521 0.220504 2.4948 0.0468782ZM2.17228 1.1713C2.67302 1.191 2.85576 1.46586 2.72056 1.99588C2.36579 2.35819 2.03251 2.74549 1.72076 3.15778C1.29208 3.38326 1.05561 3.22084 1.01123 2.67053C1.15107 1.90849 1.53809 1.40876 2.17228 1.1713ZM15.9759 4.01984C16.4642 3.91969 16.7114 4.14457 16.7177 4.69449C16.3429 5.10521 15.9882 5.54246 15.6534 6.00632C15.0127 6.18593 14.787 5.89852 14.9761 5.14426C15.1764 4.59892 15.5097 4.22411 15.9759 4.01984ZM8.49356 11.1412C9.19471 11.1158 9.42047 11.4656 9.17084 12.1906C8.7301 12.6029 8.33231 13.0652 7.97754 13.5774C7.55531 13.8513 7.26504 13.7139 7.10675 13.1651C7.17293 12.126 7.63522 11.4514 8.49356 11.1412ZM16.6854 18.1876C16.9116 18.1496 17.1159 18.1996 17.2982 18.3375C17.3412 18.4624 17.3412 18.5873 17.2982 18.7123C17.0104 19.0245 16.7416 19.3618 16.4919 19.7243C16.1626 19.9288 15.9691 19.8164 15.9114 19.3869C15.9987 18.8361 16.2567 18.4363 16.6854 18.1876ZM2.68831 23.7347C3.17659 23.6346 3.42383 23.8594 3.43009 24.4094C3.05533 24.8201 2.70056 25.2573 2.36579 25.7212C1.92098 25.9671 1.66297 25.8047 1.59176 25.2339C1.74837 24.5156 2.11391 24.0159 2.68831 23.7347Z" fill="#2F80ED"/>
+              </svg>
+              <span class="logo-text">BioDash.</span>
+            </div>
+          </a>
+          <nav class="nav">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Искать на сайте" />
+            </div>
+            <div class="user-avatar">
+              <img src="index/images/image.png" alt="Врач" class="avatar-image" />
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Demo Section -->
+        <section class="demo-section" style="margin-bottom: 20px;">
+          <div class="demo-container" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 24px; padding: 24px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.5); transition: all 0.3s ease;">
+            <h2 style="font-size: 22px; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; font-family: 'Inter', sans-serif; text-align: center;">Демоварианты</h2>
+            <p style="color: #6b7280; margin-bottom: 16px; font-size: 14px; font-family: 'Inter', sans-serif; line-height: 1.5; text-align: center;">Попробуйте приложение с готовыми примерами данных:</p>
+            <div class="demo-links" style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; align-items: center;">
+              <a href="demo.html" class="demo-link-btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 24px; border-radius: 12px; cursor: pointer; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3); position: relative; overflow: hidden;">
+                <span style="position: relative; z-index: 1;">Демо вариант 1</span>
+              </a>
+              <a href="demo2.html" class="demo-link-btn" style="background: linear-gradient(135deg, #27AE60 0%, #2ecc71 100%); color: white; border: none; padding: 12px 24px; border-radius: 12px; cursor: pointer; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(39, 174, 96, 0.3); position: relative; overflow: hidden;">
+                <span style="position: relative; z-index: 1;">Демо вариант 2</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+          <div class="upload-container">
+            <h1 class="upload-title">Загрузите файл с результатами анализов<span class="required-star">*</span></h1>
+            <p class="upload-subtitle"><span class="required-star">*</span>в форматах CSV/JSON/XLS</p>
+            
+            <form id="uploadForm" class="upload-form">
+              <input type="file" id="fileInput" accept=".csv,.json,.xlsx,.xls" class="file-input" />
+              <label for="fileInput" class="upload-button">
+                <span>загрузить</span>
+              </label>
+              <div id="fileName" class="file-name"></div>
+            </form>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+              <div class="spinner"></div>
+              <p class="loading-text">Пожалуйста подождите, файл обрабатывается...</p>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message" style="display: none;">
+              <i class="fas fa-check-circle"></i>
+              <p class="success-text"></p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message" style="display: none;">
+              <i class="fas fa-exclamation-circle"></i>
+              <p class="error-text"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Table Display Section -->
+        <section id="tableSection" class="table-section" style="display: none;">
+          <div class="table-container">
+            <div class="table-header">
+              <h2 class="table-title">Загруженная таблица</h2>
+              <button id="closeTableBtn" class="close-table-btn" title="Скрыть таблицу">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="table-info" id="tableInfo"></div>
+            <div class="table-actions">
+              <button id="filterBtn" class="filter-btn">
+                <i class="fas fa-filter"></i>
+                <span>Фильтр</span>
+              </button>
+              <button id="toggleTableBtn" class="toggle-table-btn" style="display: none;" title="Развернуть/свернуть таблицу для просмотра всех строк">
+                <i class="fas fa-chevron-down"></i>
+                <span>Показать все строки</span>
+              </button>
+            </div>
+            <div class="table-wrapper">
+              <table id="dataTable" class="data-table">
+                <thead id="tableHead"></thead>
+                <tbody id="tableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="chartSection" class="chart-section" style="display: none;">
+          <div class="dashboard-container">
+            <div class="dashboard-header">
+              <h2 class="dashboard-title">Визуализация данных</h2>
+            </div>
+            
+            <!-- Statistics Cards -->
+            <div class="stats-grid" id="statsGrid">
+              <!-- Cards will be added dynamically -->
+            </div>
+            
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+              <!-- Pie Chart -->
+              <div class="chart-card">
+                <div class="chart-card-header">
+                  <h3 class="chart-card-title">Распределение категорий</h3>
+                </div>
+                <div class="chart-card-body">
+                  <div class="chart-wrapper-small">
+                    <canvas id="pieChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Tests Distribution Bar Chart -->
+              <div class="chart-card">
+                <div class="chart-card-header">
+                  <h3 class="chart-card-title">Распределение анализов</h3>
+                </div>
+                <div class="chart-card-body">
+                  <div class="chart-wrapper-small">
+                    <canvas id="testsBarChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Patient Analysis Count -->
+              <div class="chart-card">
+                <div class="chart-card-header">
+                  <h3 class="chart-card-title">Анализов на пациента</h3>
+                </div>
+                <div class="chart-card-body">
+                  <div class="chart-wrapper-small">
+                    <canvas id="patientAnalysisChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </section>
+
+        <!-- Reference Charts Section -->
+        <section id="referenceChartsSection" class="reference-charts-section" style="display: none;">
+          <div class="reference-charts-container">
+            <div class="reference-charts-header">
+              <h2 class="reference-charts-title">Графики анализов с референсными значениями</h2>
+              <button id="closeReferenceChartsBtn" class="close-reference-charts-btn" title="Скрыть графики">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div id="referenceChartsWrapper" class="reference-charts-wrapper">
+              <!-- Графики будут добавлены динамически -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Filter Modal -->
+    <div id="filterModal" class="filter-modal" style="display: none;">
+      <div class="filter-modal-overlay"></div>
+      <div class="filter-modal-content">
+        <div class="filter-modal-header">
+          <h2 class="filter-modal-title">Фильтр анализов</h2>
+          <button id="closeFilterModalBtn" class="close-filter-modal-btn" title="Закрыть">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="filter-modal-body">
+          <p class="filter-modal-description">Выберите анализы для построения графиков с референсными значениями:</p>
+          <div id="testCheckboxes" class="test-checkboxes">
+            <!-- Чекбоксы будут добавлены динамически -->
+          </div>
+        </div>
+        <div class="filter-modal-footer">
+          <button id="applyFilterBtn" class="apply-filter-btn">
+            <i class="fas fa-chart-line"></i>
+            <span>Построить графики</span>
+          </button>
+          <button id="cancelFilterBtn" class="cancel-filter-btn">
+            <span>Отмена</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const API_BASE_URL = 'http://localhost:8000';
+      
+      const fileInput = document.getElementById('fileInput');
+      const uploadForm = document.getElementById('uploadForm');
+      const fileName = document.getElementById('fileName');
+      const loadingIndicator = document.getElementById('loadingIndicator');
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      const closeTableBtn = document.getElementById('closeTableBtn');
+      const toggleTableBtn = document.getElementById('toggleTableBtn');
+      const filterBtn = document.getElementById('filterBtn');
+      const filterModal = document.getElementById('filterModal');
+      const closeFilterModalBtn = document.getElementById('closeFilterModalBtn');
+      const cancelFilterBtn = document.getElementById('cancelFilterBtn');
+      const applyFilterBtn = document.getElementById('applyFilterBtn');
+      const testCheckboxes = document.getElementById('testCheckboxes');
+      const referenceChartsSection = document.getElementById('referenceChartsSection');
+      const referenceChartsWrapper = document.getElementById('referenceChartsWrapper');
+      const closeReferenceChartsBtn = document.getElementById('closeReferenceChartsBtn');
+      
+      // Store all table data
+      let allTableData = [];
+      let transformedTableData = null; // Transformed data: one row per patient
+      let isTableExpanded = false;
+      let pieChart = null;
+      let currentTableId = null;
+      let resizeTimer = null;
+      let referenceCharts = {}; // Store reference charts
+      let testNamesMap = {}; // Map test_code -> test_name для отображения
+      let dashboardCharts = {}; // Store dashboard charts
+      
+      // Маппинг единиц измерения для различных анализов
+      function getTestUnit(testName) {
+        if (!testName) return '';
+        
+        const testNameLower = testName.toLowerCase();
+        
+        // Blood Chemistry (chem)
+        if (testNameLower.includes('glucose') || testNameLower.includes('глюкоза')) return 'mg/dL';
+        if (testNameLower.includes('creatinine') || testNameLower.includes('креатинин')) return 'mg/dL';
+        if (testNameLower.includes('alt') || testNameLower.includes('алт') || testNameLower.includes('аланинаминотрансфераза')) return 'U/L';
+        if (testNameLower.includes('ast') || testNameLower.includes('аст') || testNameLower.includes('аспартат') || testNameLower.includes('aspartate') || testNameLower.includes('transaminase')) return 'U/L';
+        if (testNameLower.includes('alkaline') || testNameLower.includes('фосфатаза')) return 'U/L';
+        if (testNameLower.includes('bilirubin') || testNameLower.includes('билирубин')) return 'mg/dL';
+        if (testNameLower.includes('albumin') || testNameLower.includes('альбумин')) return 'g/dL';
+        if (testNameLower.includes('protein') || testNameLower.includes('белок')) return 'g/dL';
+        if (testNameLower.includes('cholesterol') || testNameLower.includes('холестерин')) return 'mg/dL';
+        if (testNameLower.includes('triglyceride') || testNameLower.includes('триглицерид')) return 'mg/dL';
+        if (testNameLower.includes('calcium') || testNameLower.includes('кальций')) return 'mg/dL';
+        if (testNameLower.includes('sodium') || testNameLower.includes('натрий')) return 'mEq/L';
+        if (testNameLower.includes('potassium') || testNameLower.includes('калий')) return 'mEq/L';
+        if (testNameLower.includes('magnesium') || testNameLower.includes('магний')) return 'mg/dL';
+        if (testNameLower.includes('phosphate') || testNameLower.includes('фосфат')) return 'mg/dL';
+        if (testNameLower.includes('bun') || testNameLower.includes('азот')) return 'mg/dL';
+        if (testNameLower.includes('ldh') || testNameLower.includes('лдг')) return 'U/L';
+        if (testNameLower.includes('co2') || testNameLower.includes('co₂')) return 'mEq/L';
+        if (testNameLower.includes('chloride') || testNameLower.includes('хлорид')) return 'mEq/L';
+        if (testNameLower.includes('egfr')) return 'mL/min/1.73m²';
+        
+        // Blood Counts (bc)
+        if (testNameLower.includes('hemoglobin') || testNameLower.includes('гемоглобин')) return 'g/dL';
+        if (testNameLower.includes('rbc') || testNameLower.includes('эритроцит')) return '10⁶/µL';
+        if (testNameLower.includes('wbc') || testNameLower.includes('лейкоцит')) return '10³/µL';
+        if (testNameLower.includes('platelet') || testNameLower.includes('тромбоцит')) return '10³/µL';
+        if (testNameLower.includes('hematocrit') || testNameLower.includes('гематокрит')) return '%';
+        if (testNameLower.includes('mcv')) return 'fL';
+        if (testNameLower.includes('mch')) return 'pg';
+        if (testNameLower.includes('mchc')) return 'g/dL';
+        if (testNameLower.includes('lymphocyte') || testNameLower.includes('лимфоцит')) return '10³/µL';
+        if (testNameLower.includes('neutrophil') || testNameLower.includes('нейтрофил')) return '10³/µL';
+        if (testNameLower.includes('eosinophil') || testNameLower.includes('эозинофил')) return '10³/µL';
+        if (testNameLower.includes('basophil') || testNameLower.includes('базофил')) return '10³/µL';
+        if (testNameLower.includes('monocyte') || testNameLower.includes('моноцит')) return '10³/µL';
+        if (testNameLower.includes('perc_') || testNameLower.includes('%')) return '%';
+        
+        // Anthropometric (am)
+        if (testNameLower.includes('bmi')) return 'kg/m²';
+        if (testNameLower.includes('height') || testNameLower.includes('рост')) return 'cm';
+        if (testNameLower.includes('weight') || testNameLower.includes('вес')) return 'kg';
+        
+        // Inflammatory Markers (infl)
+        if (testNameLower.includes('crp') || testNameLower.includes('с-реактивный')) return 'mg/L';
+        if (testNameLower.includes('esr') || testNameLower.includes('соэ')) return 'mm/h';
+        if (testNameLower.includes('rf') || testNameLower.includes('ревматоидный')) return 'IU/mL';
+        
+        // CMV
+        if (testNameLower.includes('cmv') || testNameLower.includes('цмв')) return 'IU/mL';
+        
+        // По умолчанию - пустая строка
+        return '';
+      }
+      
+      // Global resize handler for chart
+      window.addEventListener('resize', function() {
+        if (pieChart) {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function() {
+            const newPosition = window.innerWidth > 768 ? 'right' : 'bottom';
+            if (pieChart.options.plugins.legend.position !== newPosition) {
+              pieChart.options.plugins.legend.position = newPosition;
+              pieChart.update('none'); // Update without animation
+            }
+          }, 250);
+        }
+      });
+      
+      // Close table button handler
+      closeTableBtn.addEventListener('click', function() {
+        document.getElementById('tableSection').style.display = 'none';
+      });
+      
+      // Filter button handler
+      filterBtn.addEventListener('click', function() {
+        openFilterModal();
+      });
+      
+      // Close filter modal handlers
+      closeFilterModalBtn.addEventListener('click', closeFilterModal);
+      cancelFilterBtn.addEventListener('click', closeFilterModal);
+      filterModal.querySelector('.filter-modal-overlay').addEventListener('click', closeFilterModal);
+      
+      // Apply filter button handler
+      applyFilterBtn.addEventListener('click', async function() {
+        const selectedTests = getSelectedTests();
+        if (selectedTests.length === 0) {
+          showError('Пожалуйста, выберите хотя бы один анализ');
+          return;
+        }
+        closeFilterModal();
+        await buildReferenceCharts(selectedTests);
+      });
+      
+      // Close reference charts button handler
+      closeReferenceChartsBtn.addEventListener('click', function() {
+        referenceChartsSection.style.display = 'none';
+      });
+      
+      function openFilterModal() {
+        if (!transformedTableData || !allTableData) {
+          showError('Таблица не загружена');
+          return;
+        }
+        
+        // Use original columns from allTableData for API compatibility
+        // But show transformed column names for user
+        const originalColumns = allTableData.columns || [];
+        const transformedColumns = transformedTableData.columns || [];
+        const patientIdColumn = transformedTableData.patientIdColumn;
+        
+        // Get analysis columns from transformed data (for display)
+        // But we need to map them to original column names for API
+        const transformedAnalysisColumns = transformedColumns.filter(col => {
+          if (col === patientIdColumn) return false;
+          
+          const colLower = col.toLowerCase();
+          // Exclude metadata columns
+          return !colLower.includes('date') && 
+                 !colLower.includes('дата') &&
+                 !colLower.includes('sex') &&
+                 !colLower.includes('пол') &&
+                 !colLower.includes('age') &&
+                 !colLower.includes('возраст');
+        });
+        
+        testCheckboxes.innerHTML = '';
+        
+        if (transformedAnalysisColumns.length === 0) {
+          testCheckboxes.innerHTML = '<p style="color: var(--text-secondary); padding: 20px;">Нет доступных анализов для фильтрации</p>';
+        } else {
+          transformedAnalysisColumns.forEach(column => {
+            // Try to find matching original column name
+            // First try exact match, then case-insensitive, then partial match
+            let originalColumnName = column;
+            
+            // Exact match
+            if (originalColumns.includes(column)) {
+              originalColumnName = column;
+            } else {
+              // Case-insensitive match
+              const found = originalColumns.find(col => col.toLowerCase() === column.toLowerCase());
+              if (found) {
+                originalColumnName = found;
+              } else {
+                // Use transformed name (might work if data wasn't transformed)
+                originalColumnName = column;
+              }
+            }
+            
+            // Получаем человекочитаемое название для отображения
+            // Используем testNamesMap, если есть, иначе используем getDisplayColumnName
+            // Поддерживаем оба формата: строку и объект {name, unit}
+            let displayName = getDisplayColumnName(column, patientIdColumn);
+            if (testNamesMap && testNamesMap[column]) {
+              const nameData = testNamesMap[column];
+              if (typeof nameData === 'object' && nameData !== null && nameData.name) {
+                displayName = nameData.name;
+              } else if (typeof nameData === 'string') {
+                displayName = nameData;
+              }
+            }
+            
+            const label = document.createElement('label');
+            label.className = 'test-checkbox-label';
+            // Store both display name and original name for API
+            // value - это originalColumnName (test_code) для API
+            // displayName - это человекочитаемое название для отображения
+            label.innerHTML = `
+              <input type="checkbox" value="${originalColumnName}" data-display-name="${displayName}" class="test-checkbox">
+              <span>${displayName}</span>
+            `;
+            testCheckboxes.appendChild(label);
+          });
+        }
+        
+        filterModal.style.display = 'flex';
+      }
+      
+      function closeFilterModal() {
+        filterModal.style.display = 'none';
+      }
+      
+      function getSelectedTests() {
+        const checkboxes = testCheckboxes.querySelectorAll('.test-checkbox:checked');
+        const selectedTests = Array.from(checkboxes).map(cb => cb.value);
+        console.log('Selected tests (original column names for API):', selectedTests);
+        return selectedTests;
+      }
+      
+      async function buildReferenceCharts(testNames) {
+        if (!currentTableId) {
+          showError('Таблица не загружена');
+          return;
+        }
+        
+        if (!testNames || testNames.length === 0) {
+          showError('Пожалуйста, выберите хотя бы один анализ');
+          return;
+        }
+        
+        try {
+          // Show loading
+          referenceChartsWrapper.innerHTML = '<div style="text-align: center; padding: 40px;"><div class="spinner"></div><p class="loading-text">Загрузка данных...</p></div>';
+          referenceChartsSection.style.display = 'block';
+          referenceChartsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          console.log('Sending request with test names:', testNames);
+          console.log('Original columns:', allTableData.columns);
+          console.log('Transformed columns:', transformedTableData?.columns);
+          
+          // Call API to get reference values
+          const response = await fetch(`${API_BASE_URL}/api/tables/${currentTableId}/reference-check`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ test_names: testNames })
+          });
+          
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error('API Error:', response.status, errorText);
+            throw new Error(`Не удалось загрузить данные для графиков: ${response.status} ${response.statusText}`);
+          }
+          
+          const referenceData = await response.json();
+          console.log('Received reference data:', referenceData);
+          console.log('Number of tests in response:', Object.keys(referenceData).length);
+          
+          if (!referenceData || Object.keys(referenceData).length === 0) {
+            // Try to provide more helpful error message
+            const availableColumns = allTableData.columns || [];
+            const message = `Нет данных для построения графиков. 
+Запрошенные анализы: ${testNames.join(', ')}
+Доступные колонки в таблице: ${availableColumns.slice(0, 10).join(', ')}${availableColumns.length > 10 ? '...' : ''}
+Проверьте, что названия анализов совпадают с названиями колонок в таблице.`;
+            console.error(message);
+            throw new Error(message);
+          }
+          
+          // Clear previous charts
+          referenceChartsWrapper.innerHTML = '';
+          
+          // Destroy previous charts
+          Object.values(referenceCharts).forEach(chartInfo => {
+            if (chartInfo && chartInfo.resizeObserver) {
+              chartInfo.resizeObserver.disconnect();
+            }
+            if (chartInfo && chartInfo.chart && chartInfo.chart.destroy) {
+              chartInfo.chart.destroy();
+            }
+          });
+          referenceCharts = {};
+          
+          // Build charts for each test
+          const testEntries = Object.entries(referenceData);
+          console.log('Building charts for', testEntries.length, 'tests');
+          
+          if (testEntries.length === 0) {
+            referenceChartsWrapper.innerHTML = '<p style="color: #EB5757; padding: 20px; text-align: center;">Не найдено данных для выбранных анализов. Убедитесь, что названия анализов совпадают с колонками в таблице.</p>';
+            return;
+          }
+          
+          for (const [testName, testData] of testEntries) {
+            console.log('Building chart for:', testName, 'with', testData.patients?.length || 0, 'patients');
+            
+            if (!testData || !testData.patients || testData.patients.length === 0) {
+              console.warn('No patient data for test:', testName);
+              continue;
+            }
+            const chartContainer = document.createElement('div');
+            chartContainer.className = 'reference-chart-item';
+            
+            const chartTitle = document.createElement('h3');
+            chartTitle.className = 'reference-chart-title';
+            chartTitle.textContent = testName;
+            chartContainer.appendChild(chartTitle);
+            
+            // Create simple horizontal bar chart container
+            const chartBarWrapper = document.createElement('div');
+            chartBarWrapper.className = 'reference-chart-bar-wrapper';
+            chartBarWrapper.style.position = 'relative';
+            chartBarWrapper.style.height = '120px';
+            chartBarWrapper.style.width = '100%';
+            chartBarWrapper.style.marginTop = '20px';
+            chartBarWrapper.style.marginBottom = '40px';
+            
+            chartContainer.appendChild(chartBarWrapper);
+            referenceChartsWrapper.appendChild(chartContainer);
+            
+            // Calculate min and max values for scale
+            const allValues = testData.patients.map(p => p.value);
+            const minValue = Math.min(...allValues, testData.reference_min) * 0.9;
+            const maxValue = Math.max(...allValues, testData.reference_max) * 1.1;
+            
+            // Prepare data for Chart.js scatter plot
+            // Group patients by value for stacking
+            const patientsByValue = new Map();
+            testData.patients.forEach(patient => {
+              const value = patient.value;
+              if (!patientsByValue.has(value)) {
+                patientsByValue.set(value, []);
+              }
+              patientsByValue.get(value).push(patient);
+            });
+            
+            // Create scatter data with Y offsets for stacking
+            const scatterData = [];
+            const pointSpacing = 0.15; // Vertical spacing between stacked points
+            const maxStackHeight = 2; // Maximum height for stacking
+            
+            patientsByValue.forEach((patients, value) => {
+              const stackCount = patients.length;
+              const stackHeight = Math.min(stackCount * pointSpacing, maxStackHeight);
+              const startY = -stackHeight / 2;
+              
+              patients.forEach((patient, index) => {
+                const y = startY + (index * pointSpacing);
+                scatterData.push({
+                  x: value,
+                  y: y,
+                  patient: patient,
+                  isNormal: patient.is_normal
+                });
+              });
+            });
+            
+            // Separate normal and abnormal points
+            const normalPoints = scatterData.filter(p => p.isNormal);
+            const abnormalPoints = scatterData.filter(p => !p.isNormal);
+              
+            // Create canvas for Chart.js
+            const chartCanvas = document.createElement('canvas');
+            chartBarWrapper.appendChild(chartCanvas);
+            
+            // Получаем единицы измерения для этого теста
+            const testUnit = getTestUnit(testName);
+            console.log('Test name:', testName, 'Unit:', testUnit);
+              
+            // Custom plugin for reference range box and labels
+            const referenceRangePlugin = {
+              id: 'referenceRange',
+              afterDraw: (chart) => {
+                const ctx = chart.ctx;
+                const chartArea = chart.chartArea;
+                const xScale = chart.scales.x;
+                
+                const refMin = testData.reference_min;
+                const refMax = testData.reference_max;
+                const centerY = (chartArea.top + chartArea.bottom) / 2;
+              
+                // Draw reference zone background
+                const minX = xScale.getPixelForValue(refMin);
+                const maxX = xScale.getPixelForValue(refMax);
+              
+              ctx.save();
+              
+                // Draw zone background - более мягкий цвет
+                ctx.fillStyle = 'rgba(242, 201, 76, 0.15)';
+                ctx.fillRect(minX, chartArea.top, maxX - minX, chartArea.bottom - chartArea.top);
+              
+                // Draw "норма" label - более минималистично
+              ctx.fillStyle = '#2a2a2a';
+                ctx.font = '500 11px Inter';
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillText('норма', (minX + maxX) / 2, centerY);
+              
+                // Draw reference boundary lines - более тонкие и современные
+              ctx.strokeStyle = '#F2C94C';
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([6, 4]);
+              ctx.beginPath();
+                ctx.moveTo(minX, chartArea.top);
+                ctx.lineTo(minX, chartArea.bottom);
+              ctx.stroke();
+              ctx.beginPath();
+                ctx.moveTo(maxX, chartArea.top);
+                ctx.lineTo(maxX, chartArea.bottom);
+              ctx.stroke();
+              ctx.setLineDash([]);
+              
+                // Draw unit label on X axis (под осью, по центру)
+                // Всегда показываем единицы измерения, если они определены
+                const unitText = testUnit || '';
+                if (unitText) {
+                  ctx.fillStyle = '#666666';
+                  ctx.font = '500 11px Inter';
+                  ctx.textAlign = 'center';
+                  ctx.textBaseline = 'top';
+                  // Позиция по центру оси X, под тиками
+                  const unitX = (chartArea.left + chartArea.right) / 2;
+                  const unitY = chartArea.bottom + 30;
+                  // Всегда рисуем единицы измерения
+                  ctx.fillText(unitText, unitX, unitY);
+                }
+                
+                ctx.restore();
+              }
+            };
+            
+            // Create Chart.js scatter chart
+            const chart = new Chart(chartCanvas, {
+              type: 'scatter',
+              data: {
+                datasets: [
+                  {
+                    label: 'Норма',
+                    data: normalPoints.map(p => ({ x: p.x, y: p.y, patient: p.patient })),
+                    backgroundColor: '#27AE60',
+                    borderColor: '#ffffff',
+                    borderWidth: 1.5,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    pointHoverBorderWidth: 2
+                  },
+                  {
+                    label: 'Не норма',
+                    data: abnormalPoints.map(p => ({ x: p.x, y: p.y, patient: p.patient })),
+                    backgroundColor: '#EB5757',
+                    borderColor: '#ffffff',
+                    borderWidth: 1.5,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    pointHoverBorderWidth: 2
+                  }
+                ]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                  padding: {
+                    top: 30,
+                    bottom: 70,
+                    left: 50,
+                    right: 50
+                  }
+                },
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    backgroundColor: 'rgba(42, 42, 42, 0.95)',
+                    padding: 12,
+                    titleFont: {
+                      family: 'Inter',
+                      size: 12,
+                      weight: '600'
+                    },
+                    bodyFont: {
+                      family: 'Inter',
+                      size: 11
+                    },
+                    titleColor: '#ffffff',
+                    bodyColor: '#ffffff',
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    displayColors: false,
+                    callbacks: {
+                      title: () => '',
+                      label: (context) => {
+                        const point = context.raw;
+                        const status = point.patient?.is_normal ? 'Норма' : 'Не норма';
+                        const statusColor = point.patient?.is_normal ? '#27AE60' : '#EB5757';
+                        return [
+                          `Пациент: ${point.patient?.patient_id || 'N/A'}`,
+                          `Значение: ${point.x.toFixed(2)}`,
+                          `Статус: ${status}`
+                        ];
+                      }
+                    }
+                  }
+                },
+                scales: {
+                  x: {
+                    type: 'linear',
+                    position: 'bottom',
+                    min: minValue,
+                    max: maxValue,
+                    ticks: {
+                      maxTicksLimit: 20,
+                      padding: 12,
+                      callback: function(value) {
+                        // Show only important values (with tolerance for floating point)
+                        const tolerance = (maxValue - minValue) * 0.02;
+                        if (Math.abs(value - minValue) < tolerance || 
+                            Math.abs(value - testData.reference_min) < tolerance ||
+                            Math.abs(value - testData.reference_max) < tolerance || 
+                            Math.abs(value - maxValue) < tolerance) {
+                          return value.toFixed(1);
+                        }
+                        return '';
+                      },
+                      font: {
+                        family: 'Inter',
+                        size: 11,
+                        weight: '500'
+                      },
+                      color: '#666666'
+                    },
+                    grid: {
+                      display: false
+                    },
+                    border: {
+                      color: '#e0e0e0',
+                      width: 1
+                    }
+                  },
+                  y: {
+                    display: false,
+                    min: -3,
+                    max: 3
+                  }
+                },
+                elements: {
+                  point: {
+                    hoverBorderWidth: 2
+                  }
+                },
+                interaction: {
+                  intersect: false,
+                  mode: 'nearest'
+                }
+              },
+              plugins: [referenceRangePlugin]
+            });
+            
+            // Add patient ID labels with collision detection
+            const labelPlugin = {
+              id: 'patientLabels',
+              afterDatasetsDraw: (chart) => {
+                const ctx = chart.ctx;
+                const chartArea = chart.chartArea;
+                ctx.save();
+                
+                // Собираем все точки с их позициями
+                const labelPositions = [];
+                const labelHeight = 14;
+                const labelPadding = 4;
+                
+                chart.data.datasets.forEach((dataset, datasetIndex) => {
+                  const meta = chart.getDatasetMeta(datasetIndex);
+                  dataset.data.forEach((point, index) => {
+                    const metaPoint = meta.data[index];
+                    if (metaPoint && point.patient) {
+                      const x = metaPoint.x;
+                      const y = metaPoint.y;
+                      const isNormal = datasetIndex === 0;
+                      const labelY = isNormal ? y - 10 : y + 10;
+                      
+                      labelPositions.push({
+                        x: x,
+                        y: labelY,
+                        text: point.patient.patient_id || '',
+                        isNormal: isNormal,
+                        originalY: y
+                      });
+                    }
+                  });
+                });
+                
+                // Сортируем по X для обработки слева направо
+                labelPositions.sort((a, b) => a.x - b.x);
+                
+                // Функция проверки коллизий - улучшенная
+                const hasCollision = (pos, existing) => {
+                  return existing.some(existing => {
+                    const textWidth = Math.max(ctx.measureText(pos.text).width, ctx.measureText(existing.text).width);
+                    const horizontalOverlap = Math.abs(pos.x - existing.x) < textWidth + labelPadding * 2;
+                    const verticalOverlap = Math.abs(pos.y - existing.y) < labelHeight + labelPadding * 2;
+                    return horizontalOverlap && verticalOverlap;
+                  });
+                };
+                
+                // Фильтруем метки, избегая коллизий
+                const visibleLabels = [];
+                labelPositions.forEach(pos => {
+                  if (!hasCollision(pos, visibleLabels)) {
+                    visibleLabels.push(pos);
+                  }
+                });
+                
+                // Рисуем видимые метки
+                ctx.font = '500 9px Inter';
+                    ctx.textAlign = 'center';
+                
+                visibleLabels.forEach(pos => {
+                  // Проверяем, что метка не выходит за границы chartArea
+                  const textWidth = ctx.measureText(pos.text).width;
+                  const bgPadding = 3;
+                  const labelX = pos.x;
+                  const labelY = pos.y;
+                  
+                  // Проверяем горизонтальные границы
+                  if (labelX - textWidth / 2 - bgPadding < chartArea.left || 
+                      labelX + textWidth / 2 + bgPadding > chartArea.right) {
+                    return; // Пропускаем метку, если она выходит за границы
+                  }
+                  
+                  // Проверяем вертикальные границы
+                  const labelTop = pos.isNormal ? labelY - labelHeight - bgPadding : labelY - bgPadding;
+                  const labelBottom = pos.isNormal ? labelY + bgPadding : labelY + labelHeight + bgPadding;
+                  
+                  if (labelTop < chartArea.top || labelBottom > chartArea.bottom) {
+                    return; // Пропускаем метку, если она выходит за границы
+                  }
+                  
+                  ctx.fillStyle = pos.isNormal ? '#27AE60' : '#EB5757';
+                  ctx.textBaseline = pos.isNormal ? 'bottom' : 'top';
+                  
+                  // Фон для метки (опционально, для лучшей читаемости)
+                  ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                  ctx.fillRect(
+                    labelX - textWidth / 2 - bgPadding,
+                    labelY - (pos.isNormal ? labelHeight : 0) - bgPadding,
+                    textWidth + bgPadding * 2,
+                    labelHeight + bgPadding * 2
+                  );
+                  
+                  // Текст метки
+                  ctx.fillStyle = pos.isNormal ? '#27AE60' : '#EB5757';
+                  ctx.fillText(pos.text, labelX, labelY);
+              });
+              
+              ctx.restore();
+              }
+            };
+            
+            chart.config.plugins.push(labelPlugin);
+            chart.update();
+            
+            // Handle resize
+            const resizeObserver = new ResizeObserver(() => {
+              chart.resize();
+            });
+            resizeObserver.observe(chartBarWrapper);
+            
+            // Store chart info
+            referenceCharts[testName] = {
+              chart: chart,
+              wrapper: chartBarWrapper,
+              resizeObserver: resizeObserver
+            };
+          }
+          
+          // Check if any charts were created
+          if (Object.keys(referenceCharts).length === 0) {
+            referenceChartsWrapper.innerHTML = '<p style="color: #EB5757; padding: 20px; text-align: center;">Не удалось построить графики. Возможно, в выбранных анализах нет числовых данных или они не найдены в таблице.</p>';
+            showError('Не удалось построить графики для выбранных анализов');
+          } else {
+            console.log('Successfully created', Object.keys(referenceCharts).length, 'charts');
+          }
+          
+        } catch (error) {
+          console.error('Error building reference charts:', error);
+          showError('Не удалось построить графики: ' + error.message);
+          referenceChartsWrapper.innerHTML = '<p style="color: #EB5757; padding: 20px; text-align: center;">Ошибка при построении графиков: ' + error.message + '</p>';
+        }
+      }
+      
+      // Toggle table expansion
+      toggleTableBtn.addEventListener('click', function() {
+        isTableExpanded = !isTableExpanded;
+        // Save expansion state
+        sessionStorage.setItem('isTableExpanded', isTableExpanded.toString());
+        renderTableRows();
+        updateToggleButton();
+        
+        // Smooth scroll to table if expanding
+        if (isTableExpanded) {
+          setTimeout(() => {
+            document.getElementById('tableSection').scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }, 100);
+        }
+      });
+      
+      function updateToggleButton() {
+        if (!toggleTableBtn) return;
+        
+        const icon = toggleTableBtn.querySelector('i');
+        const text = toggleTableBtn.querySelector('span');
+        
+        if (!transformedTableData || !transformedTableData.data) {
+          toggleTableBtn.style.display = 'none';
+          return;
+        }
+        
+        const data = transformedTableData.data || [];
+        
+        // Показываем кнопку если есть данные (всегда, не только если больше 10 строк)
+        if (data.length > 0) {
+          toggleTableBtn.style.display = 'flex';
+          
+          if (isTableExpanded) {
+            icon.className = 'fas fa-chevron-up';
+            text.textContent = 'Свернуть таблицу';
+          } else {
+            icon.className = 'fas fa-chevron-down';
+            text.textContent = 'Показать все строки';
+          }
+        } else {
+          toggleTableBtn.style.display = 'none';
+        }
+      }
+      
+      function renderTableRows() {
+        const tableBody = document.getElementById('tableBody');
+        const tableInfo = document.getElementById('tableInfo');
+        
+        if (!transformedTableData) {
+          return;
+        }
+        
+        const columns = transformedTableData.columns || [];
+        const data = transformedTableData.data || [];
+        
+        // Clear previous rows
+        tableBody.innerHTML = '';
+        
+        // Determine how many rows to show
+        const rowsToShow = isTableExpanded ? data.length : Math.min(10, data.length);
+        const rowsToRender = data.slice(0, rowsToShow);
+        
+        // Create rows - each row is one patient
+        rowsToRender.forEach((row, index) => {
+          const tr = document.createElement('tr');
+          tr.style.cursor = 'pointer';
+          tr.classList.add('clickable-row');
+          
+          // Add click handler
+          tr.addEventListener('click', function() {
+            // Find actual index in full data array
+            const actualIndex = data.indexOf(row);
+            const rowData = {
+              tableId: currentTableId,
+              rowIndex: actualIndex,
+              rowData: row,
+              columns: columns,
+              filename: allTableData.filename
+            };
+            
+            // Store row data in sessionStorage
+            sessionStorage.setItem('selectedRow', JSON.stringify(rowData));
+            
+            // Navigate to details page
+            window.location.href = 'row-details.html';
+          });
+          
+          // Render cells for each column (analysis)
+          columns.forEach(column => {
+            const td = document.createElement('td');
+            const value = row[column];
+            // Форматируем значение ячейки (особенно даты)
+            td.textContent = formatCellValue(value, column);
+            tr.appendChild(td);
+          });
+          tableBody.appendChild(tr);
+        });
+        
+        // Update table info to show current displayed rows
+        if (transformedTableData.data.length > 0) {
+          const totalRows = transformedTableData.data.length;
+          const patientIdColumn = transformedTableData.patientIdColumn;
+          
+          // Подсчитываем колонки с информацией о пациенте и анализы
+          const patientInfoCols = columns.filter(col => 
+            isPatientInfoColumn(col, patientIdColumn)
+          );
+          const analysisCols = columns.filter(col => 
+            !isPatientInfoColumn(col, patientIdColumn)
+          );
+          
+          let infoHtml = '';
+          // Не выводим ID таблицы и название файла в информационном блоке
+          infoHtml += `<span><strong>Размер:</strong> ${totalRows} пациентов, ${patientInfoCols.length} инфо-полей, ${analysisCols.length} анализов (показано: ${rowsToShow} строк)</span>`;
+          if (allTableData.created_at) {
+            const date = new Date(allTableData.created_at);
+            infoHtml += `<span><strong>Загружено:</strong> ${date.toLocaleString('ru-RU')}</span>`;
+          }
+          tableInfo.innerHTML = infoHtml;
+        }
+        
+        // Показываем кнопку если есть данные (всегда видима, не только если больше 10 строк)
+        if (data.length > 0) {
+          toggleTableBtn.style.display = 'flex';
+        } else {
+          toggleTableBtn.style.display = 'none';
+        }
+      }
+
+      // Handle file selection and form submission
+      fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          fileName.textContent = `Выбран файл: ${file.name}`;
+          fileName.style.display = 'block';
+          hideMessages();
+          
+          // Auto-submit after file selection
+          setTimeout(() => {
+            uploadForm.dispatchEvent(new Event('submit'));
+          }, 100);
+        } else {
+          fileName.style.display = 'none';
+        }
+      });
+
+      // Handle form submission
+      uploadForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const file = fileInput.files[0];
+        if (!file) {
+          showError('Пожалуйста, выберите файл для загрузки');
+          return;
+        }
+
+        // Validate file type
+        const validExtensions = ['csv', 'json', 'xlsx', 'xls'];
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        
+        if (!validExtensions.includes(fileExtension)) {
+          showError(`Неподдерживаемый формат файла. Поддерживаются: ${validExtensions.join(', ').toUpperCase()}`);
+          return;
+        }
+
+        // Hide previous messages
+        hideMessages();
+        
+        // Show loading indicator
+        loadingIndicator.style.display = 'flex';
+        uploadForm.style.opacity = '0.5';
+        uploadForm.style.pointerEvents = 'none';
+
+        try {
+          const formData = new FormData();
+          formData.append('file', file);
+
+          const response = await fetch(`${API_BASE_URL}/api/tables/upload`, {
+            method: 'POST',
+            body: formData
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ detail: 'Ошибка загрузки файла' }));
+            throw new Error(errorData.detail || `Ошибка: ${response.status} ${response.statusText}`);
+          }
+
+          const data = await response.json();
+          
+          // Show success message
+          showSuccess(data.message || 'Файл успешно загружен!');
+          
+          // Load and display table data
+          if (data.table_id) {
+            currentTableId = data.table_id;
+            // Save table ID to sessionStorage
+            sessionStorage.setItem('currentTableId', data.table_id);
+            await loadAndDisplayTable(data.table_id);
+            await loadAndDisplayChart(data.table_id);
+          }
+          
+        } catch (error) {
+          console.error('Upload error:', error);
+          showError(error.message || 'Произошла ошибка при загрузке файла');
+        } finally {
+          // Hide loading indicator
+          loadingIndicator.style.display = 'none';
+          uploadForm.style.opacity = '1';
+          uploadForm.style.pointerEvents = 'auto';
+        }
+      });
+
+      function hideMessages() {
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+      }
+
+      async function loadAndDisplayTable(tableId) {
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/tables/${tableId}`);
+          
+          if (!response.ok) {
+            throw new Error('Не удалось загрузить данные таблицы');
+          }
+          
+          const tableData = await response.json();
+          
+          // Save table data to sessionStorage for restoration
+          sessionStorage.setItem('tableData', JSON.stringify(tableData));
+          
+          // Display table
+          displayTable(tableData);
+          
+        } catch (error) {
+          console.error('Error loading table:', error);
+          showError('Не удалось загрузить данные таблицы');
+        }
+      }
+
+      /**
+       * Преобразует данные в формат: одна строка = один пациент, колонки = анализы
+       */
+      function transformTableData(tableData) {
+        const columns = tableData.columns || [];
+        const data = tableData.data || [];
+        
+        if (data.length === 0) {
+          return { columns: [], data: [], patientIdColumn: null };
+        }
+        
+        // Ищем колонку с ID пациента
+        let patientIdColumn = null;
+        const patientIdVariants = ['patient_id', 'id', 'patient id', 'пациент', 'patient', 'subject_id', 'subject.subjectGuid'];
+        
+        for (const col of columns) {
+          const colLower = col.toLowerCase();
+          if (patientIdVariants.some(variant => colLower.includes(variant.toLowerCase()))) {
+            patientIdColumn = col;
+            break;
+          }
+        }
+        
+        // Если не нашли колонку с ID, используем первую колонку или создаем индекс
+        if (!patientIdColumn && columns.length > 0) {
+          patientIdColumn = columns[0];
+        }
+        
+        // Определяем, в каком формате данные
+        // Проверяем, есть ли колонки типа "test_name"/"test" И "value"/"значение" одновременно (длинный формат)
+        const testNameIndicators = ['test_name', 'test', 'analysis', 'анализ'];
+        const valueIndicators = ['value', 'значение', 'result', 'результат'];
+        
+        const hasTestNameColumn = columns.some(col => {
+          const colLower = col.toLowerCase();
+          return testNameIndicators.some(indicator => colLower === indicator || colLower.includes(indicator));
+        });
+        
+        const hasValueColumn = columns.some(col => {
+          const colLower = col.toLowerCase();
+          return valueIndicators.some(indicator => colLower === indicator || colLower.includes(indicator));
+        });
+        
+        // Данные в длинном формате только если есть ОБА: колонка с названием теста И колонка со значением
+        const isLongFormat = hasTestNameColumn && hasValueColumn;
+        
+        if (isLongFormat) {
+          // Преобразуем из длинного формата в широкий
+          return transformFromLongFormat(data, columns, patientIdColumn);
+        } else {
+          // Данные уже в широком формате, просто используем их
+          // Убеждаемся, что patient_id - первая колонка
+          const otherColumns = columns.filter(col => col !== patientIdColumn);
+          const newColumns = patientIdColumn ? [patientIdColumn, ...otherColumns] : columns;
+          
+          return {
+            columns: newColumns,
+            data: data,
+            patientIdColumn: patientIdColumn
+          };
+        }
+      }
+      
+      /**
+       * Преобразует данные из длинного формата (patient_id, test_name, value) в широкий
+       */
+      function transformFromLongFormat(data, columns, patientIdColumn) {
+        // Находим колонки для test_name и value
+        let testNameColumn = null;
+        let valueColumn = null;
+        
+        const testNameVariants = ['test_name', 'test', 'analysis', 'анализ', 'name'];
+        const valueVariants = ['value', 'значение', 'result', 'результат'];
+        
+        for (const col of columns) {
+          const colLower = col.toLowerCase();
+          if (!testNameColumn && testNameVariants.some(variant => colLower.includes(variant))) {
+            testNameColumn = col;
+          }
+          if (!valueColumn && valueVariants.some(variant => colLower.includes(variant))) {
+            valueColumn = col;
+          }
+        }
+        
+        if (!testNameColumn || !valueColumn) {
+          // Не можем преобразовать, возвращаем исходные данные
+          return {
+            columns: columns,
+            data: data,
+            patientIdColumn: patientIdColumn
+          };
+        }
+        
+        // Определяем метаданные колонки (все, кроме patientIdColumn, testNameColumn, valueColumn)
+        const metadataColumns = columns.filter(col => 
+          col !== patientIdColumn && col !== testNameColumn && col !== valueColumn
+        );
+        
+        // Группируем по patient_id
+        const patientsMap = new Map();
+        const testNamesSet = new Set();
+        
+        data.forEach(row => {
+          const patientId = row[patientIdColumn] || 'Unknown';
+          const testName = row[testNameColumn];
+          const value = row[valueColumn];
+          
+          if (!patientsMap.has(patientId)) {
+            // Создаем объект с patient_id и всеми метаданными
+            const patientData = { [patientIdColumn]: patientId };
+            // Сохраняем все метаданные колонки
+            metadataColumns.forEach(metaCol => {
+              if (row[metaCol] !== undefined) {
+                patientData[metaCol] = row[metaCol];
+              }
+            });
+            patientsMap.set(patientId, patientData);
+          }
+          
+          if (testName) {
+            testNamesSet.add(testName);
+            patientsMap.get(patientId)[testName] = value;
+          }
+        });
+        
+        // Создаем массив колонок: patient_id + метаданные + все анализы
+        const testNames = Array.from(testNamesSet).sort();
+        const newColumns = patientIdColumn 
+          ? [patientIdColumn, ...metadataColumns, ...testNames]
+          : [...metadataColumns, ...testNames];
+        
+        // Преобразуем Map в массив
+        const newData = Array.from(patientsMap.values());
+        
+        return {
+          columns: newColumns,
+          data: newData,
+          patientIdColumn: patientIdColumn
+        };
+      }
+
+      /**
+       * Определяет, является ли колонка информацией о пациенте (не анализом)
+       */
+      function isPatientInfoColumn(column, patientIdColumn) {
+        if (column === patientIdColumn) return true;
+        
+        const colLower = column.toLowerCase();
+        // Метadata колонки (информация о пациенте)
+        const patientInfoIndicators = [
+          'date', 'дата', 
+          'sex', 'пол', 'gender',
+          'age', 'возраст',
+          'name', 'имя', 'фамилия',
+          'birth', 'рождение'
+        ];
+        
+        return patientInfoIndicators.some(indicator => colLower.includes(indicator));
+      }
+      
+      /**
+       * Форматирует значение ячейки, особенно даты
+       */
+      function formatCellValue(value, column) {
+        if (value === null || value === undefined || value === '') {
+          return '';
+        }
+        
+        // Проверяем, является ли значение датой
+        const colLower = (column || '').toLowerCase();
+        const isDateColumn = colLower.includes('date') || colLower.includes('дата') || 
+                            colLower.includes('birth') || colLower.includes('рождение');
+        
+        // Если это колонка с датой или значение похоже на дату, пытаемся форматировать
+        if (isDateColumn || typeof value === 'string') {
+          // Проверяем различные форматы дат
+          const dateFormats = [
+            /^\d{4}-\d{2}-\d{2}$/, // YYYY-MM-DD
+            /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/, // ISO datetime
+            /^\d{2}\.\d{2}\.\d{4}$/, // DD.MM.YYYY
+            /^\d{2}\/\d{2}\/\d{4}$/, // DD/MM/YYYY
+          ];
+          
+          // Проверяем, является ли строка датой
+          const looksLikeDate = dateFormats.some(format => format.test(value)) || 
+                               !isNaN(Date.parse(value));
+          
+          if (looksLikeDate) {
+            try {
+              const date = new Date(value);
+              if (!isNaN(date.getTime())) {
+                // Форматируем дату в читаемый формат DD.MM.YYYY
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}.${month}.${year}`;
+              }
+            } catch (e) {
+              // Если не удалось распарсить, возвращаем как есть
+            }
+          }
+        }
+        
+        // Для числовых значений форматируем, если это большое число
+        if (typeof value === 'number') {
+          // Если число очень большое и выглядит как timestamp (миллисекунды с 1970)
+          if (value > 1000000000000 && value < 9999999999999) {
+            try {
+              const date = new Date(value);
+              if (!isNaN(date.getTime())) {
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}.${month}.${year}`;
+              }
+            } catch (e) {
+              // Если не удалось распарсить, возвращаем как есть
+            }
+          }
+          // Для обычных чисел форматируем с ограниченной точностью
+          if (value % 1 !== 0) {
+            return value.toFixed(2).replace(/\.?0+$/, '');
+          }
+        }
+        
+        return String(value);
+      }
+      
+      /**
+       * Преобразует техническое название колонки в человекочитаемое
+       */
+      function getDisplayColumnName(column, patientIdColumn) {
+        if (column === patientIdColumn) {
+          return 'Пациент';
+        }
+        
+        // Если есть test_names из данных таблицы, используем их для анализов
+        // Поддерживаем оба формата: строку и объект {name, unit}
+        if (testNamesMap && testNamesMap[column]) {
+          const nameData = testNamesMap[column];
+          if (typeof nameData === 'object' && nameData !== null && nameData.name) {
+            return nameData.name;
+          }
+          return nameData; // Простой формат: строка
+        }
+        
+        const colLower = column.toLowerCase();
+        
+        // Маппинг технических названий на человекочитаемые для метаданных
+        const displayNameMap = {
+          'date': 'Дата',
+          'дата': 'Дата',
+          'sex': 'Пол',
+          'пол': 'Пол',
+          'gender': 'Пол',
+          'age': 'Возраст',
+          'возраст': 'Возраст',
+          'name': 'Имя',
+          'имя': 'Имя',
+          'birth': 'Дата рождения',
+          'рождение': 'Дата рождения'
+        };
+        
+        for (const [key, displayName] of Object.entries(displayNameMap)) {
+          if (colLower.includes(key)) {
+            return displayName;
+          }
+        }
+        
+        // Для анализов возвращаем название как есть (или test_code, если нет test_name)
+        return column;
+      }
+
+      function displayTable(tableData) {
+        const tableSection = document.getElementById('tableSection');
+        const tableHead = document.getElementById('tableHead');
+        const tableInfo = document.getElementById('tableInfo');
+        const tableTitleElement = document.querySelector('.table-title');
+        
+        // Store all table data (original)
+        allTableData = tableData;
+        
+        // Сохраняем test_names из данных таблицы (если есть)
+        testNamesMap = tableData.test_names || {};
+        
+        // Определяем название таблицы из JSON (если есть сопоставление)
+        // Если есть test_names, берем первое человекочитаемое название как пример
+        // Или используем название из JSON данных, если оно есть
+        let tableDisplayName = null;
+        if (tableData.table_name) {
+          tableDisplayName = tableData.table_name;
+        } else if (tableData.display_name) {
+          tableDisplayName = tableData.display_name;
+        } else if (tableData.test_names && Object.keys(tableData.test_names).length > 0) {
+          // Используем первое человекочитаемое название из test_names как индикатор
+          // или просто используем filename
+          const firstTestName = Object.values(tableData.test_names)[0];
+          if (typeof firstTestName === 'object' && firstTestName !== null && firstTestName.name) {
+            // Если test_names содержит объекты с названиями, это указывает на сопоставление с JSON
+            tableDisplayName = tableData.filename || 'Загруженная таблица';
+          }
+        }
+        
+        // Обновляем название таблицы
+        if (tableTitleElement) {
+          if (tableDisplayName && tableDisplayName !== tableData.filename) {
+            tableTitleElement.textContent = tableDisplayName;
+          } else {
+            tableTitleElement.textContent = tableData.filename || 'Загруженная таблица';
+          }
+        }
+        
+        // Transform data to wide format: one row per patient
+        transformedTableData = transformTableData(tableData);
+        
+        // Restore expansion state from sessionStorage
+        const savedExpanded = sessionStorage.getItem('isTableExpanded');
+        isTableExpanded = savedExpanded === 'true';
+        
+        // Show table section
+        tableSection.style.display = 'block';
+        
+        // Scroll to table
+        tableSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // Clear previous data
+        tableHead.innerHTML = '';
+        
+        // Display table info (без ID таблицы)
+        let infoHtml = '';
+        if (transformedTableData.data.length > 0) {
+          const totalRows = transformedTableData.data.length;
+          const displayedRows = Math.min(10, totalRows);
+          const totalColumns = transformedTableData.columns.length;
+          
+          // Подсчитываем анализы (колонки, не относящиеся к информации о пациенте)
+          const patientIdColumn = transformedTableData.patientIdColumn;
+          const analysisColumns = transformedTableData.columns.filter(col => 
+            !isPatientInfoColumn(col, patientIdColumn)
+          );
+          const patientInfoColumns = transformedTableData.columns.filter(col => 
+            isPatientInfoColumn(col, patientIdColumn)
+          );
+          
+          infoHtml += `<span><strong>Размер:</strong> ${totalRows} пациентов, ${patientInfoColumns.length} инфо-полей, ${analysisColumns.length} анализов (показано: ${displayedRows} строк)</span>`;
+        }
+        if (tableData.created_at) {
+          const date = new Date(tableData.created_at);
+          infoHtml += `<span><strong>Загружено:</strong> ${date.toLocaleString('ru-RU')}</span>`;
+        }
+        tableInfo.innerHTML = infoHtml;
+        
+        // Get columns from transformed data
+        const columns = transformedTableData.columns || [];
+        const patientIdColumn = transformedTableData.patientIdColumn;
+        
+        // Разделяем колонки на группы: информация о пациенте и анализы
+        const patientInfoColumns = [];
+        const analysisColumns = [];
+        
+        columns.forEach(column => {
+          if (isPatientInfoColumn(column, patientIdColumn)) {
+            patientInfoColumns.push(column);
+          } else {
+            analysisColumns.push(column);
+          }
+        });
+        
+        // Сортируем: сначала информация о пациенте, потом анализы
+        const sortedColumns = [...patientInfoColumns, ...analysisColumns];
+        
+        // Create header
+        const headerRow = document.createElement('tr');
+        sortedColumns.forEach(column => {
+          const th = document.createElement('th');
+          // Используем человекочитаемое название для заголовка
+          const displayName = getDisplayColumnName(column, patientIdColumn);
+          th.textContent = displayName;
+          // Сохраняем оригинальное название для доступа к данным
+          th.setAttribute('data-original-column', column);
+          headerRow.appendChild(th);
+        });
+        tableHead.appendChild(headerRow);
+        
+        // Обновляем порядок колонок в transformedTableData для правильного отображения строк
+        transformedTableData.columns = sortedColumns;
+        
+        // Render rows (will show only 10 by default)
+        renderTableRows();
+        updateToggleButton();
+        
+        // Убеждаемся, что кнопка видна если есть данные
+        const data = transformedTableData.data || [];
+        if (data.length > 0) {
+          toggleTableBtn.style.display = 'flex';
+        }
+      }
+
+      function showSuccess(message) {
+        successMessage.style.display = 'flex';
+        const successText = successMessage.querySelector('.success-text');
+        successText.textContent = message;
+      }
+
+      function showError(message) {
+        errorMessage.style.display = 'flex';
+        const errorText = errorMessage.querySelector('.error-text');
+        errorText.textContent = message;
+      }
+
+      async function loadAndDisplayChart(tableId) {
+        try {
+          const response = await fetch(`${API_BASE_URL}/api/tables/${tableId}/pie-chart`);
+          
+          if (!response.ok) {
+            console.warn('Не удалось загрузить данные для диаграммы');
+            return;
+          }
+          
+          const chartData = await response.json();
+          
+          // Display chart
+          displayChart(chartData);
+          
+        } catch (error) {
+          console.error('Error loading chart:', error);
+        }
+      }
+
+      /**
+       * Вычисляет статистику из данных таблицы
+       */
+      function calculateStatistics() {
+        if (!transformedTableData || !transformedTableData.data || transformedTableData.data.length === 0) {
+          return null;
+        }
+        
+        const columns = transformedTableData.columns || [];
+        const data = transformedTableData.data || [];
+        const patientIdColumn = transformedTableData.patientIdColumn;
+        
+        // Фильтруем колонки анализов (не метаданные)
+        const analysisColumns = columns.filter(col => 
+          !isPatientInfoColumn(col, patientIdColumn)
+        );
+        
+        // Общая статистика
+        const totalPatients = data.length;
+        const totalTests = analysisColumns.length;
+        
+        // Подсчитываем заполненность данных
+        let totalValues = 0;
+        let filledValues = 0;
+        const testFillCount = {}; // Сколько значений заполнено для каждого теста
+        
+        analysisColumns.forEach(testCol => {
+          testFillCount[testCol] = 0;
+          data.forEach(patient => {
+            totalValues++;
+            const value = patient[testCol];
+            if (value !== null && value !== undefined && value !== '') {
+              filledValues++;
+              testFillCount[testCol]++;
+            }
+          });
+        });
+        
+        // Среднее количество анализов на пациента
+        let totalTestsPerPatient = 0;
+        const testsPerPatientDistribution = {}; // Распределение количества анализов
+        
+        data.forEach(patient => {
+          let patientTestCount = 0;
+          analysisColumns.forEach(testCol => {
+            const value = patient[testCol];
+            if (value !== null && value !== undefined && value !== '') {
+              patientTestCount++;
+            }
+          });
+          totalTestsPerPatient += patientTestCount;
+          
+          // Распределение
+          if (!testsPerPatientDistribution[patientTestCount]) {
+            testsPerPatientDistribution[patientTestCount] = 0;
+          }
+          testsPerPatientDistribution[patientTestCount]++;
+        });
+        
+        const avgTestsPerPatient = totalPatients > 0 ? (totalTestsPerPatient / totalPatients).toFixed(1) : 0;
+        const dataCompleteness = totalValues > 0 ? ((filledValues / totalValues) * 100).toFixed(1) : 0;
+        
+        // Топ анализов по заполненности
+        const testFillStats = Object.entries(testFillCount)
+          .map(([test, count]) => {
+            // Получаем название теста с поддержкой обоих форматов
+            let testName = getDisplayColumnName(test, patientIdColumn);
+            if (testNamesMap && testNamesMap[test]) {
+              const nameData = testNamesMap[test];
+              if (typeof nameData === 'object' && nameData !== null && nameData.name) {
+                testName = nameData.name;
+              } else if (typeof nameData === 'string') {
+                testName = nameData;
+              }
+            }
+            return {
+              test: testName,
+              testCode: test,
+              count: count,
+              percentage: totalPatients > 0 ? ((count / totalPatients) * 100).toFixed(1) : 0
+            };
+          })
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 10); // Топ 10
+        
+        // Статистика по значениям (попытка определить норма/не норма, если возможно)
+        let normalCount = 0;
+        let abnormalCount = 0;
+        
+        // Попытка определить числовые значения и проверить их на нормальность
+        // Это простая проверка, можно улучшить с референсными значениями
+        analysisColumns.forEach(testCol => {
+          data.forEach(patient => {
+            const value = patient[testCol];
+            if (value !== null && value !== undefined && value !== '') {
+              const numValue = parseFloat(value);
+              if (!isNaN(numValue)) {
+                // Простая проверка: если значение в разумных пределах, считаем нормальным
+                // Это можно улучшить с помощью референсных значений
+                if (numValue > 0 && numValue < 10000) {
+                  normalCount++;
+                } else {
+                  abnormalCount++;
+                }
+              }
+            }
+          });
+        });
+        
+        return {
+          totalPatients,
+          totalTests,
+          avgTestsPerPatient,
+          dataCompleteness,
+          totalValues,
+          filledValues,
+          testFillStats,
+          testsPerPatientDistribution,
+          normalCount,
+          abnormalCount
+        };
+      }
+      
+      /**
+       * Создает статистические карточки
+       */
+      function createStatCards(statistics) {
+        if (!statistics) return;
+        
+        const statsGrid = document.getElementById('statsGrid');
+        statsGrid.innerHTML = '';
+        
+        const cards = [
+          {
+            title: 'Всего пациентов',
+            value: statistics.totalPatients,
+            icon: 'fa-users',
+            color: '#2F80ED',
+            bgColor: 'rgba(47, 128, 237, 0.1)'
+          },
+          {
+            title: 'Всего анализов',
+            value: statistics.totalTests,
+            icon: 'fa-vial',
+            color: '#27AE60',
+            bgColor: 'rgba(39, 174, 96, 0.1)'
+          },
+          {
+            title: 'Среднее анализов на пациента',
+            value: statistics.avgTestsPerPatient,
+            icon: 'fa-chart-line',
+            color: '#F2C94C',
+            bgColor: 'rgba(242, 201, 76, 0.1)'
+          }
+        ];
+        
+        cards.forEach(card => {
+          const cardElement = document.createElement('div');
+          cardElement.className = 'stat-card';
+          cardElement.innerHTML = `
+            <div class="stat-card-icon" style="background: ${card.bgColor}; color: ${card.color};">
+              <i class="fas ${card.icon}"></i>
+            </div>
+            <div class="stat-card-content">
+              <div class="stat-card-value">${card.value}</div>
+              <div class="stat-card-title">${card.title}</div>
+            </div>
+          `;
+          statsGrid.appendChild(cardElement);
+        });
+      }
+      
+      /**
+       * Создает график распределения анализов
+       */
+      function createTestsBarChart(statistics) {
+        if (!statistics || !statistics.testFillStats || statistics.testFillStats.length === 0) return;
+        
+        const canvas = document.getElementById('testsBarChart');
+        if (!canvas) return;
+        
+        // Уничтожаем предыдущий график
+        if (dashboardCharts.testsBar) {
+          dashboardCharts.testsBar.destroy();
+        }
+        
+        const topTests = statistics.testFillStats.slice(0, 8); // Топ 8
+        
+        const ctx = canvas.getContext('2d');
+        dashboardCharts.testsBar = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: topTests.map(t => t.test.length > 20 ? t.test.substring(0, 17) + '...' : t.test),
+            datasets: [{
+              label: 'Количество значений',
+              data: topTests.map(t => t.count),
+              backgroundColor: 'rgba(47, 128, 237, 0.8)',
+              borderColor: '#2F80ED',
+              borderWidth: 2,
+              borderRadius: 8
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                backgroundColor: 'rgba(42, 42, 42, 0.95)',
+                padding: 12,
+                titleFont: {
+                  family: 'Inter',
+                  size: 12,
+                  weight: '600'
+                },
+                bodyFont: {
+                  family: 'Inter',
+                  size: 11
+                },
+                titleColor: '#ffffff',
+                bodyColor: '#ffffff',
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                borderWidth: 1,
+                cornerRadius: 8,
+                callbacks: {
+                  title: (items) => {
+                    const index = items[0].dataIndex;
+                    return statistics.testFillStats[index].test;
+                  },
+                  label: (context) => {
+                    const index = context.dataIndex;
+                    const stat = statistics.testFillStats[index];
+                    return [
+                      `Заполнено: ${stat.count} значений`,
+                      `Процент: ${stat.percentage}%`
+                    ];
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  font: {
+                    family: 'Inter',
+                    size: 11
+                  },
+                  color: '#666666'
+                },
+                grid: {
+                  color: 'rgba(0, 0, 0, 0.05)'
+                }
+              },
+              x: {
+                ticks: {
+                  font: {
+                    family: 'Inter',
+                    size: 10
+                  },
+                  color: '#666666',
+                  maxRotation: 45,
+                  minRotation: 45
+                },
+                grid: {
+                  display: false
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      /**
+       * Создает график распределения анализов на пациента
+       */
+      function createPatientAnalysisChart(statistics) {
+        if (!statistics || !statistics.testsPerPatientDistribution) return;
+        
+        const canvas = document.getElementById('patientAnalysisChart');
+        if (!canvas) return;
+        
+        // Уничтожаем предыдущий график
+        if (dashboardCharts.patientAnalysis) {
+          dashboardCharts.patientAnalysis.destroy();
+        }
+        
+        const distribution = statistics.testsPerPatientDistribution;
+        const labels = Object.keys(distribution).sort((a, b) => parseInt(a) - parseInt(b));
+        const values = labels.map(key => distribution[key]);
+        
+        const ctx = canvas.getContext('2d');
+        dashboardCharts.patientAnalysis = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels.map(l => `${l} анализ${getRussianPlural(parseInt(l))}`),
+            datasets: [{
+              label: 'Количество пациентов',
+              data: values,
+              backgroundColor: 'rgba(39, 174, 96, 0.8)',
+              borderColor: '#27AE60',
+              borderWidth: 2,
+              borderRadius: 8
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                backgroundColor: 'rgba(42, 42, 42, 0.95)',
+                padding: 12,
+                titleFont: {
+                  family: 'Inter',
+                  size: 12,
+                  weight: '600'
+                },
+                bodyFont: {
+                  family: 'Inter',
+                  size: 11
+                },
+                titleColor: '#ffffff',
+                bodyColor: '#ffffff',
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                borderWidth: 1,
+                cornerRadius: 8,
+                callbacks: {
+                  label: (context) => {
+                    return `Пациентов: ${context.parsed.y}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  stepSize: 1,
+                  font: {
+                    family: 'Inter',
+                    size: 11
+                  },
+                  color: '#666666'
+                },
+                grid: {
+                  color: 'rgba(0, 0, 0, 0.05)'
+                }
+              },
+              x: {
+                ticks: {
+                  font: {
+                    family: 'Inter',
+                    size: 11
+                  },
+                  color: '#666666'
+                },
+                grid: {
+                  display: false
+                }
+              }
+            }
+          }
+        });
+      }
+      
+      /**
+       * Помощник для правильного склонения слова "анализ"
+       */
+      function getRussianPlural(count) {
+        const lastDigit = count % 10;
+        const lastTwoDigits = count % 100;
+        
+        if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+          return 'ов';
+        } else if (lastDigit === 1) {
+          return '';
+        } else if (lastDigit >= 2 && lastDigit <= 4) {
+          return 'а';
+        } else {
+          return 'ов';
+        }
+      }
+      
+      function displayChart(chartData) {
+        const chartSection = document.getElementById('chartSection');
+        const chartCanvas = document.getElementById('pieChart');
+        
+        // Show chart section
+        chartSection.style.display = 'block';
+        
+        // Вычисляем статистику
+        const statistics = calculateStatistics();
+        
+        // Создаем статистические карточки
+        createStatCards(statistics);
+        
+        // Уничтожаем предыдущие графики дашборда
+        Object.values(dashboardCharts).forEach(chart => {
+          if (chart && chart.destroy) {
+            chart.destroy();
+          }
+        });
+        dashboardCharts = {};
+        
+        // Destroy existing pie chart if it exists
+        if (pieChart) {
+          pieChart.destroy();
+        }
+        
+        // Get canvas context
+        const ctx = chartCanvas.getContext('2d');
+        
+        // Calculate total for percentages
+        const dataset = chartData.datasets && chartData.datasets[0] ? chartData.datasets[0] : { data: [] };
+        const data = dataset.data || [];
+        const total = data.reduce((a, b) => a + b, 0);
+        
+        // Create new pie chart
+        pieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: chartData.labels || [],
+            datasets: [{
+              data: data,
+              backgroundColor: dataset.backgroundColor || [],
+              borderWidth: 4,
+              borderColor: '#ffffff',
+              hoverBorderWidth: 6,
+              hoverOffset: 8
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              intersect: false,
+              mode: 'index'
+            },
+            layout: {
+              padding: {
+                top: 20,
+                bottom: 20,
+                left: 20,
+                right: 20
+              }
+            },
+            plugins: {
+              legend: {
+                position: 'bottom',
+                align: 'center',
+                labels: {
+                  padding: 15,
+                  font: {
+                    family: 'Inter',
+                    size: 12,
+                    weight: '500'
+                  },
+                  color: '#2a2a2a',
+                  usePointStyle: true,
+                  pointStyle: 'circle',
+                  boxWidth: 12,
+                  boxHeight: 12,
+                  generateLabels: function(chart) {
+                    const data = chart.data;
+                    if (data.labels.length && data.datasets.length) {
+                      const dataset = data.datasets[0];
+                      const total = dataset.data.reduce((a, b) => a + b, 0);
+                      
+                      return data.labels.map((label, i) => {
+                        const value = dataset.data[i] || 0;
+                        const percentage = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+                        const bgColor = dataset.backgroundColor[i] || '#cccccc';
+                        
+                        return {
+                          text: `${label} — ${value} (${percentage}%)`,
+                          fillStyle: bgColor,
+                          hidden: false,
+                          index: i,
+                          fontColor: '#2a2a2a',
+                          lineWidth: 0,
+                          pointStyle: 'circle'
+                        };
+                      });
+                    }
+                    return [];
+                  }
+                }
+              },
+              tooltip: {
+                backgroundColor: 'rgba(42, 42, 42, 0.95)',
+                padding: 12,
+                titleFont: {
+                  family: 'Inter',
+                  size: 12,
+                  weight: '600'
+                },
+                bodyFont: {
+                  family: 'Inter',
+                  size: 11
+                },
+                titleColor: '#ffffff',
+                bodyColor: '#ffffff',
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                borderWidth: 1,
+                cornerRadius: 8
+              }
+            },
+            animation: {
+              animateRotate: true,
+              animateScale: true,
+              duration: 1200,
+              easing: 'easeOutQuart'
+            },
+            elements: {
+              arc: {
+                borderWidth: 4,
+                borderColor: '#ffffff',
+                borderRadius: 4,
+                hoverBorderWidth: 6,
+                hoverOffset: 10
+              }
+            }
+          }
+        });
+        
+        // Создаем дополнительные графики на основе статистики
+        if (statistics) {
+          createTestsBarChart(statistics);
+          createPatientAnalysisChart(statistics);
+        }
+        
+        // Scroll to dashboard
+        setTimeout(() => {
+          chartSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+      
+      // Add hover effects to demo links
+      document.addEventListener('DOMContentLoaded', function() {
+        const demoLinks = document.querySelectorAll('.demo-link-btn');
+        demoLinks.forEach(link => {
+          // Hover effects are now handled by CSS
+        });
+      });
+      
+      // Restore table state on page load
+      window.addEventListener('DOMContentLoaded', async function() {
+        const savedTableId = sessionStorage.getItem('currentTableId');
+        const savedTableData = sessionStorage.getItem('tableData');
+        
+        if (savedTableId && savedTableData) {
+          try {
+            // Restore table ID
+            currentTableId = savedTableId;
+            
+            // Parse and restore table data
+            const tableData = JSON.parse(savedTableData);
+            allTableData = tableData;
+            testNamesMap = tableData.test_names || {};
+            
+            // Restore and display table
+            transformedTableData = transformTableData(tableData);
+            displayTable(tableData);
+            
+            // Restore toggle button state
+            updateToggleButton();
+            
+            // Restore chart
+            await loadAndDisplayChart(savedTableId);
+            
+            console.log('Table state restored from sessionStorage');
+          } catch (error) {
+            console.error('Error restoring table state:', error);
+            // Clear invalid sessionStorage data
+            sessionStorage.removeItem('currentTableId');
+            sessionStorage.removeItem('tableData');
+            sessionStorage.removeItem('isTableExpanded');
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+

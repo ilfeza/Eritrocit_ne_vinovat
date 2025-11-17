@@ -1,0 +1,395 @@
+[
+  {
+    "name": "Alanine Transaminase (ALT)",
+    "id": "chem.alt",
+    "min": 7,
+    "max": 52,
+    "unit": "Units per L"
+  },
+  {
+    "name": "Albumin",
+    "id": "chem.albumin",
+    "min": 3.5,
+    "max": 5.7,
+    "unit": "g per dL"
+  },
+  {
+    "name": "Alkaline Phosphatase",
+    "id": "chem.alkaline_phosphatase",
+    "min": 39,
+    "max": 117,
+    "unit": "Units per L"
+  },
+  {
+    "name": "Aspartate Aminotransferase (AST)",
+    "id": "chem.ast",
+    "min": 12,
+    "max": 39,
+    "unit": "Units per L"
+  },
+  {
+    "name": "Bilirubin, Total (T-Bili)",
+    "id": "chem.t_bili",
+    "min": 0.1,
+    "max": 1.3,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Blood Urea Nitrogen (BUN)",
+    "id": "chem.bun",
+    "min": 7,
+    "max": 25,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Calcium",
+    "id": "chem.calcium",
+    "min": 8.6,
+    "max": 10.3,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Carbon Dioxide (CO2)",
+    "id": "chem.co2",
+    "min": 21,
+    "max": 31,
+    "unit": "mmol per L"
+  },
+  {
+    "name": "Chloride (Cl)",
+    "id": "chem.cl",
+    "min": 98,
+    "max": 108,
+    "unit": "mmol per L"
+  },
+  {
+    "name": "Creatinine",
+    "id": "chem.creatinine",
+    "min": 0.7,
+    "max": 1.3,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Estimated Glomerular Filtration Rate (eGFR) - African American",
+    "id": "chem.egfr_aa",
+    "min": 0,
+    "max": 60,
+    "unit": "ml per min per 1.73 m2"
+  },
+  {
+    "name": "Estimated Glomerular Filtration Rate (eGFR) - Non-African American",
+    "id": "chem.egfr_non_aa",
+    "min": 0,
+    "max": 60,
+    "unit": "ml per min per 1.73 m3"
+  },
+  {
+    "name": "Globin",
+    "id": "chem.globin",
+    "min": 2,
+    "max": 3.5,
+    "unit": "g per dL"
+  },
+  {
+    "name": "Glucose",
+    "id": "chem.glucose",
+    "min": 70,
+    "max": 199,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Lactate Dehydrogenase",
+    "id": "chem.ldh",
+    "min": 0,
+    "max": 210,
+    "unit": "Units"
+  },
+  {
+    "name": "Magnesium",
+    "id": "chem.magnesium",
+    "min": 1.8,
+    "max": 2.4,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Phosphate",
+    "id": "chem.phosphate",
+    "min": 2.5,
+    "max": 4.5,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Potassium",
+    "id": "chem.potassium",
+    "min": 3.5,
+    "max": 5.1,
+    "unit": "mmol per L"
+  },
+  {
+    "name": "Protein, Total",
+    "id": "chem.protein",
+    "min": 6.4,
+    "max": 8.9,
+    "unit": "g per dL"
+  },
+  {
+    "name": "Sodium",
+    "id": "chem.sodium",
+    "min": 133,
+    "max": 145,
+    "unit": "mmol per L"
+  },
+  {
+    "name": "% Basophils",
+    "id": "bc.perc_basophils",
+    "min": null,
+    "max": null,
+    "unit": "percent"
+  },
+  {
+    "name": "% Eosinophils",
+    "id": "bc.perc_eosinophils",
+    "min": null,
+    "max": null,
+    "unit": "percent"
+  },
+  {
+    "name": "% Lymphocytes",
+    "id": "bc.perc_lymphocytes",
+    "min": null,
+    "max": null,
+    "unit": "percent"
+  },
+  {
+    "name": "% Monocytes",
+    "id": "bc.perc_monocytes",
+    "min": null,
+    "max": null,
+    "unit": "percent"
+  },
+  {
+    "name": "% Neutrophils",
+    "id": "bc.perc_neutrophils",
+    "min": null,
+    "max": null,
+    "unit": "percent"
+  },
+  {
+    "name": "Absolute Basophil Count",
+    "id": "bc.basophil_count",
+    "min": 0,
+    "max": 202,
+    "unit": "count per uL"
+  },
+  {
+    "name": "Absolute Eosinophil Count (AEC)",
+    "id": "bc.eosinophil_count",
+    "min": 0,
+    "max": 400,
+    "unit": "count per uL"
+  },
+  {
+    "name": "Absolute Lymphocyte Count (ALC)",
+    "id": "bc.lymphocyte_count",
+    "min": 1000,
+    "max": 4800,
+    "unit": "count per uL"
+  },
+  {
+    "name": "Absolute Monocyte Count (AMC)",
+    "id": "bc.monocyte_count",
+    "min": 200,
+    "max": 900,
+    "unit": "count per uL"
+  },
+  {
+    "name": "Absolute Neutrophil Count (ANC)",
+    "id": "bc.neutrophil_count",
+    "min": 1800,
+    "max": 6600,
+    "unit": "count per uL"
+  },
+  {
+    "name": "Hematocrit",
+    "id": "bc.hematocrit",
+    "min": 39.2,
+    "max": 50.2,
+    "unit": "percent"
+  },
+  {
+    "name": "Hemoglobin",
+    "id": "bc.hemoglobin",
+    "min": 12.1,
+    "max": 18.1,
+    "unit": "g per dL"
+  },
+  {
+    "name": "Mean Corpuscular Hemoglobin (MCH)",
+    "id": "bc.mch",
+    "min": 27.5,
+    "max": 35.1,
+    "unit": "pg"
+  },
+  {
+    "name": "Mean Corpuscular Hemoglobin Concentration (MCHC)",
+    "id": "bc.mchc",
+    "min": 32,
+    "max": 36,
+    "unit": "g per dL"
+  },
+  {
+    "name": "Mean Corpuscular Volume (MCV)",
+    "id": "bc.mcv",
+    "min": 80,
+    "max": 100,
+    "unit": "fL"
+  },
+  {
+    "name": "Mean Platelet Volume (MPV)",
+    "id": "bc.mpv",
+    "min": 7.2,
+    "max": 11.7,
+    "unit": "fL"
+  },
+  {
+    "name": "Platelet Count",
+    "id": "bc.platelet_count",
+    "min": 150,
+    "max": 400,
+    "unit": "thousand count per uL"
+  },
+  {
+    "name": "Red Blood Cell Count",
+    "id": "bc.red_blood_cell_count",
+    "min": 4.18,
+    "max": 6.09,
+    "unit": "million count per uL"
+  },
+  {
+    "name": "Red Cell Distribution Width (RDW)",
+    "id": "bc.rdw",
+    "min": 11.7,
+    "max": 14.2,
+    "unit": "percent"
+  },
+  {
+    "name": "White Blood Cell Count (WBC)",
+    "id": "bc.wbc",
+    "min": 4,
+    "max": 11.1,
+    "unit": "thousand count per uL"
+  },
+  {
+    "name": "CMV IgG Serology Result (ELISA)",
+    "id": "cmv.igg_serology",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "CMV IgG Serology Result Interpretation",
+    "id": "cmv.igg_serology_interpretation",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "Anti-CCP3",
+    "id": "infl.anti_ccp3",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "Anti-CCP31",
+    "id": "infl.anti_ccp31",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "C-Reactive Protein, High-Sensitivity (HS-CRP)",
+    "id": "infl.hs_crp",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "RFIgA Interpretation",
+    "id": "infl.rf_iga_interpretation",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "RFIgA Result",
+    "id": "infl.rf_iga_result",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "RFIgM Interpretation",
+    "id": "infl.rf_igm_interpretation",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "RFIgM Result",
+    "id": "infl.rf_igm_result",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "SED Rate-Westergren (ESR)",
+    "id": "infl.esr",
+    "min": null,
+    "max": null,
+    "unit": ""
+  },
+  {
+    "name": "Cholesterol, HDL",
+    "id": "lip.cholesterol_hdl",
+    "min": 40,
+    "max": 59,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Cholesterol, LDL",
+    "id": "lip.cholesterol_ldl",
+    "min": 57,
+    "max": 129,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Cholesterol, Non-HDL",
+    "id": "lip.cholesterol_non_hdl",
+    "min": 0,
+    "max": 189,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Cholesterol, Total",
+    "id": "lip.cholesterol_total",
+    "min": 136,
+    "max": 239,
+    "unit": "mg per dL"
+  },
+  {
+    "name": "Cholesterol/HDL Ratio",
+    "id": "lip.chlesterol_hdl_ratio",
+    "min": null,
+    "max": null,
+    "unit": "ratio"
+  },
+  {
+    "name": "Triglycerides",
+    "id": "lip.triglycerides",
+    "min": 48,
+    "max": 149,
+    "unit": "mg per dL"
+  }
+]
+
