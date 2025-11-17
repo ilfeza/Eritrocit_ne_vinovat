@@ -58,9 +58,7 @@
 Демонстрационный API для работы с предзагруженными данными пациентов и загруженными файлами:
 
 - **Работа с демо данными**:
-  - `GET /api/demo/download-file?demo_version={1|2}` - скачивание демо файла (версия 1 или 2)
-  - `GET /api/demo/patient-data?demo_version={1|2}` - получение обработанных данных пациента из демо файла
-    - Возвращает данные, сгруппированные по категориям, анализы не в норме и данные для графиков
+  - `GET /api/demo/download-file`
 
 - **Работа с данными из more_patients.csv**:
   - `GET /api/demo/patients-list` - список всех пациентов с их статистикой
@@ -72,8 +70,6 @@
 
 - **Загрузка и работа с пользовательскими данными**:
   - `POST /api/demo/upload-patient-data` - загрузка CSV файла с данными пациента
-    - Требуемые колонки: `patient_id`, `test_code`, `value`
-    - Опциональные колонки: `test_name`, `unit`, `date`, `status`
   - `GET /api/demo/patients-list-from-uploaded` - список пациентов из загруженных файлов
   - `GET /api/demo/patient-data-from-uploaded?patient_id={id}` - данные пациента из загруженных файлов
 

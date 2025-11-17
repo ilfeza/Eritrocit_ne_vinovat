@@ -885,12 +885,12 @@
                 </div>
               </div>
 
-              <!-- Indicators Table -->
+              <!-- Critical Indicators Table -->
               <div class="dashboard-card">
                 <div class="card-title">Критические показатели</div>
-                <div id="indicatorsDescription" class="indicators-description"></div>
+                <div id="criticalIndicatorsDescription" class="indicators-description"></div>
                 <div class="indicators-table-wrapper">
-                  <table class="indicators-table" id="indicatorsTable">
+                  <table class="indicators-table" id="criticalIndicatorsTable">
                     <thead>
                       <tr>
                         <th>Показатель</th>
@@ -898,7 +898,27 @@
                         <th>Референсный диапазон</th>
                       </tr>
                     </thead>
-                    <tbody id="indicatorsTableBody">
+                    <tbody id="criticalIndicatorsTableBody">
+                      <!-- Data will be inserted here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Urgent Indicators Table -->
+              <div class="dashboard-card">
+                <div class="card-title">Срочные показатели</div>
+                <div id="urgentIndicatorsDescription" class="indicators-description"></div>
+                <div class="indicators-table-wrapper">
+                  <table class="indicators-table" id="urgentIndicatorsTable">
+                    <thead>
+                      <tr>
+                        <th>Показатель</th>
+                        <th>Значение</th>
+                        <th>Референсный диапазон</th>
+                      </tr>
+                    </thead>
+                    <tbody id="urgentIndicatorsTableBody">
                       <!-- Data will be inserted here -->
                     </tbody>
                   </table>
@@ -1023,9 +1043,10 @@
         function renderDashboard(data) {
           renderPatientSummary(data);
           renderIndicatorsTable(data);
-          // Default to first group in filter
+          // Default to first group in filter, but show only 3 main parameters
           const defaultGroup = document.getElementById('chartGroupFilter').value || 'biochemistry';
-          renderDynamicsChart(data, defaultGroup);
+          userSelectedGroup = false; // Reset flag when loading new patient
+          renderDynamicsChart(data, defaultGroup, false); // Show only 3 main parameters
           renderGroups(data.groups || {});
         }
         
@@ -1229,24 +1250,54 @@
         }
         
         function renderIndicatorsTable(data) {
-          const tbody = document.getElementById('indicatorsTableBody');
-          const descriptionDiv = document.getElementById('indicatorsDescription');
-          tbody.innerHTML = '';
-          
-          // Show only critical (abnormal) tests with HIGH status
           const abnormalTests = data.abnormal_tests || [];
           
-          // Filter only HIGH status items
-          const highStatusTests = abnormalTests.filter(test => test.status === 'HIGH');
+          // Filter critical tests (HIGH status, not urgent)
+          const criticalTests = abnormalTests.filter(test => {
+            const isUrgent = test.is_stat === true || 
+                            test.urgent === true || 
+                            test.stat === true || 
+                            test.priority === 'urgent' ||
+                            test.priority === 'STAT' ||
+                            (test.priority && String(test.priority).toUpperCase() === 'URGENT') ||
+                            (test.priority && String(test.priority).toUpperCase() === 'STAT');
+            return test.status === 'HIGH' && !isUrgent;
+          });
+          
+          // Filter urgent tests (HIGH status AND urgent flag)
+          const urgentTests = abnormalTests.filter(test => {
+            const isUrgent = test.is_stat === true || 
+                            test.urgent === true || 
+                            test.stat === true || 
+                            test.priority === 'urgent' ||
+                            test.priority === 'STAT' ||
+                            (test.priority && String(test.priority).toUpperCase() === 'URGENT') ||
+                            (test.priority && String(test.priority).toUpperCase() === 'STAT');
+            return test.status === 'HIGH' && isUrgent;
+          });
+          
+          // Render critical indicators
+          renderIndicatorTable('critical', criticalTests);
+          
+          // Render urgent indicators
+          renderIndicatorTable('urgent', urgentTests);
+        }
+        
+        function renderIndicatorTable(type, tests) {
+          const tbody = document.getElementById(`${type}IndicatorsTableBody`);
+          const descriptionDiv = document.getElementById(`${type}IndicatorsDescription`);
+          tbody.innerHTML = '';
+          
+          const typeName = type === 'critical' ? 'Критические' : 'Срочные';
           
           // Update description
-          if (highStatusTests.length === 0) {
-            descriptionDiv.textContent = 'Все показатели находятся в пределах референсных значений';
+          if (tests.length === 0) {
+            descriptionDiv.textContent = `${typeName === 'Критические' ? 'Все показатели находятся в пределах референсных значений' : 'Нет срочных показателей'}`;
             descriptionDiv.className = 'indicators-description normal';
             const row = document.createElement('tr');
             const cell = document.createElement('td');
             cell.colSpan = 3;
-            cell.textContent = 'Критические отклонения не обнаружены';
+            cell.textContent = type === 'critical' ? 'Критические отклонения не обнаружены' : 'Срочные показатели не обнаружены';
             cell.style.textAlign = 'center';
             cell.style.padding = '20px';
             cell.style.color = 'var(--text-secondary)';
@@ -1254,19 +1305,21 @@
             tbody.appendChild(row);
             return;
           } else {
-            descriptionDiv.textContent = 'Обнаружены показатели, требующие особого внимания:';
+            descriptionDiv.textContent = type === 'critical' 
+              ? 'Обнаружены показатели, требующие особого внимания:'
+              : 'Обнаружены срочные показатели, требующие немедленного внимания:';
             descriptionDiv.className = 'indicators-description';
           }
           
           // Sort by name
-          highStatusTests.sort((a, b) => {
+          tests.sort((a, b) => {
             const aName = (a.name || a.test_code || '').toLowerCase();
             const bName = (b.name || b.test_code || '').toLowerCase();
             return aName.localeCompare(bName);
           });
           
-          // Show only HIGH status tests
-          highStatusTests.forEach(test => {
+          // Show tests
+          tests.forEach(test => {
             const row = document.createElement('tr');
             
             const nameCell = document.createElement('td');
@@ -1304,7 +1357,16 @@
           });
         }
         
-        function renderDynamicsChart(data, selectedGroup = 'all') {
+        // Track if user has explicitly selected a group
+        let userSelectedGroup = false;
+        
+        // Define 3 main parameters to show by default
+        const MAIN_PARAMETERS = ['chem.glucose', 'chem.creatinine', 'chem.alt'];
+        
+        // Store test info for tooltip (global scope for access in callbacks)
+        let currentTestInfoMap = {};
+        
+        function renderDynamicsChart(data, selectedGroup = 'all', showAllFromGroup = false) {
           const charts = data.charts || {};
           const groups = data.groups || {};
           const canvas = document.getElementById('dynamicsChart');
@@ -1316,11 +1378,36 @@
           const groupTests = groups[selectedGroup] || [];
           const groupTestCodes = new Set(groupTests.map(t => t.test_code));
           
-          Object.entries(charts).forEach(([testCode, chartData]) => {
-            if (groupTestCodes.has(testCode)) {
-              filteredCharts[testCode] = chartData;
+          // If user selected a group, show all from that group
+          // Otherwise, show only 3 main parameters
+          if (showAllFromGroup || userSelectedGroup) {
+            // Show all tests from selected group
+            Object.entries(charts).forEach(([testCode, chartData]) => {
+              if (groupTestCodes.has(testCode)) {
+                filteredCharts[testCode] = chartData;
+              }
+            });
+          } else {
+            // Show only 3 main parameters (if they exist in charts)
+            MAIN_PARAMETERS.forEach(testCode => {
+              if (charts[testCode] && groupTestCodes.has(testCode)) {
+                filteredCharts[testCode] = charts[testCode];
+              }
+            });
+            
+            // If main parameters not found, take first 3 from selected group
+            if (Object.keys(filteredCharts).length === 0) {
+              const availableTests = [];
+              Object.entries(charts).forEach(([testCode, chartData]) => {
+                if (groupTestCodes.has(testCode)) {
+                  availableTests.push([testCode, chartData]);
+                }
+              });
+              availableTests.slice(0, 3).forEach(([testCode, chartData]) => {
+                filteredCharts[testCode] = chartData;
+              });
             }
-          });
+          }
           
           if (Object.keys(filteredCharts).length === 0) {
             // Show empty state
@@ -1331,10 +1418,13 @@
             return;
           }
           
-          // Create datasets for each test in the selected group
+          // Create datasets for each test in the filtered charts
           const datasets = [];
           const colors = ['#2F80ED', '#EB5757', '#F2C94C', '#219653', '#9B51E0', '#F2994A', '#56CCF2', '#F2994A'];
           let colorIndex = 0;
+          
+          // Reset test info map
+          currentTestInfoMap = {};
           
           Object.entries(filteredCharts).forEach(([testCode, chartData]) => {
             if (!chartData || !chartData.datasets || chartData.datasets.length === 0) return;
@@ -1348,6 +1438,29 @@
               ds.label !== 'Max norm'
             );
             if (!patientDataset || !patientDataset.data) return;
+            
+            // Find test in groups to get norm values
+            let normMin = null;
+            let normMax = null;
+            let unit = '';
+            Object.values(groups).forEach(group => {
+              if (Array.isArray(group)) {
+                const test = group.find(t => t.test_code === testCode);
+                if (test) {
+                  normMin = test.norm_min;
+                  normMax = test.norm_max;
+                  unit = test.unit || '';
+                }
+              }
+            });
+            
+            // Store test info for tooltip
+            currentTestInfoMap[testCode] = {
+              normMin,
+              normMax,
+              unit,
+              name: chartData.title || testCode
+            };
             
             // Collect dates that have data for this test
             const testDates = new Set();
@@ -1389,7 +1502,8 @@
               pointRadius: 4,
               pointHoverRadius: 6,
               pointBackgroundColor: colors[colorIndex % colors.length],
-              pointBorderColor: colors[colorIndex % colors.length]
+              pointBorderColor: colors[colorIndex % colors.length],
+              testCode: testCode // Store testCode for tooltip
             });
             
             colorIndex++;
@@ -1431,13 +1545,38 @@
                   }
                 },
                 tooltip: {
-                  mode: 'index',
-                  intersect: false,
+                  mode: 'point',
+                  intersect: true,
                   callbacks: {
+                    title: function(context) {
+                      return context[0].label || '';
+                    },
                     label: function(context) {
                       const value = context.parsed.y;
                       if (value === null || value === undefined) return '';
-                      return `${context.dataset.label}: ${formatNumber(value)}`;
+                      
+                      const testCode = context.dataset.testCode;
+                      const testInfo = currentTestInfoMap[testCode];
+                      
+                      if (!testInfo) {
+                        return `${context.dataset.label}: ${formatNumber(value)}`;
+                      }
+                      
+                      let label = `${context.dataset.label}: ${formatNumber(value)}`;
+                      if (testInfo.unit) {
+                        label += ` ${testInfo.unit}`;
+                      }
+                      
+                      // Add norm range
+                      if (testInfo.normMin !== null && testInfo.normMax !== null) {
+                        label += `\nНорма: ${formatNumber(testInfo.normMin)} - ${formatNumber(testInfo.normMax)} ${testInfo.unit}`;
+                      } else if (testInfo.normMin !== null) {
+                        label += `\nНорма: ≥${formatNumber(testInfo.normMin)} ${testInfo.unit}`;
+                      } else if (testInfo.normMax !== null) {
+                        label += `\nНорма: ≤${formatNumber(testInfo.normMax)} ${testInfo.unit}`;
+                      }
+                      
+                      return label;
                     }
                   }
                 }
@@ -1472,8 +1611,9 @@
         // Chart group filter handler
         document.getElementById('chartGroupFilter').addEventListener('change', (e) => {
           const selectedGroup = e.target.value;
+          userSelectedGroup = true; // Mark that user has selected a group
           if (patientData) {
-            renderDynamicsChart(patientData, selectedGroup);
+            renderDynamicsChart(patientData, selectedGroup, true); // Show all from group
           }
         });
         
@@ -1657,6 +1797,26 @@
             return null;
           }).filter(p => p !== null);
           
+          // Get unit from test data
+          let unit = '';
+          Object.values(groups).forEach(group => {
+            if (Array.isArray(group)) {
+              const test = group.find(t => t.test_code === testCode);
+              if (test) {
+                unit = test.unit || '';
+              }
+            }
+          });
+          
+          // Store test info for tooltip
+          currentTestInfoMap = {};
+          currentTestInfoMap[testCode] = {
+            normMin,
+            normMax,
+            unit,
+            name: testName || testCode
+          };
+          
           // Create datasets array
           const datasets = [{
             label: testName || testCode,
@@ -1669,7 +1829,8 @@
             pointRadius: 4,
             pointHoverRadius: 6,
             pointBackgroundColor: '#2F80ED',
-            pointBorderColor: '#2F80ED'
+            pointBorderColor: '#2F80ED',
+            testCode: testCode // Store testCode for tooltip
           }];
           
           // Add norm lines if available
@@ -1735,13 +1896,46 @@
                   }
                 },
                 tooltip: {
-                  mode: 'index',
-                  intersect: false,
+                  mode: 'point',
+                  intersect: true,
                   callbacks: {
+                    title: function(context) {
+                      return context[0].label || '';
+                    },
                     label: function(context) {
                       const value = context.parsed.y;
                       if (value === null || value === undefined) return '';
-                      return `${context.dataset.label}: ${formatNumber(value)}`;
+                      
+                      // Skip norm lines in tooltip
+                      if (context.dataset.label === 'Минимум нормы' || 
+                          context.dataset.label === 'Максимум нормы' ||
+                          context.dataset.label === 'Min norm' ||
+                          context.dataset.label === 'Max norm') {
+                        return '';
+                      }
+                      
+                      const testCode = context.dataset.testCode;
+                      const testInfo = currentTestInfoMap[testCode];
+                      
+                      if (!testInfo) {
+                        return `${context.dataset.label}: ${formatNumber(value)}`;
+                      }
+                      
+                      let label = `${context.dataset.label}: ${formatNumber(value)}`;
+                      if (testInfo.unit) {
+                        label += ` ${testInfo.unit}`;
+                      }
+                      
+                      // Add norm range
+                      if (testInfo.normMin !== null && testInfo.normMax !== null) {
+                        label += `\nНорма: ${formatNumber(testInfo.normMin)} - ${formatNumber(testInfo.normMax)} ${testInfo.unit}`;
+                      } else if (testInfo.normMin !== null) {
+                        label += `\nНорма: ≥${formatNumber(testInfo.normMin)} ${testInfo.unit}`;
+                      } else if (testInfo.normMax !== null) {
+                        label += `\nНорма: ≤${formatNumber(testInfo.normMax)} ${testInfo.unit}`;
+                      }
+                      
+                      return label;
                     }
                   }
                 }
@@ -1793,13 +1987,7 @@
           return 'biochemistry';
         }
         
-        // Group filter for dynamics chart
-        document.getElementById('chartGroupFilter').addEventListener('change', (e) => {
-          const selectedGroup = e.target.value;
-          if (patientData) {
-            renderDynamicsChart(patientData, selectedGroup);
-          }
-        });
+        // Group filter for dynamics chart (duplicate handler removed - already handled above)
         
       // Upload button handler
       document.getElementById('uploadBtn').addEventListener('click', () => {

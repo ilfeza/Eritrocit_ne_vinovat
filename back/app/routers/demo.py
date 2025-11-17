@@ -78,22 +78,59 @@ def load_norms() -> Dict[str, Dict[str, Any]]:
         return {}
 
 
-def get_test_category(test_code: str) -> str:
-    """Определяет категорию анализа по test_code"""
+def get_test_category(test_code: str, test_name: str = '', norms: Dict[str, Dict[str, Any]] = None) -> str:
+    """Определяет категорию анализа по test_code и названию"""
     if not test_code:
         return 'other'
     
     test_code_lower = test_code.lower()
+    test_name_lower = (test_name or '').lower()
+    
+    # ВАЖНО: Сначала проверяем на известные биохимические тесты по названию
+    # Это должно быть ДО проверки префиксов, чтобы избежать неправильной категоризации
+    biochemistry_name_keywords = [
+        'alanine', 'transaminase', 'alt', 'ast', 'aspartate', 'glucose', 
+        'creatinine', 'albumin', 'bilirubin', 'urea', 'bun', 'calcium',
+        'potassium', 'sodium', 'chloride', 'phosphate', 'magnesium',
+        'protein', 'ldh', 'alkaline', 'phosphatase', 'egfr', 'gfr',
+        'lactate', 'dehydrogenase', 'troponin', 'ck', 'creatine', 'kinase'
+    ]
+    
+    # Если название содержит ключевые слова биохимии - всегда биохимия
+    if test_name_lower and any(keyword in test_name_lower for keyword in biochemistry_name_keywords):
+        return 'biochemistry'
     
     # Специальная обработка для холестерина - может быть в chem. или lip.
     if test_code_lower == 'chem.chol' or 'cholesterol' in test_code_lower:
         return 'lipid_profile'
     
+    # Если нет префикса, пытаемся определить по коду или названию
+    # Известные биохимические тесты (ферменты печени, глюкоза, креатинин и т.д.)
+    biochemistry_tests = {
+        'alt', 'ast', 'glucose', 'creatinine', 'albumin', 'bilirubin', 'bun', 
+        'calcium', 'co2', 'cl', 'egfr', 'ldh', 'magnesium', 'phosphate', 
+        'potassium', 'protein', 'sodium', 't_bili', 'alkaline_phosphatase',
+        'globin', 'egfr_aa', 'egfr_non_aa', 'troponin', 'ck', 'ck_mb'
+    }
+    
+    # Извлекаем базовое имя из кода (без префикса)
+    base_code = test_code_lower.replace('chem.', '').replace('bc.', '').replace('lip.', '').strip()
+    
+    # Проверяем, является ли это известным биохимическим тестом
+    # ВАЖНО: Если это биохимический тест, возвращаем биохимию, даже если есть префикс bc.
+    if base_code in biochemistry_tests:
+        return 'biochemistry'
+    
+    # Проверка по префиксам (только если не определили выше)
     if test_code_lower.startswith('am.'):
         return 'anthropometry'
     elif test_code_lower.startswith('chem.'):
         return 'biochemistry'
     elif test_code_lower.startswith('bc.'):
+        # ВАЖНО: Проверяем, не является ли это биохимическим тестом с неправильным префиксом
+        # Если базовый код - это биохимический тест, возвращаем биохимию
+        if base_code in biochemistry_tests:
+            return 'biochemistry'
         return 'blood_count'
     elif test_code_lower.startswith('cmv.'):
         return 'infections'
@@ -101,8 +138,56 @@ def get_test_category(test_code: str) -> str:
         return 'inflammation'
     elif test_code_lower.startswith('lip.'):
         return 'lipid_profile'
-    else:
-        return 'other'
+    
+    # Проверяем по названию, если есть нормы
+    if norms and test_name:
+        test_name_lower = test_name.lower()
+        # Ищем в нормах по названию
+        for code, norm_data in norms.items():
+            if code == '_name_mapping':
+                continue
+            norm_name = norm_data.get('name', '').lower()
+            # Если название содержит ключевые слова биохимии
+            if test_name_lower in norm_name or norm_name in test_name_lower:
+                # Определяем категорию по коду из норм
+                if code.startswith('chem.'):
+                    return 'biochemistry'
+                elif code.startswith('bc.'):
+                    return 'blood_count'
+                elif code.startswith('lip.'):
+                    return 'lipid_profile'
+                elif code.startswith('am.'):
+                    return 'anthropometry'
+                elif code.startswith('infl.'):
+                    return 'inflammation'
+                elif code.startswith('cmv.'):
+                    return 'infections'
+    
+    # Проверяем по ключевым словам в названии
+    if test_name:
+        test_name_lower = test_name.lower()
+        # Биохимические маркеры
+        biochemistry_keywords = [
+            'alanine', 'transaminase', 'alt', 'ast', 'aspartate', 'glucose', 
+            'creatinine', 'albumin', 'bilirubin', 'urea', 'bun', 'calcium',
+            'potassium', 'sodium', 'chloride', 'phosphate', 'magnesium',
+            'protein', 'ldh', 'alkaline', 'phosphatase', 'egfr', 'gfr'
+        ]
+        # Общий анализ крови
+        blood_count_keywords = [
+            'hemoglobin', 'hgb', 'hct', 'hematocrit', 'rbc', 'wbc', 'platelet',
+            'lymphocyte', 'neutrophil', 'monocyte', 'eosinophil', 'basophil',
+            'mcv', 'mch', 'mchc', 'rdw'
+        ]
+        
+        if any(keyword in test_name_lower for keyword in biochemistry_keywords):
+            return 'biochemistry'
+        elif any(keyword in test_name_lower for keyword in blood_count_keywords):
+            return 'blood_count'
+    
+    # По умолчанию для неизвестных тестов без префикса - биохимия
+    # (так как большинство лабораторных тестов - это биохимия)
+    return 'biochemistry'
 
 
 def check_value_against_norm(value: float, norm_min: float, norm_max: float) -> str:
@@ -163,6 +248,25 @@ def get_norm_info(test_code: str, test_name: str, norms: Dict[str, Dict[str, Any
     return norm_info if norm_info else {}
 
 
+def normalize_test_code(test_code: str) -> str:
+    """Нормализует test_code: убирает пробелы, приводит к нижнему регистру"""
+    if not test_code:
+        return ''
+    return test_code.strip().lower()
+
+
+def normalize_test_name(test_name: str) -> str:
+    """Нормализует название теста для сравнения"""
+    if not test_name:
+        return ''
+    # Убираем пробелы, приводим к нижнему регистру, убираем лишние символы
+    normalized = test_name.strip().lower()
+    # Убираем общие слова, которые могут отличаться
+    normalized = normalized.replace('alanine', 'alt').replace('transaminase', '')
+    normalized = normalized.replace(' ', '').replace('-', '').replace('_', '')
+    return normalized
+
+
 def group_by_category(data: List[Dict[str, Any]], norms: Dict[str, Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:
     """Группирует данные по категориям"""
     groups = {
@@ -175,38 +279,75 @@ def group_by_category(data: List[Dict[str, Any]], norms: Dict[str, Dict[str, Any
         'lipid_profile': []
     }
     
-    # Подсчитываем количество записей для каждого test_code (для определения динамики)
+    # Нормализуем test_code для всех записей и подсчитываем количество
+    normalized_code_map = {}  # normalized_code -> original_code
     test_code_counts = {}
+    test_name_to_code = {}  # normalized_name -> normalized_code
+    
     for row in data:
-        test_code = row.get('test_code', '')
-        if test_code:
-            test_code_counts[test_code] = test_code_counts.get(test_code, 0) + 1
+        original_code = row.get('test_code', '').strip()
+        test_name = row.get('test_name', '').strip()
+        
+        if not original_code:
+            continue
+        
+        # Нормализуем код
+        normalized_code = normalize_test_code(original_code)
+        if normalized_code:
+            normalized_code_map[normalized_code] = original_code
+            test_code_counts[normalized_code] = test_code_counts.get(normalized_code, 0) + 1
+        
+        # Создаем маппинг по нормализованному названию
+        if test_name:
+            normalized_name = normalize_test_name(test_name)
+            if normalized_name and normalized_code:
+                # Если название уже есть, но код другой - это может быть дубликат
+                if normalized_name in test_name_to_code:
+                    existing_code = test_name_to_code[normalized_name]
+                    # Если коды похожи (один содержит другой), используем более полный
+                    if normalized_code in existing_code or existing_code in normalized_code:
+                        if len(normalized_code) > len(existing_code):
+                            test_name_to_code[normalized_name] = normalized_code
+                else:
+                    test_name_to_code[normalized_name] = normalized_code
     
     # Группируем по test_code и категориям, оставляя только уникальные test_code
-    # Используем словарь для каждой категории: test_code -> test_data (с самой поздней датой)
-    category_tests = {}  # category -> {test_code -> test_data}
+    # Используем словарь для каждой категории: normalized_code -> test_data (с самой поздней датой)
+    category_tests = {}  # category -> {normalized_code -> test_data}
     
     for category in groups.keys():
         category_tests[category] = {}
     
     for row in data:
-        test_code = row.get('test_code', '')
-        test_name = row.get('test_name', '')
-        category = get_test_category(test_code)
+        original_code = row.get('test_code', '').strip()
+        test_name = row.get('test_name', '').strip()
+        
+        if not original_code:
+            continue
+        
+        # Нормализуем код
+        normalized_code = normalize_test_code(original_code)
+        
+        # Если нормализованный код пустой, пропускаем
+        if not normalized_code:
+            continue
+        
+        # Определяем категорию по оригинальному коду и названию
+        category = get_test_category(original_code, test_name, norms)
         
         # Пропускаем если категория не в списке
         if category not in groups:
             continue
         
         # Определяем, есть ли динамика (больше одного измерения)
-        has_dynamics = test_code_counts.get(test_code, 0) > 1
+        has_dynamics = test_code_counts.get(normalized_code, 0) > 1
         
-        # Получаем нормы
-        norm_info = get_norm_info(test_code, test_name, norms)
+        # Получаем нормы по оригинальному коду
+        norm_info = get_norm_info(original_code, test_name, norms)
         norm_min = norm_info.get('min')
         norm_max = norm_info.get('max')
         norm_unit = norm_info.get('unit', row.get('unit', ''))
-        norm_name = norm_info.get('name', row.get('test_name', ''))
+        norm_name = norm_info.get('name', test_name)
         
         # Проверяем значение
         try:
@@ -217,8 +358,8 @@ def group_by_category(data: List[Dict[str, Any]], norms: Dict[str, Dict[str, Any
             status = 'NORMAL'
         
         test_data = {
-            'test_code': test_code,
-            'name': norm_name or row.get('test_name', ''),
+            'test_code': original_code,  # Сохраняем оригинальный код
+            'name': norm_name or test_name,
             'value': value,
             'unit': row.get('unit', norm_unit),
             'date': row.get('date', ''),
@@ -228,14 +369,80 @@ def group_by_category(data: List[Dict[str, Any]], norms: Dict[str, Dict[str, Any
             'has_dynamics': has_dynamics
         }
         
-        # Если test_code уже есть в категории, заменяем только если дата более поздняя
-        if test_code in category_tests[category]:
-            existing_date = category_tests[category][test_code].get('date', '')
+        # Проверяем, есть ли уже тест с таким нормализованным кодом в категории
+        if normalized_code in category_tests[category]:
+            existing_date = category_tests[category][normalized_code].get('date', '')
             current_date = row.get('date', '')
+            # Заменяем только если дата более поздняя
             if current_date > existing_date:
-                category_tests[category][test_code] = test_data
+                category_tests[category][normalized_code] = test_data
         else:
-            category_tests[category][test_code] = test_data
+            # Проверяем, нет ли дубликата по названию или коду
+            normalized_name = normalize_test_name(test_name) if test_name else ''
+            is_duplicate = False
+            duplicate_key = None
+            
+            if normalized_name:
+                # Проверяем все существующие тесты в категории на дубликаты по названию
+                for existing_normalized_code, existing_test in list(category_tests[category].items()):
+                    existing_name = normalize_test_name(existing_test.get('name', ''))
+                    existing_original = existing_test.get('test_code', '')
+                    
+                    # Проверяем дубликат по названию
+                    if normalized_name == existing_name and normalized_name:
+                        # Найден дубликат по названию
+                        # Используем более полный код (с префиксом предпочтительнее)
+                        new_has_prefix = 'chem.' in original_code.lower() or 'bc.' in original_code.lower() or 'lip.' in original_code.lower()
+                        existing_has_prefix = 'chem.' in existing_original.lower() or 'bc.' in existing_original.lower() or 'lip.' in existing_original.lower()
+                        
+                        if new_has_prefix and not existing_has_prefix:
+                            # Новый код более полный, заменяем
+                            duplicate_key = existing_normalized_code
+                            is_duplicate = True
+                            break
+                        elif not new_has_prefix and existing_has_prefix:
+                            # Существующий код более полный, пропускаем новый
+                            is_duplicate = True
+                            break
+                        elif normalized_code == existing_normalized_code:
+                            # Одинаковые нормализованные коды - это точно дубликат
+                            # Используем более позднюю дату
+                            existing_date = existing_test.get('date', '')
+                            current_date = row.get('date', '')
+                            if current_date > existing_date:
+                                duplicate_key = existing_normalized_code
+                            is_duplicate = True
+                            break
+                    
+                    # Также проверяем, не являются ли коды вариантами одного теста
+                    # (например, "alt" и "chem.alt", или "alt" и "ALT")
+                    if normalized_code != existing_normalized_code:
+                        # Извлекаем базовое имя из кода (без префикса)
+                        new_base = original_code.lower().replace('chem.', '').replace('bc.', '').replace('lip.', '').strip()
+                        existing_base = existing_original.lower().replace('chem.', '').replace('bc.', '').replace('lip.', '').strip()
+                        
+                        if new_base == existing_base and new_base:
+                            # Это один и тот же тест с разными префиксами или без
+                            # Предпочитаем версию с префиксом
+                            new_has_prefix = 'chem.' in original_code.lower() or 'bc.' in original_code.lower() or 'lip.' in original_code.lower()
+                            existing_has_prefix = 'chem.' in existing_original.lower() or 'bc.' in existing_original.lower() or 'lip.' in existing_original.lower()
+                            
+                            if new_has_prefix and not existing_has_prefix:
+                                duplicate_key = existing_normalized_code
+                                is_duplicate = True
+                                break
+                            elif not new_has_prefix and existing_has_prefix:
+                                is_duplicate = True
+                                break
+            
+            if is_duplicate and duplicate_key:
+                # Удаляем старый дубликат
+                if duplicate_key in category_tests[category]:
+                    del category_tests[category][duplicate_key]
+                # Добавляем новый
+                category_tests[category][normalized_code] = test_data
+            elif not is_duplicate:
+                category_tests[category][normalized_code] = test_data
     
     # Заполняем группы уникальными тестами
     for category in groups.keys():
