@@ -936,7 +936,10 @@
       </main>
 
       <script>
-        const API_BASE = 'http://localhost:8000';
+        // API_BASE: пустая строка для работы через nginx на хостинге, или 'http://localhost:8000' для локальной разработки
+        const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+          ? 'http://localhost:8000' 
+          : '';
         const DEMO_VERSION = '1';
         let patientData = null;
         let dynamicsChart = null;
