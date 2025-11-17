@@ -60,3 +60,6 @@ with open('lab_data_preprocessing.ipynb', 'w', encoding='utf-8') as f:
 
 print("Ноутбук исправлен!")
 
+
+
+

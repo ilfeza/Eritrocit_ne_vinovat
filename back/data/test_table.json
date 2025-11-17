@@ -1,0 +1,91 @@
+{
+  "test_names": {
+    "chem.alt": "Alanine Transaminase",
+    "chem.ast": "Aspartate Transaminase",
+    "chem.chol": "Total Cholesterol",
+    "bc.wbc": "White Blood Cell Count",
+    "bc.rbc": "Red Blood Cell Count"
+  },
+  "patients": [
+    {
+      "patient_id": "BR1001",
+      "date": "2024-01-15",
+      "analyses": {
+        "chem.alt": {
+          "value": 25.5,
+          "unit": "U/L",
+          "status": "NORMAL"
+        },
+        "chem.ast": {
+          "value": 30.2,
+          "unit": "U/L",
+          "status": "NORMAL"
+        },
+        "chem.chol": {
+          "value": 180.5,
+          "unit": "mg/dL",
+          "status": "NORMAL"
+        }
+      }
+    },
+    {
+      "patient_id": "BR1002",
+      "date": "2024-01-16",
+      "analyses": {
+        "chem.alt": {
+          "value": 45.8,
+          "unit": "U/L",
+          "status": "HIGH"
+        },
+        "chem.ast": {
+          "value": 38.9,
+          "unit": "U/L",
+          "status": "NORMAL"
+        },
+        "chem.chol": {
+          "value": 220.3,
+          "unit": "mg/dL",
+          "status": "HIGH"
+        }
+      }
+    },
+    {
+      "patient_id": "BR1003",
+      "date": "2024-01-17",
+      "analyses": {
+        "bc.wbc": {
+          "value": 5.8,
+          "unit": "10^3/μL",
+          "status": "NORMAL"
+        },
+        "bc.rbc": {
+          "value": 5.1,
+          "unit": "10^6/μL",
+          "status": "NORMAL"
+        }
+      }
+    },
+    {
+      "patient_id": "BR1004",
+      "date": "2024-01-18",
+      "analyses": {
+        "chem.alt": {
+          "value": 12.5,
+          "unit": "U/L",
+          "status": "LOW"
+        }
+      }
+    },
+    {
+      "patient_id": "BR1005",
+      "date": "2024-01-19",
+      "analyses": {
+        "chem.alt": {
+          "value": 55.3,
+          "unit": "U/L",
+          "status": "HIGH"
+        }
+      }
+    }
+  ]
+}

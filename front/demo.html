@@ -1,0 +1,1858 @@
+  <!DOCTYPE html>
+  <html lang="ru">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+      <meta http-equiv="Pragma" content="no-cache" />
+      <meta http-equiv="Expires" content="0" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+      <link href="index/css/main.css?v=2" rel="stylesheet" />
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+      <title>Демо вариант 1 - BioDash</title>
+      <script>
+        // Force reload to prevent caching
+        if (performance.navigation.type === 1) {
+          console.log('Page reloaded');
+        }
+      </script>
+      <style>
+        .demo-container {
+          padding: 40px 60px;
+          max-width: 100% !important;
+          width: 100% !important;
+          box-sizing: border-box;
+        }
+        
+        /* Filters Section */
+        .filters-section {
+          background: var(--bg-white);
+          border-radius: 16px;
+          padding: 24px;
+          margin-bottom: 32px;
+          box-shadow: var(--shadow);
+          border: 1px solid var(--border-color);
+        }
+        
+        .filters-row {
+          display: flex;
+          gap: 16px;
+          align-items: flex-end;
+          flex-wrap: wrap;
+        }
+        
+        .filter-group {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          flex: 1;
+          min-width: 200px;
+        }
+        
+        .filter-label {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-primary);
+        }
+        
+        .filter-input {
+          padding: 12px 16px;
+          border: 1px solid var(--border-color);
+          border-radius: 12px;
+          font-family: 'Inter', sans-serif;
+          font-size: 15px;
+          color: var(--text-primary);
+          background: var(--bg-white);
+          transition: all 0.3s ease;
+        }
+        
+        .filter-input:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.1);
+        }
+        
+        .filter-input.date-input {
+          position: relative;
+        }
+        
+        .date-input-wrapper {
+          position: relative;
+        }
+        
+        .date-input-wrapper i {
+          position: absolute;
+          right: 16px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: var(--text-secondary);
+          pointer-events: none;
+        }
+        
+        .btn-apply-filters {
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+          color: var(--bg-white);
+          border: none;
+          padding: 12px 32px;
+          border-radius: 12px;
+          font-family: 'Inter', sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 14px rgba(47, 128, 237, 0.3);
+          white-space: nowrap;
+        }
+        
+        .btn-apply-filters:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(47, 128, 237, 0.4);
+        }
+        
+        /* Two Column Layout */
+        .dashboard-layout {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+          margin-top: 32px;
+        }
+        
+        /* Cards */
+        .dashboard-card {
+          background: var(--bg-white);
+          border-radius: 16px;
+          padding: 24px;
+          box-shadow: var(--shadow);
+          border: 1px solid var(--border-color);
+          margin-bottom: 24px;
+        }
+        
+        .card-title {
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+          color: var(--text-primary);
+          margin-bottom: 20px;
+          padding-bottom: 16px;
+          border-bottom: 2px solid var(--border-color);
+        }
+        
+        .card-title-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          padding-bottom: 16px;
+          border-bottom: 2px solid var(--border-color);
+        }
+        
+        .chart-controls {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+        }
+        
+        .group-filter-select {
+          padding: 8px 16px;
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          color: var(--text-primary);
+          background: var(--bg-white);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .group-filter-select:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.1);
+        }
+        
+        .chart-filter-wrapper {
+          display: flex;
+          align-items: center;
+        }
+        
+        .chart-group-filter {
+          padding: 8px 16px;
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          color: var(--text-primary);
+          background: var(--bg-white);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .chart-group-filter:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.1);
+        }
+        
+        .patient-details {
+          margin-bottom: 20px;
+        }
+        
+        .patient-detail-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 4px 0;
+          font-family: 'Inter', sans-serif;
+          font-size: 15px;
+          border-bottom: 1px solid var(--border-color);
+        }
+        
+        .patient-detail-item:last-child {
+          border-bottom: none;
+        }
+        
+        .detail-label {
+          font-weight: 500;
+          color: var(--text-secondary);
+        }
+        
+        .detail-value {
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+        
+        .chart-filter-wrapper {
+          display: flex;
+          align-items: center;
+        }
+        
+        .chart-group-filter {
+          padding: 8px 16px;
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          color: var(--text-primary);
+          background: var(--bg-white);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .chart-group-filter:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.1);
+        }
+        
+        .chart-group-filter:hover {
+          border-color: var(--primary-color);
+        }
+        
+        /* Upload Section */
+        .upload-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 40px 24px;
+        }
+        
+        .upload-icon {
+          font-size: 48px;
+          color: var(--primary-color);
+          margin-bottom: 16px;
+        }
+        
+        .upload-text {
+          font-family: 'Inter', sans-serif;
+          font-size: 15px;
+          color: var(--text-secondary);
+          margin-bottom: 24px;
+          line-height: 1.6;
+        }
+        
+        .btn-upload {
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+          color: var(--bg-white);
+          border: none;
+          padding: 14px 32px;
+          border-radius: 12px;
+          font-family: 'Inter', sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 14px rgba(47, 128, 237, 0.3);
+        }
+        
+        .btn-upload:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(47, 128, 237, 0.4);
+        }
+        
+        .upload-formats {
+          margin-top: 16px;
+          font-family: 'Inter', sans-serif;
+          font-size: 13px;
+          color: var(--text-secondary);
+        }
+        
+        /* Dynamics Chart */
+        .card-title-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+          padding-bottom: 16px;
+          border-bottom: 2px solid var(--border-color);
+        }
+        
+        .chart-filter-wrapper {
+          display: flex;
+          align-items: center;
+        }
+        
+        .chart-group-filter {
+          padding: 8px 16px;
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          color: var(--text-primary);
+          background: var(--bg-white);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .chart-group-filter:focus {
+          outline: none;
+          border-color: var(--primary-color);
+          box-shadow: 0 0 0 3px rgba(47, 128, 237, 0.1);
+        }
+        
+        .dynamics-chart-wrapper {
+          position: relative;
+          height: 300px;
+          width: 100%;
+        }
+        
+        .patient-details {
+          margin-bottom: 20px;
+        }
+        
+        .patient-detail-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 2px 0;
+          font-family: 'Inter', sans-serif;
+          font-size: 15px;
+          border-bottom: 1px solid var(--border-color);
+        }
+        
+        .patient-detail-item:last-child {
+          border-bottom: none;
+        }
+        
+        .detail-label {
+          font-family: 'Inter', sans-serif;
+          font-size: 13px;
+          color: var(--text-secondary);
+          font-weight: 500;
+        }
+        
+        .detail-value {
+          font-family: 'Inter', sans-serif;
+          font-size: 16px;
+          color: var(--text-primary);
+          font-weight: 600;
+        }
+        
+        /* Patient Summary */
+        .patient-info {
+          margin-bottom: 20px;
+        }
+        
+        .patient-details {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+        
+        .patient-detail-item {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 8px 0;
+          border-bottom: 1px solid var(--border-color);
+        }
+        
+        .detail-label {
+          color: var(--text-secondary);
+          font-weight: 500;
+        }
+        
+        .detail-value {
+          color: var(--text-primary);
+          font-weight: 600;
+        }
+        
+        .patient-meta {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          color: var(--text-secondary);
+          margin-bottom: 16px;
+          padding-top: 12px;
+          border-top: 1px solid var(--border-color);
+        }
+        
+        .critical-deviations {
+          margin-top: 20px;
+        }
+        
+        .critical-deviations-title {
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          font-size: 15px;
+          color: var(--text-primary);
+          margin-bottom: 12px;
+        }
+        
+        .deviation-item {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          color: var(--text-primary);
+          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        
+        .deviation-item::before {
+          content: '•';
+          color: #ef4444;
+          font-weight: bold;
+          font-size: 18px;
+        }
+        
+        /* Progress Bars */
+        .progress-section {
+          margin-top: 24px;
+        }
+        
+        .progress-item {
+          margin-bottom: 20px;
+        }
+        
+        .progress-label {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--text-primary);
+          margin-bottom: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        
+        .progress-bar-wrapper {
+          width: 100%;
+          height: 24px;
+          background: var(--bg-light);
+          border-radius: 12px;
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .progress-bar {
+          height: 100%;
+          border-radius: 12px;
+          transition: width 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding-right: 8px;
+          font-family: 'Inter', sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          color: var(--bg-white);
+        }
+        
+        .progress-bar.red {
+          background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+        }
+        
+        .progress-bar.orange {
+          background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+        }
+        
+        .progress-bar.teal {
+          background: linear-gradient(90deg, #14b8a6 0%, #0d9488 100%);
+        }
+        
+        .progress-bar.mixed {
+          background: linear-gradient(90deg, #ef4444 0%, #f97316 30%, #fbbf24 60%, #fde68a 100%);
+        }
+        
+        /* Indicators Table */
+        .indicators-table-wrapper {
+          overflow-x: auto;
+          margin-top: 24px;
+        }
+        
+        .indicators-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+        }
+        
+        .indicators-table thead {
+          background: var(--gradient-primary);
+          color: var(--bg-white);
+        }
+        
+        .indicators-table th {
+          padding: 12px 16px;
+          text-align: left;
+          font-weight: 600;
+          font-size: 14px;
+        }
+        
+        .indicators-table tbody tr {
+          border-bottom: 1px solid var(--border-color);
+        }
+        
+        .indicators-table tbody tr:hover {
+          background: var(--bg-light);
+        }
+        
+        .indicators-table td {
+          padding: 12px 16px;
+          color: var(--text-primary);
+        }
+        
+        .indicators-table td.highlight {
+          background: #fef2f2;
+          color: #dc2626;
+          font-weight: 600;
+        }
+        
+        /* Indicators Description */
+        .indicators-description {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          color: var(--text-secondary);
+          margin-bottom: 16px;
+          padding: 12px 16px;
+          background: #fef2f2;
+          border-left: 4px solid #ef4444;
+          border-radius: 8px;
+        }
+        
+        .indicators-description.normal {
+          background: #f0fdf4;
+          border-left-color: #22c55e;
+          color: var(--text-primary);
+        }
+        
+        /* Groups Section */
+        .groups-section {
+          margin-top: 40px;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+          width: 100%;
+        }
+        
+        .group-card {
+          background: var(--bg-white);
+          border-radius: 16px;
+          padding: 0;
+          box-shadow: var(--shadow);
+          border: 1px solid var(--border-color);
+          overflow: hidden;
+          margin-bottom: 24px;
+        }
+        
+        .group-title {
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          font-size: 18px;
+          color: var(--text-primary);
+          padding: 20px 24px;
+          border-bottom: 2px solid var(--border-color);
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          transition: all 0.2s ease;
+          user-select: none;
+        }
+        
+        .group-title:hover {
+          background: var(--bg-light);
+        }
+        
+        .group-title i {
+          transition: transform 0.3s ease;
+          color: var(--text-secondary);
+          transform: rotate(0deg);
+        }
+        
+        .group-title.collapsed i {
+          transform: rotate(-90deg);
+        }
+        
+        .group-data {
+          display: grid;
+          gap: 12px;
+          padding: 24px;
+          max-height: 400px;
+          overflow-y: auto;
+        }
+        
+        .group-data.collapsed {
+          display: none;
+        }
+        
+        .test-item {
+          display: flex;
+          flex-direction: column;
+          padding: 12px;
+          background: var(--bg-light);
+          border-radius: 8px;
+          transition: all 0.2s ease;
+        }
+        
+        .test-item.clickable {
+          cursor: pointer;
+        }
+        
+        .test-item.clickable:hover {
+          background: #e8f2ff;
+          transform: translateX(4px);
+          box-shadow: 0 2px 8px rgba(47, 128, 237, 0.15);
+        }
+        
+        .test-item-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        }
+        
+        .test-info {
+          flex: 1;
+        }
+        
+        .test-name {
+          font-family: 'Inter', sans-serif;
+          font-weight: 500;
+          font-size: 15px;
+          color: var(--text-primary);
+          margin-bottom: 4px;
+        }
+        
+        .test-meta {
+          font-family: 'Inter', sans-serif;
+          font-size: 13px;
+          color: var(--text-secondary);
+        }
+        
+        .test-value {
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          font-size: 16px;
+          color: var(--text-primary);
+          margin-right: 16px;
+        }
+        
+        .test-status {
+          padding: 4px 12px;
+          border-radius: 12px;
+          font-family: 'Inter', sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+        }
+        
+        .test-status.normal {
+          background: #d1fae5;
+          color: #065f46;
+        }
+        
+        .test-status.high {
+          background: #fee2e2;
+          color: #991b1b;
+        }
+        
+        .test-status.low {
+          background: #dbeafe;
+          color: #1e40af;
+        }
+        
+        @media (max-width: 1200px) {
+          .dashboard-layout {
+            grid-template-columns: 1fr;
+          }
+        }
+        
+        /* Header Try Button */
+        .header-try-button {
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+          color: var(--bg-white);
+          border: none;
+          padding: 10px 24px;
+          border-radius: 12px;
+          font-family: 'Inter', sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 14px rgba(47, 128, 237, 0.3);
+          display: inline-flex;
+          align-items: center;
+          text-decoration: none;
+        }
+        
+        .header-try-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(47, 128, 237, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+          .demo-container {
+            padding: 20px;
+          }
+          
+          .filters-row {
+            flex-direction: column;
+          }
+          
+          .filter-group {
+            width: 100%;
+          }
+          
+          .btn-apply-filters {
+            width: 100%;
+          }
+          
+          .header-try-button {
+            padding: 8px 16px;
+            font-size: 14px;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <!-- Header -->
+      <header class="header">
+        <div class="container">
+          <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 24px;">
+              <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+                <div class="logo">
+                  <svg class="logo-icon" width="21" height="31" viewBox="0 0 21 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.97" fill-rule="evenodd" clip-rule="evenodd" d="M2.4948 0.0468782C3.83368 -0.163854 4.91953 0.335892 5.75219 1.54611C6.49114 3.00195 6.48037 4.45124 5.71994 5.89388C6.55983 7.29716 7.43062 8.67142 8.33231 10.0168C9.2416 9.63116 10.1554 9.61864 11.0737 9.97928C11.3838 10.1353 11.6848 10.2853 11.9767 10.429C12.6816 9.70065 13.3804 8.96355 14.0731 8.21768C14.0304 7.86866 13.9659 7.51889 13.8796 7.16822C13.7468 4.93887 14.5961 3.50208 16.4274 2.85793C18.7682 2.65518 20.0798 3.90455 20.3621 6.60601C20.1657 8.90815 19.08 10.145 17.1047 10.3166C16.4982 10.3403 15.9392 10.1654 15.4276 9.79187C14.6624 10.5566 13.9206 11.3437 13.2023 12.1532C13.6371 13.3013 13.7016 14.4758 13.3958 15.6764C14.3151 16.3542 15.2288 17.0413 16.1372 17.7378C16.7729 17.244 17.4717 17.0816 18.2335 17.2505C19.7831 17.84 20.4174 19.0768 20.1363 20.9611C19.736 22.3375 18.9082 23.0871 17.653 23.21C15.811 22.9297 14.9402 21.7054 15.0406 19.5369C14.159 18.8622 13.2775 18.1876 12.396 17.5129C11.3434 18.6076 10.1285 18.9573 8.75158 18.5624C7.86131 20.2229 7.02277 21.9221 6.23596 23.6598C7.38882 25.4855 7.3458 27.2721 6.10696 29.0195C5.25055 29.8759 4.26147 30.2007 3.13983 29.994C1.20835 29.266 0.380588 27.7293 0.656467 25.3839C1.30337 23.2275 2.6042 22.278 4.55889 22.5353C5.39227 20.8734 6.20926 19.1992 7.01 17.5129C5.73497 15.7986 5.53075 13.9246 6.39722 11.8908C6.51545 11.7034 6.63375 11.516 6.75199 11.3286C5.88907 9.93513 5.01828 8.54834 4.13962 7.16822C2.34438 7.68666 1.03284 6.98704 0.204947 5.0693C-0.26295 3.37784 0.0703164 1.94107 1.20474 0.759013C1.61517 0.457885 2.04521 0.220504 2.4948 0.0468782ZM2.17228 1.1713C2.67302 1.191 2.85576 1.46586 2.72056 1.99588C2.36579 2.35819 2.03251 2.74549 1.72076 3.15778C1.29208 3.38326 1.05561 3.22084 1.01123 2.67053C1.15107 1.90849 1.53809 1.40876 2.17228 1.1713ZM15.9759 4.01984C16.4642 3.91969 16.7114 4.14457 16.7177 4.69449C16.3429 5.10521 15.9882 5.54246 15.6534 6.00632C15.0127 6.18593 14.787 5.89852 14.9761 5.14426C15.1764 4.59892 15.5097 4.22411 15.9759 4.01984ZM8.49356 11.1412C9.19471 11.1158 9.42047 11.4656 9.17084 12.1906C8.7301 12.6029 8.33231 13.0652 7.97754 13.5774C7.55531 13.8513 7.26504 13.7139 7.10675 13.1651C7.17293 12.126 7.63522 11.4514 8.49356 11.1412ZM16.6854 18.1876C16.9116 18.1496 17.1159 18.1996 17.2982 18.3375C17.3412 18.4624 17.3412 18.5873 17.2982 18.7123C17.0104 19.0245 16.7416 19.3618 16.4919 19.7243C16.1626 19.9288 15.9691 19.8164 15.9114 19.3869C15.9987 18.8361 16.2567 18.4363 16.6854 18.1876ZM2.68831 23.7347C3.17659 23.6346 3.42383 23.8594 3.43009 24.4094C3.05533 24.8201 2.70056 25.2573 2.36579 25.7212C1.92098 25.9671 1.66297 25.8047 1.59176 25.2339C1.74837 24.5156 2.11391 24.0159 2.68831 23.7347Z" fill="#2F80ED"/>
+                  </svg>
+                  <span class="logo-text">BioDash.</span>
+                </div>
+              </a>
+              <a href="http://127.0.0.1:5500/front/demo.html" class="header-try-button" style="text-decoration: none;">
+                <span>Попробовать</span>
+              </a>
+            </div>
+            <nav class="nav">
+              <div class="user-avatar">
+                <img src="index/images/image.png" alt="Врач" class="avatar-image" />
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="container demo-container">
+          <!-- Filters Section -->
+          <div class="filters-section">
+            <div class="filters-row">
+              <div class="filter-group">
+                <label class="filter-label">Пациент</label>
+                <select class="filter-input" id="patientSelect">
+                  <option value="">Загрузка...</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Дата анализа</label>
+                <div class="date-input-wrapper">
+                  <input type="text" class="filter-input date-input" id="analysisDate" placeholder="Дата анал." />
+                  <i class="fas fa-calendar-alt"></i>
+                </div>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">Тип анализа</label>
+                <select class="filter-input" id="analysisType">
+                  <option value="all">Все типы</option>
+                  <option value="biochemistry" selected>Биохимия</option>
+                  <option value="blood_count">Общий анализ крови</option>
+                  <option value="lipid_profile">Липидный профиль</option>
+                  <option value="anthropometry">Антропометрия</option>
+                  <option value="infections">Инфекции</option>
+                  <option value="inflammation">Воспаление/ревматология</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <button class="btn-apply-filters" id="applyFiltersBtn">
+                  <i class="fas fa-filter"></i>
+                  Применить фильтры
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Layout -->
+          <div class="dashboard-layout">
+            <!-- Left Column -->
+            <div class="left-column">
+              <!-- Dynamics Chart -->
+              <div class="dashboard-card">
+                <div class="card-title-wrapper">
+                  <div class="card-title">Динамика параметров</div>
+                  <div class="chart-filter-wrapper">
+                    <select class="chart-group-filter" id="chartGroupFilter">
+                      <option value="biochemistry">Биохимия</option>
+                      <option value="blood_count">Общий анализ крови</option>
+                      <option value="lipid_profile">Липидный профиль</option>
+                      <option value="anthropometry">Антропометрия</option>
+                      <option value="infections">Инфекции</option>
+                      <option value="inflammation">Воспаление/ревматология</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="dynamics-chart-wrapper">
+                  <canvas id="dynamicsChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Upload Section -->
+              <div class="dashboard-card upload-card">
+                <div class="card-title">Загрузка данных</div>
+                <i class="fas fa-file-upload upload-icon"></i>
+                <p class="upload-text">Загрузите CSV/JSON файл с результатами анализов</p>
+                <button class="btn-upload" id="uploadBtn">
+                  <i class="fas fa-upload"></i>
+                  Загрузить
+                </button>
+                <p class="upload-formats">Поддерживаемые форматы: CSV, JSON</p>
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+              <!-- Patient Summary -->
+              <div class="dashboard-card">
+                <div class="card-title">Сводная информация о пациенте</div>
+                <div class="patient-info" id="patientInfo">
+                  <div class="patient-details">
+                    <div class="patient-detail-item" id="patientAge">
+                      <span class="detail-label">Возраст:</span>
+                      <span class="detail-value">—</span>
+                    </div>
+                    <div class="patient-detail-item" id="patientSex">
+                      <span class="detail-label">Пол:</span>
+                      <span class="detail-value">—</span>
+                    </div>
+                    <div class="patient-detail-item" id="patientWeight">
+                      <span class="detail-label">Вес:</span>
+                      <span class="detail-value">—</span>
+                    </div>
+                    <div class="patient-detail-item" id="patientHeight">
+                      <span class="detail-label">Рост:</span>
+                      <span class="detail-value">—</span>
+                    </div>
+                  </div>
+                  <div class="patient-meta" id="lastAnalysisDate"></div>
+                  <div class="critical-deviations">
+                    <div class="critical-deviations-title">Критическое отклонение:</div>
+                    <div id="criticalDeviations"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Indicators Table -->
+              <div class="dashboard-card">
+                <div class="card-title">Критические показатели</div>
+                <div id="indicatorsDescription" class="indicators-description"></div>
+                <div class="indicators-table-wrapper">
+                  <table class="indicators-table" id="indicatorsTable">
+                    <thead>
+                      <tr>
+                        <th>Показатель</th>
+                        <th>Значение</th>
+                        <th>Референсный диапазон</th>
+                      </tr>
+                    </thead>
+                    <tbody id="indicatorsTableBody">
+                      <!-- Data will be inserted here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Groups Section - Full Width -->
+          <div class="groups-section" id="groupsSection">
+            <!-- Groups will be inserted here -->
+          </div>
+        </div>
+      </main>
+
+      <script>
+        const API_BASE = 'http://localhost:8000';
+        const DEMO_VERSION = '1';
+        let patientData = null;
+        let dynamicsChart = null;
+        let patientsList = [];
+        let currentPatientId = null;
+        
+        // Helper function to round to 2 decimal places
+        function roundToHundredths(value) {
+          if (value === null || value === undefined || isNaN(value)) return value;
+          return Math.round(value * 100) / 100;
+        }
+        
+        // Helper function to format number with 2 decimal places
+        function formatNumber(value) {
+          if (value === null || value === undefined) return '—';
+          const rounded = roundToHundredths(value);
+          return rounded.toFixed(2);
+        }
+        
+      // Load patients list
+      async function loadPatientsList() {
+        try {
+          // Load from test_table.csv
+          const response1 = await fetch(`${API_BASE}/api/demo/patients-list-from-test-table`);
+          const patients1 = response1.ok ? await response1.json() : [];
+          
+          // Load from uploaded data
+          const response2 = await fetch(`${API_BASE}/api/demo/patients-list-from-uploaded`);
+          const patients2 = response2.ok ? await response2.json() : [];
+          
+          // Combine all patients
+          patientsList = [...patients1, ...patients2];
+          
+          const patientSelect = document.getElementById('patientSelect');
+          patientSelect.innerHTML = '';
+          
+          // Add default option for patient from demo version 1
+          const defaultOption = document.createElement('option');
+          defaultOption.value = 'demo1';
+          defaultOption.textContent = 'Пациент 1 (демо)';
+          patientSelect.appendChild(defaultOption);
+          
+          // Add patients from test_table.csv (patients 2-5)
+          patients1.forEach((patient, index) => {
+            const option = document.createElement('option');
+            option.value = patient.patient_id;
+            option.textContent = `Пациент ${index + 2} (${patient.patient_id})`;
+            patientSelect.appendChild(option);
+          });
+          
+          // Add patients from uploaded data
+          patients2.forEach((patient, index) => {
+            const option = document.createElement('option');
+            option.value = `uploaded_${patient.patient_id}`;
+            option.textContent = `Загруженный ${index + 1} (${patient.patient_id})`;
+            patientSelect.appendChild(option);
+          });
+          
+          // Load default patient data if not already loaded
+          if (!currentPatientId) {
+            loadPatientData('demo1');
+          }
+        } catch (error) {
+          console.error('Ошибка загрузки списка пациентов:', error);
+          // Fallback to demo version 1
+          if (!currentPatientId) {
+            loadPatientData('demo1');
+          }
+        }
+      }
+        
+      // Load patient data
+      async function loadPatientData(patientId = null) {
+        try {
+          let data;
+          
+          if (patientId === 'demo1' || !patientId) {
+            // Load from demo version 1
+            const response = await fetch(`${API_BASE}/api/demo/patient-data?demo_version=${DEMO_VERSION}`);
+            if (!response.ok) throw new Error('Ошибка загрузки данных');
+            data = await response.json();
+          } else if (patientId.startsWith('uploaded_')) {
+            // Load from uploaded data
+            const actualPatientId = patientId.replace('uploaded_', '');
+            const response = await fetch(`${API_BASE}/api/demo/patient-data-from-uploaded?patient_id=${actualPatientId}`);
+            if (!response.ok) throw new Error('Ошибка загрузки данных пациента');
+            data = await response.json();
+          } else {
+            // Load from test_table.csv
+            const response = await fetch(`${API_BASE}/api/demo/patient-data-from-test-table?patient_id=${patientId}`);
+            if (!response.ok) throw new Error('Ошибка загрузки данных пациента');
+            data = await response.json();
+          }
+          
+          patientData = data;
+          currentPatientId = patientId;
+          renderDashboard(data);
+        } catch (error) {
+          console.error('Ошибка:', error);
+          alert('Ошибка загрузки данных пациента: ' + error.message);
+        }
+      }
+        
+        function renderDashboard(data) {
+          renderPatientSummary(data);
+          renderIndicatorsTable(data);
+          // Default to first group in filter
+          const defaultGroup = document.getElementById('chartGroupFilter').value || 'biochemistry';
+          renderDynamicsChart(data, defaultGroup);
+          renderGroups(data.groups || {});
+        }
+        
+        function renderPatientSummary(data) {
+          // Extract patient info from data
+          const groups = data.groups || {};
+          const abnormalTests = data.abnormal_tests || [];
+          
+          // Get patient demographics from demography group
+          const demographyGroup = groups.demography || [];
+          const anthropometryGroup = groups.anthropometry || [];
+          
+          // Find age, sex, weight, height
+          let age = null;
+          let sex = null;
+          let weight = null;
+          let height = null;
+          
+          // Look for age in demography
+          demographyGroup.forEach(item => {
+            const name = (item.name || '').toLowerCase();
+            const code = (item.test_code || '').toLowerCase();
+            if (name.includes('возраст') || name.includes('age') || code.includes('age')) {
+              age = item.value;
+            }
+            if (name.includes('пол') || name.includes('sex') || name.includes('gender') || code.includes('sex')) {
+              sex = item.value;
+              // Convert to readable format
+              if (sex === 'M' || sex === 'm' || sex === 'male' || sex === 'мужской') {
+                sex = 'Мужской';
+              } else if (sex === 'F' || sex === 'f' || sex === 'female' || sex === 'женский') {
+                sex = 'Женский';
+              }
+            }
+          });
+          
+          // Look for weight and height in anthropometry
+          anthropometryGroup.forEach(item => {
+            const name = (item.name || '').toLowerCase();
+            const code = (item.test_code || '').toLowerCase();
+            if (name.includes('вес') || name.includes('weight') || code.includes('weight')) {
+              weight = item.value;
+            }
+            if (name.includes('рост') || name.includes('height') || code.includes('height')) {
+              height = item.value;
+            }
+          });
+          
+          // Update UI
+          document.getElementById('patientAge').innerHTML = `
+            <span class="detail-label">Возраст:</span>
+            <span class="detail-value">${age !== null ? `${formatNumber(age)} ${demographyGroup.find(i => (i.name || '').toLowerCase().includes('возраст') || (i.name || '').toLowerCase().includes('age'))?.unit || 'лет'}` : '—'}</span>
+          `;
+          
+          document.getElementById('patientSex').innerHTML = `
+            <span class="detail-label">Пол:</span>
+            <span class="detail-value">${sex || '—'}</span>
+          `;
+          
+          document.getElementById('patientWeight').innerHTML = `
+            <span class="detail-label">Вес:</span>
+            <span class="detail-value">${weight !== null ? `${formatNumber(weight)} ${anthropometryGroup.find(i => (i.name || '').toLowerCase().includes('вес') || (i.name || '').toLowerCase().includes('weight'))?.unit || 'кг'}` : '—'}</span>
+          `;
+          
+          document.getElementById('patientHeight').innerHTML = `
+            <span class="detail-label">Рост:</span>
+            <span class="detail-value">${height !== null ? `${formatNumber(height)} ${anthropometryGroup.find(i => (i.name || '').toLowerCase().includes('рост') || (i.name || '').toLowerCase().includes('height'))?.unit || 'см'}` : '—'}</span>
+          `;
+          
+          // Get last analysis date
+          let lastDate = '';
+          Object.values(groups).forEach(group => {
+            if (Array.isArray(group)) {
+              group.forEach(test => {
+                if (test.date && (!lastDate || test.date > lastDate)) {
+                  lastDate = test.date;
+                }
+              });
+            }
+          });
+          
+          if (lastDate) {
+            // Try to parse date - could be in different formats
+            let dateObj;
+            if (lastDate.includes('-')) {
+              dateObj = new Date(lastDate);
+            } else if (lastDate.includes('.')) {
+              // Format: DD.MM.YYYY
+              const parts = lastDate.split('.');
+              if (parts.length === 3) {
+                dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
+              } else {
+                dateObj = new Date(lastDate);
+              }
+            } else {
+              dateObj = new Date(lastDate);
+            }
+            
+            if (!isNaN(dateObj.getTime())) {
+              const formattedDate = dateObj.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
+              document.getElementById('lastAnalysisDate').textContent = `Дата последнего анализа: ${formattedDate}`;
+            } else {
+              document.getElementById('lastAnalysisDate').textContent = `Дата последнего анализа: ${lastDate}`;
+            }
+          } else {
+            document.getElementById('lastAnalysisDate').textContent = 'Дата последнего анализа: не указана';
+          }
+          
+          // Critical deviations
+          const criticalDeviationsDiv = document.getElementById('criticalDeviations');
+          criticalDeviationsDiv.innerHTML = '';
+          
+          if (abnormalTests.length > 0) {
+            abnormalTests.slice(0, 3).forEach(test => {
+              const deviation = document.createElement('div');
+              deviation.className = 'deviation-item';
+              const arrows = test.status === 'HIGH' ? '↑↑' : '↓';
+              deviation.textContent = `${test.name} ${arrows}`;
+              criticalDeviationsDiv.appendChild(deviation);
+            });
+          } else {
+            const noDeviation = document.createElement('div');
+            noDeviation.className = 'deviation-item';
+            noDeviation.textContent = 'Нет критических отклонений';
+            noDeviation.style.color = 'var(--text-secondary)';
+            criticalDeviationsDiv.appendChild(noDeviation);
+          }
+        }
+        
+        function renderProgressBars(data) {
+          const progressSection = document.getElementById('progressSection');
+          progressSection.innerHTML = '';
+          
+          // Show only critical (abnormal) tests
+          const abnormalTests = data.abnormal_tests || [];
+          
+          if (abnormalTests.length === 0) {
+            const noCritical = document.createElement('div');
+            noCritical.style.fontFamily = "'Inter', sans-serif";
+            noCritical.style.fontSize = '14px';
+            noCritical.style.color = 'var(--text-secondary)';
+            noCritical.style.padding = '12px 0';
+            noCritical.textContent = 'Нет критических отклонений';
+            progressSection.appendChild(noCritical);
+            return;
+          }
+          
+          // Show progress bars only for critical tests
+          abnormalTests.forEach(test => {
+            if (test.value !== null && test.value !== undefined) {
+              const colorClass = test.status === 'HIGH' ? 'red' : 'orange';
+              const progressItem = createProgressBar(
+                test.name || test.test_code, 
+                test.value, 
+                test.norm_min, 
+                test.norm_max, 
+                colorClass
+              );
+              progressSection.appendChild(progressItem);
+            }
+          });
+        }
+        
+        function createProgressBar(label, value, normMin, normMax, colorClass) {
+          const item = document.createElement('div');
+          item.className = 'progress-item';
+          
+          const labelDiv = document.createElement('div');
+          labelDiv.className = 'progress-label';
+          labelDiv.innerHTML = `<span>${label}</span>`;
+          
+          const wrapper = document.createElement('div');
+          wrapper.className = 'progress-bar-wrapper';
+          
+          const bar = document.createElement('div');
+          bar.className = `progress-bar ${colorClass}`;
+          
+          if (value !== null && normMin !== null && normMax !== null) {
+            // Calculate percentage based on value relative to norm range
+            // Show how far the value is from the norm range
+            const range = normMax - normMin;
+            if (range > 0) {
+              // Normalize: 0% = normMin, 100% = normMax, but allow overflow
+              const position = ((value - normMin) / range) * 100;
+              const width = Math.min(Math.max(position, 0), 100);
+              bar.style.width = `${width}%`;
+            } else {
+              // If range is 0 or invalid, show based on value
+              bar.style.width = value > normMax ? '100%' : '50%';
+            }
+          } else {
+            // For "Все показатели" - show a mixed bar representing overall status
+            bar.style.width = '75%';
+          }
+          
+          wrapper.appendChild(bar);
+          item.appendChild(labelDiv);
+          item.appendChild(wrapper);
+          
+          return item;
+        }
+        
+        function renderIndicatorsTable(data) {
+          const tbody = document.getElementById('indicatorsTableBody');
+          const descriptionDiv = document.getElementById('indicatorsDescription');
+          tbody.innerHTML = '';
+          
+          // Show only critical (abnormal) tests with HIGH status
+          const abnormalTests = data.abnormal_tests || [];
+          
+          // Filter only HIGH status items
+          const highStatusTests = abnormalTests.filter(test => test.status === 'HIGH');
+          
+          // Update description
+          if (highStatusTests.length === 0) {
+            descriptionDiv.textContent = 'Все показатели находятся в пределах референсных значений';
+            descriptionDiv.className = 'indicators-description normal';
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            cell.colSpan = 3;
+            cell.textContent = 'Критические отклонения не обнаружены';
+            cell.style.textAlign = 'center';
+            cell.style.padding = '20px';
+            cell.style.color = 'var(--text-secondary)';
+            row.appendChild(cell);
+            tbody.appendChild(row);
+            return;
+          } else {
+            descriptionDiv.textContent = 'Обнаружены показатели, требующие особого внимания:';
+            descriptionDiv.className = 'indicators-description';
+          }
+          
+          // Sort by name
+          highStatusTests.sort((a, b) => {
+            const aName = (a.name || a.test_code || '').toLowerCase();
+            const bName = (b.name || b.test_code || '').toLowerCase();
+            return aName.localeCompare(bName);
+          });
+          
+          // Show only HIGH status tests
+          highStatusTests.forEach(test => {
+            const row = document.createElement('tr');
+            
+            const nameCell = document.createElement('td');
+            nameCell.textContent = test.name || test.test_code || '—';
+            if (test.status === 'HIGH' || test.status === 'LOW') {
+              nameCell.className = 'highlight';
+            }
+            
+            const valueCell = document.createElement('td');
+            if (test.value !== null && test.value !== undefined) {
+              const roundedValue = formatNumber(test.value);
+              valueCell.textContent = `${roundedValue} ${test.unit || ''}`;
+              if (test.status === 'HIGH' || test.status === 'LOW') {
+                valueCell.className = 'highlight';
+              }
+            } else {
+              valueCell.textContent = '—';
+            }
+            
+            const rangeCell = document.createElement('td');
+            if (test.norm_min !== null && test.norm_max !== null) {
+              rangeCell.textContent = `${formatNumber(test.norm_min)} - ${formatNumber(test.norm_max)} ${test.unit || ''}`;
+            } else if (test.norm_min !== null) {
+              rangeCell.textContent = `≥${formatNumber(test.norm_min)} ${test.unit || ''}`;
+            } else if (test.norm_max !== null) {
+              rangeCell.textContent = `≤${formatNumber(test.norm_max)} ${test.unit || ''}`;
+            } else {
+              rangeCell.textContent = '—';
+            }
+            
+            row.appendChild(nameCell);
+            row.appendChild(valueCell);
+            row.appendChild(rangeCell);
+            tbody.appendChild(row);
+          });
+        }
+        
+        function renderDynamicsChart(data, selectedGroup = 'all') {
+          const charts = data.charts || {};
+          const groups = data.groups || {};
+          const canvas = document.getElementById('dynamicsChart');
+          const ctx = canvas.getContext('2d');
+          
+          // Filter charts by selected group
+          let filteredCharts = {};
+          // Get test codes from selected group
+          const groupTests = groups[selectedGroup] || [];
+          const groupTestCodes = new Set(groupTests.map(t => t.test_code));
+          
+          Object.entries(charts).forEach(([testCode, chartData]) => {
+            if (groupTestCodes.has(testCode)) {
+              filteredCharts[testCode] = chartData;
+            }
+          });
+          
+          if (Object.keys(filteredCharts).length === 0) {
+            // Show empty state
+            if (dynamicsChart) {
+              dynamicsChart.destroy();
+              dynamicsChart = null;
+            }
+            return;
+          }
+          
+          // Create datasets for each test in the selected group
+          const datasets = [];
+          const colors = ['#2F80ED', '#EB5757', '#F2C94C', '#219653', '#9B51E0', '#F2994A', '#56CCF2', '#F2994A'];
+          let colorIndex = 0;
+          
+          Object.entries(filteredCharts).forEach(([testCode, chartData]) => {
+            if (!chartData || !chartData.datasets || chartData.datasets.length === 0) return;
+            
+            // Get the patient dataset (first dataset, not norm lines)
+            // Since we have only one patient, get the first non-norm dataset
+            const patientDataset = chartData.datasets.find(ds => 
+              ds.label !== 'Минимум нормы' && 
+              ds.label !== 'Максимум нормы' && 
+              ds.label !== 'Min norm' && 
+              ds.label !== 'Max norm'
+            );
+            if (!patientDataset || !patientDataset.data) return;
+            
+            // Collect dates that have data for this test
+            const testDates = new Set();
+            patientDataset.data.forEach(point => {
+              const date = point.x || point.date || (typeof point === 'string' ? point : null);
+              const value = point.y || point.value || point;
+              if (date && value !== null && value !== undefined && !isNaN(value)) {
+                testDates.add(date);
+              }
+            });
+            
+            // Get test name
+            const testName = chartData.title || testCode;
+            
+            // Create data points only for dates with data, with rounded values
+            const sortedTestDates = Array.from(testDates).sort();
+            const dataPoints = sortedTestDates.map(date => {
+              const existingPoint = patientDataset.data.find(d => {
+                const pointDate = d.x || d.date || (typeof d === 'string' ? d : null);
+                return pointDate === date;
+              });
+              if (existingPoint) {
+                const value = existingPoint.y || existingPoint.value || existingPoint;
+                if (value !== null && value !== undefined && !isNaN(value)) {
+                  return { x: date, y: roundToHundredths(value) };
+                }
+              }
+              return null;
+            }).filter(p => p !== null);
+            
+            datasets.push({
+              label: testName,
+              data: dataPoints,
+              borderColor: colors[colorIndex % colors.length],
+              backgroundColor: colors[colorIndex % colors.length],
+              borderWidth: 2,
+              tension: 0.4,
+              fill: false,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              pointBackgroundColor: colors[colorIndex % colors.length],
+              pointBorderColor: colors[colorIndex % colors.length]
+            });
+            
+            colorIndex++;
+          });
+          
+          // Collect all unique dates from all datasets
+          const allDatesSet = new Set();
+          datasets.forEach(ds => {
+            ds.data.forEach(point => {
+              if (point.x) allDatesSet.add(point.x);
+            });
+          });
+          const allDates = Array.from(allDatesSet).sort();
+          
+          // Destroy existing chart if any
+          if (dynamicsChart) {
+            dynamicsChart.destroy();
+          }
+          
+          dynamicsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: allDates,
+              datasets: datasets
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: true,
+                  position: 'top',
+                  labels: {
+                    boxWidth: 12,
+                    padding: 10,
+                    font: {
+                      size: 12
+                    }
+                  }
+                },
+                tooltip: {
+                  mode: 'index',
+                  intersect: false,
+                  callbacks: {
+                    label: function(context) {
+                      const value = context.parsed.y;
+                      if (value === null || value === undefined) return '';
+                      return `${context.dataset.label}: ${formatNumber(value)}`;
+                    }
+                  }
+                }
+              },
+              scales: {
+                x: {
+                  type: 'category',
+                  ticks: {
+                    maxRotation: 45,
+                    minRotation: 45,
+                    font: {
+                      size: 11
+                    }
+                  }
+                },
+                y: {
+                  beginAtZero: false,
+                  ticks: {
+                    callback: function(value) {
+                      return formatNumber(value);
+                    },
+                    font: {
+                      size: 11
+                    }
+                  }
+                }
+              }
+            }
+          });
+        }
+        
+        // Chart group filter handler
+        document.getElementById('chartGroupFilter').addEventListener('change', (e) => {
+          const selectedGroup = e.target.value;
+          if (patientData) {
+            renderDynamicsChart(patientData, selectedGroup);
+          }
+        });
+        
+        function renderGroups(groups) {
+          const section = document.getElementById('groupsSection');
+          section.innerHTML = '';
+          
+          const groupNames = {
+            'demography': 'Демография',
+            'anthropometry': 'Антропометрия',
+            'biochemistry': 'Биохимия',
+            'blood_count': 'Общий анализ крови',
+            'infections': 'Инфекции',
+            'inflammation': 'Воспаление/ревматология',
+            'lipid_profile': 'Липидный профиль'
+          };
+          
+          Object.keys(groups).forEach(groupKey => {
+            const groupData = groups[groupKey];
+            if (!groupData || !Array.isArray(groupData) || groupData.length === 0) return;
+            
+            const card = document.createElement('div');
+            card.className = 'group-card';
+            
+            const title = document.createElement('div');
+            title.className = 'group-title';
+            title.innerHTML = `
+              <span>${groupNames[groupKey] || groupKey}</span>
+              <i class="fas fa-chevron-down"></i>
+            `;
+            
+            title.addEventListener('click', () => {
+              title.classList.toggle('collapsed');
+              const dataDiv = card.querySelector('.group-data');
+              dataDiv.classList.toggle('collapsed');
+            });
+            
+            card.appendChild(title);
+            
+            const dataDiv = document.createElement('div');
+            dataDiv.className = 'group-data';
+            
+            groupData.forEach(test => {
+              const item = document.createElement('div');
+              item.className = 'test-item';
+              
+              const header = document.createElement('div');
+              header.className = 'test-item-header';
+              
+              const info = document.createElement('div');
+              info.className = 'test-info';
+              
+              const name = document.createElement('div');
+              name.className = 'test-name';
+              name.textContent = test.name;
+              info.appendChild(name);
+              
+              const meta = document.createElement('div');
+              meta.className = 'test-meta';
+              meta.textContent = `Норма: ${test.norm_min || '—'} - ${test.norm_max || '—'} ${test.unit || ''}`;
+              info.appendChild(meta);
+              
+              header.appendChild(info);
+              
+              const value = document.createElement('div');
+              value.className = 'test-value';
+              value.textContent = test.value !== null && test.value !== undefined ? `${formatNumber(test.value)} ${test.unit || ''}` : '—';
+              header.appendChild(value);
+              
+              const status = document.createElement('div');
+              status.className = `test-status ${test.status?.toLowerCase() || 'normal'}`;
+              status.textContent = test.status === 'HIGH' ? 'Выше нормы' : 
+                                  test.status === 'LOW' ? 'Ниже нормы' : 'В норме';
+              header.appendChild(status);
+              
+              item.appendChild(header);
+              
+              // Add click handler to show dynamics for this test
+              if (test.has_dynamics || test.test_code) {
+                item.classList.add('clickable');
+                item.addEventListener('click', () => {
+                  showTestDynamics(test.test_code, test.name);
+                });
+              }
+              
+              dataDiv.appendChild(item);
+            });
+            
+            card.appendChild(dataDiv);
+            section.appendChild(card);
+          });
+        }
+        
+        // Patient select handler
+        document.getElementById('patientSelect').addEventListener('change', (e) => {
+          const selectedPatientId = e.target.value;
+          if (selectedPatientId) {
+            loadPatientData(selectedPatientId);
+          }
+        });
+        
+        // Filter handlers
+        document.getElementById('applyFiltersBtn').addEventListener('click', () => {
+          const date = document.getElementById('analysisDate').value;
+          const type = document.getElementById('analysisType').value;
+          // Filter logic can be implemented here
+          console.log('Applying filters:', { date, type });
+        });
+        
+        // Function to show dynamics for a specific test
+        function showTestDynamics(testCode, testName) {
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          
+          if (!patientData || !patientData.charts || !patientData.charts[testCode]) {
+            console.warn('График для теста не найден:', testCode);
+            return;
+          }
+          
+          const chartData = patientData.charts[testCode];
+          const canvas = document.getElementById('dynamicsChart');
+          const ctx = canvas.getContext('2d');
+          
+          // Get the patient dataset (not norm lines)
+          const patientDataset = chartData.datasets.find(ds => 
+            ds.label !== 'Минимум нормы' && 
+            ds.label !== 'Максимум нормы' && 
+            ds.label !== 'Min norm' && 
+            ds.label !== 'Max norm'
+          );
+          
+          if (!patientDataset || !patientDataset.data) {
+            console.warn('Данные для теста не найдены:', testCode);
+            return;
+          }
+          
+          // Get norm values from test data
+          const groups = patientData.groups || {};
+          let normMin = null;
+          let normMax = null;
+          
+          // Find test in groups to get norm values
+          Object.values(groups).forEach(group => {
+            if (Array.isArray(group)) {
+              const test = group.find(t => t.test_code === testCode);
+              if (test) {
+                normMin = test.norm_min;
+                normMax = test.norm_max;
+              }
+            }
+          });
+          
+          // Collect dates that have data
+          const datesWithData = new Set();
+          patientDataset.data.forEach(point => {
+            const date = point.x || point.date || (typeof point === 'string' ? point : null);
+            const value = point.y || point.value || point;
+            if (date && value !== null && value !== undefined && !isNaN(value)) {
+              datesWithData.add(date);
+            }
+          });
+          const sortedDates = Array.from(datesWithData).sort();
+          
+          if (sortedDates.length === 0) {
+            console.warn('Нет данных для отображения');
+            return;
+          }
+          
+          // Create data points with rounded values
+          const dataPoints = sortedDates.map(date => {
+            const existingPoint = patientDataset.data.find(d => {
+              const pointDate = d.x || d.date || (typeof d === 'string' ? d : null);
+              return pointDate === date;
+            });
+            if (existingPoint) {
+              const value = existingPoint.y || existingPoint.value || existingPoint;
+              if (value !== null && value !== undefined && !isNaN(value)) {
+                return { x: date, y: roundToHundredths(value) };
+              }
+            }
+            return null;
+          }).filter(p => p !== null);
+          
+          // Create datasets array
+          const datasets = [{
+            label: testName || testCode,
+            data: dataPoints,
+            borderColor: '#2F80ED',
+            backgroundColor: '#2F80ED',
+            borderWidth: 2,
+            tension: 0.4,
+            fill: false,
+            pointRadius: 4,
+            pointHoverRadius: 6,
+            pointBackgroundColor: '#2F80ED',
+            pointBorderColor: '#2F80ED'
+          }];
+          
+          // Add norm lines if available
+          if (normMin !== null && normMin !== undefined && !isNaN(normMin)) {
+            const minNormPoints = [
+              { x: sortedDates[0], y: roundToHundredths(normMin) },
+              { x: sortedDates[sortedDates.length - 1], y: roundToHundredths(normMin) }
+            ];
+            datasets.push({
+              label: 'Минимум нормы',
+              data: minNormPoints,
+              borderColor: '#27AE60',
+              backgroundColor: 'transparent',
+              borderWidth: 2,
+              borderDash: [5, 5],
+              pointRadius: 0,
+              fill: false
+            });
+          }
+          
+          if (normMax !== null && normMax !== undefined && !isNaN(normMax)) {
+            const maxNormPoints = [
+              { x: sortedDates[0], y: roundToHundredths(normMax) },
+              { x: sortedDates[sortedDates.length - 1], y: roundToHundredths(normMax) }
+            ];
+            datasets.push({
+              label: 'Максимум нормы',
+              data: maxNormPoints,
+              borderColor: '#27AE60',
+              backgroundColor: 'transparent',
+              borderWidth: 2,
+              borderDash: [5, 5],
+              pointRadius: 0,
+              fill: false
+            });
+          }
+          
+          // Destroy existing chart
+          if (dynamicsChart) {
+            dynamicsChart.destroy();
+          }
+          
+          // Create new chart for this test
+          dynamicsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: sortedDates,
+              datasets: datasets
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: true,
+                  position: 'top',
+                  labels: {
+                    boxWidth: 12,
+                    padding: 10,
+                    font: {
+                      size: 12
+                    }
+                  }
+                },
+                tooltip: {
+                  mode: 'index',
+                  intersect: false,
+                  callbacks: {
+                    label: function(context) {
+                      const value = context.parsed.y;
+                      if (value === null || value === undefined) return '';
+                      return `${context.dataset.label}: ${formatNumber(value)}`;
+                    }
+                  }
+                }
+              },
+              scales: {
+                x: {
+                  type: 'category',
+                  ticks: {
+                    maxRotation: 45,
+                    minRotation: 45,
+                    font: {
+                      size: 11
+                    }
+                  }
+                },
+                y: {
+                  beginAtZero: false,
+                  ticks: {
+                    callback: function(value) {
+                      return formatNumber(value);
+                    },
+                    font: {
+                      size: 11
+                    }
+                  }
+                }
+              }
+            }
+          });
+          
+          // Update filter to show the group of this test
+          const testCategory = getTestCategory(testCode);
+          const groupSelect = document.getElementById('chartGroupFilter');
+          if (groupSelect) {
+            groupSelect.value = testCategory;
+          }
+        }
+        
+        // Helper function to get test category
+        function getTestCategory(testCode) {
+          if (!testCode) return 'biochemistry';
+          const code = testCode.toLowerCase();
+          if (code.startsWith('am.')) return 'anthropometry';
+          if (code.startsWith('chem.')) return 'biochemistry';
+          if (code.startsWith('bc.')) return 'blood_count';
+          if (code.startsWith('cmv.')) return 'infections';
+          if (code.startsWith('infl.')) return 'inflammation';
+          if (code.startsWith('lip.')) return 'lipid_profile';
+          return 'biochemistry';
+        }
+        
+        // Group filter for dynamics chart
+        document.getElementById('chartGroupFilter').addEventListener('change', (e) => {
+          const selectedGroup = e.target.value;
+          if (patientData) {
+            renderDynamicsChart(patientData, selectedGroup);
+          }
+        });
+        
+      // Upload button handler
+      document.getElementById('uploadBtn').addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.csv';
+        input.onchange = async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          
+          if (!file.name.endsWith('.csv')) {
+            alert('Пожалуйста, выберите CSV файл');
+            return;
+          }
+          
+          const formData = new FormData();
+          formData.append('file', file);
+          
+          try {
+            const uploadBtn = document.getElementById('uploadBtn');
+            uploadBtn.disabled = true;
+            uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Загрузка...';
+            
+            const response = await fetch(`${API_BASE}/api/demo/upload-patient-data`, {
+              method: 'POST',
+              body: formData
+            });
+            
+            if (!response.ok) {
+              const error = await response.json();
+              throw new Error(error.detail || 'Ошибка загрузки файла');
+            }
+            
+            const result = await response.json();
+            alert(result.message || 'Файл успешно загружен!');
+            
+            // Обновляем список пациентов
+            await loadPatientsList();
+            
+          } catch (error) {
+            console.error('Ошибка загрузки:', error);
+            alert('Ошибка загрузки файла: ' + error.message);
+          } finally {
+            const uploadBtn = document.getElementById('uploadBtn');
+            uploadBtn.disabled = false;
+            uploadBtn.innerHTML = '<i class="fas fa-upload"></i> Загрузить';
+          }
+        };
+        input.click();
+      });
+        
+        // Load patients list and default patient data on page load
+        loadPatientsList();
+      </script>
+    </body>
+  </html>

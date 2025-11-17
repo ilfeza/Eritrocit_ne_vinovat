@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="index/css/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <title>Демо вариант 2 - BioDash</title>
+    <style>
+      .demo-container {
+        padding: 40px 0;
+      }
+      
+      .demo-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        gap: 20px;
+      }
+      
+      .demo-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 32px;
+        color: var(--text-primary);
+        margin: 0;
+      }
+      
+      .demo-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      
+      .btn-download {
+        background: var(--primary-dark);
+        color: var(--bg-white);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 12px;
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow);
+      }
+      
+      .btn-download:hover {
+        background: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+      }
+      
+      .patients-table-section {
+        margin-top: 40px;
+        background: var(--bg-white);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+      }
+      
+      .patients-table-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        color: var(--text-primary);
+        margin-bottom: 20px;
+      }
+      
+      .patients-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .patients-table thead {
+        background: var(--bg-light);
+      }
+      
+      .patients-table th {
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+      }
+      
+      .patients-table td {
+        padding: 12px 16px;
+        font-size: 14px;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .patients-table tbody tr {
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      
+      .patients-table tbody tr:hover {
+        background: #e8f2ff;
+      }
+      
+      .patients-table tbody tr.selected {
+        background: var(--primary-color);
+        color: var(--bg-white);
+      }
+      
+      .patients-table tbody tr.selected td {
+        color: var(--bg-white);
+      }
+      
+      .patient-data-section {
+        display: none;
+        margin-top: 40px;
+      }
+      
+      .patient-data-section.active {
+        display: block;
+      }
+      
+      .patient-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 16px;
+        background: var(--bg-light);
+        border-radius: 12px;
+      }
+      
+      .patient-header-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: var(--text-primary);
+      }
+      
+      .btn-back {
+        background: var(--primary-color);
+        color: var(--bg-white);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-back:hover {
+        background: var(--primary-dark);
+      }
+      
+      .abnormal-tests {
+        background: #fef2f2;
+        border: 2px solid #ef4444;
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 40px;
+      }
+      
+      .abnormal-tests-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: #dc2626;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .abnormal-tests-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      
+      .abnormal-test-item {
+        background: #fff;
+        border: 1px solid #ef4444;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: var(--text-primary);
+      }
+      
+      .abnormal-test-item .test-name {
+        font-weight: 600;
+        color: #dc2626;
+      }
+      
+      .abnormal-test-item .test-value {
+        margin-left: 8px;
+        color: var(--text-secondary);
+      }
+      
+      .groups-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      
+      .group-card {
+        background: var(--bg-white);
+        border-radius: 16px;
+        padding: 0;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+      }
+      
+      .group-title {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: var(--text-primary);
+        padding: 20px 24px;
+        border-bottom: 2px solid var(--border-color);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s ease;
+        user-select: none;
+      }
+      
+      .group-title:hover {
+        background: var(--bg-light);
+      }
+      
+      .group-title i {
+        transition: transform 0.3s ease;
+        color: var(--text-secondary);
+        transform: rotate(0deg);
+      }
+      
+      .group-title.collapsed i {
+        transform: rotate(-90deg);
+      }
+      
+      .group-data {
+        display: grid;
+        gap: 12px;
+        padding: 24px;
+        max-height: 600px;
+        overflow-y: auto;
+      }
+      
+      .group-data.collapsed {
+        display: none;
+      }
+      
+      .test-item {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        background: var(--bg-light);
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      
+      .test-item:hover {
+        background: #e8f2ff;
+        transform: translateX(4px);
+        box-shadow: 0 2px 8px rgba(47, 128, 237, 0.15);
+      }
+      
+      .test-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      
+      .test-item-chart {
+        display: none;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border-color);
+      }
+      
+      .test-item-chart.active {
+        display: block;
+      }
+      
+      .test-item-chart-wrapper {
+        position: relative;
+        height: 150px;
+        width: 100%;
+      }
+      
+      .test-dynamics-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 12px;
+        color: var(--primary-color);
+        margin-top: 4px;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+      }
+      
+      .test-dynamics-indicator i {
+        font-size: 10px;
+      }
+      
+      .test-info {
+        flex: 1;
+      }
+      
+      .test-name {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+      
+      .test-meta {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: var(--text-secondary);
+      }
+      
+      .test-value {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: var(--text-primary);
+        margin-right: 16px;
+      }
+      
+      .test-status {
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-family: 'Inter', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      
+      .test-status.normal {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      
+      .test-status.high {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      
+      .test-status.low {
+        background: #dbeafe;
+        color: #1e40af;
+      }
+      
+      .charts-section {
+        margin-top: 40px;
+        display: none; /* Больше не используем эту секцию */
+      }
+      
+      @media (max-width: 1200px) {
+        .groups-section {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .demo-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        .demo-actions {
+          width: 100%;
+        }
+        
+        .btn-download,
+        .btn-view {
+          flex: 1;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+            <div class="logo">
+              <svg class="logo-icon" width="21" height="31" viewBox="0 0 21 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.97" fill-rule="evenodd" clip-rule="evenodd" d="M2.4948 0.0468782C3.83368 -0.163854 4.91953 0.335892 5.75219 1.54611C6.49114 3.00195 6.48037 4.45124 5.71994 5.89388C6.55983 7.29716 7.43062 8.67142 8.33231 10.0168C9.2416 9.63116 10.1554 9.61864 11.0737 9.97928C11.3838 10.1353 11.6848 10.2853 11.9767 10.429C12.6816 9.70065 13.3804 8.96355 14.0731 8.21768C14.0304 7.86866 13.9659 7.51889 13.8796 7.16822C13.7468 4.93887 14.5961 3.50208 16.4274 2.85793C18.7682 2.65518 20.0798 3.90455 20.3621 6.60601C20.1657 8.90815 19.08 10.145 17.1047 10.3166C16.4982 10.3403 15.9392 10.1654 15.4276 9.79187C14.6624 10.5566 13.9206 11.3437 13.2023 12.1532C13.6371 13.3013 13.7016 14.4758 13.3958 15.6764C14.3151 16.3542 15.2288 17.0413 16.1372 17.7378C16.7729 17.244 17.4717 17.0816 18.2335 17.2505C19.7831 17.84 20.4174 19.0768 20.1363 20.9611C19.736 22.3375 18.9082 23.0871 17.653 23.21C15.811 22.9297 14.9402 21.7054 15.0406 19.5369C14.159 18.8622 13.2775 18.1876 12.396 17.5129C11.3434 18.6076 10.1285 18.9573 8.75158 18.5624C7.86131 20.2229 7.02277 21.9221 6.23596 23.6598C7.38882 25.4855 7.3458 27.2721 6.10696 29.0195C5.25055 29.8759 4.26147 30.2007 3.13983 29.994C1.20835 29.266 0.380588 27.7293 0.656467 25.3839C1.30337 23.2275 2.6042 22.278 4.55889 22.5353C5.39227 20.8734 6.20926 19.1992 7.01 17.5129C5.73497 15.7986 5.53075 13.9246 6.39722 11.8908C6.51545 11.7034 6.63375 11.516 6.75199 11.3286C5.88907 9.93513 5.01828 8.54834 4.13962 7.16822C2.34438 7.68666 1.03284 6.98704 0.204947 5.0693C-0.26295 3.37784 0.0703164 1.94107 1.20474 0.759013C1.61517 0.457885 2.04521 0.220504 2.4948 0.0468782ZM2.17228 1.1713C2.67302 1.191 2.85576 1.46586 2.72056 1.99588C2.36579 2.35819 2.03251 2.74549 1.72076 3.15778C1.29208 3.38326 1.05561 3.22084 1.01123 2.67053C1.15107 1.90849 1.53809 1.40876 2.17228 1.1713ZM15.9759 4.01984C16.4642 3.91969 16.7114 4.14457 16.7177 4.69449C16.3429 5.10521 15.9882 5.54246 15.6534 6.00632C15.0127 6.18593 14.787 5.89852 14.9761 5.14426C15.1764 4.59892 15.5097 4.22411 15.9759 4.01984ZM8.49356 11.1412C9.19471 11.1158 9.42047 11.4656 9.17084 12.1906C8.7301 12.6029 8.33231 13.0652 7.97754 13.5774C7.55531 13.8513 7.26504 13.7139 7.10675 13.1651C7.17293 12.126 7.63522 11.4514 8.49356 11.1412ZM16.6854 18.1876C16.9116 18.1496 17.1159 18.1996 17.2982 18.3375C17.3412 18.4624 17.3412 18.5873 17.2982 18.7123C17.0104 19.0245 16.7416 19.3618 16.4919 19.7243C16.1626 19.9288 15.9691 19.8164 15.9114 19.3869C15.9987 18.8361 16.2567 18.4363 16.6854 18.1876ZM2.68831 23.7347C3.17659 23.6346 3.42383 23.8594 3.43009 24.4094C3.05533 24.8201 2.70056 25.2573 2.36579 25.7212C1.92098 25.9671 1.66297 25.8047 1.59176 25.2339C1.74837 24.5156 2.11391 24.0159 2.68831 23.7347Z" fill="#2F80ED"/>
+              </svg>
+              <span class="logo-text">BioDash.</span>
+            </div>
+          </a>
+          <nav class="nav">
+            <div class="user-avatar">
+              <img src="index/images/image.png" alt="Врач" class="avatar-image" />
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container demo-container">
+        <div class="demo-header">
+          <h1 class="demo-title">Демо вариант 2</h1>
+          <div class="demo-actions">
+            <button class="btn-download" id="downloadBtn">
+              <i class="fas fa-download"></i>
+              <span>Скачать файл</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Patients Table Section -->
+        <div class="patients-table-section" id="patientsTableSection">
+          <h2 class="patients-table-title">Список пациентов</h2>
+          <table class="patients-table">
+            <thead>
+              <tr>
+                <th>ID пациента</th>
+                <th>Первая дата</th>
+                <th>Последняя дата</th>
+                <th>Количество тестов</th>
+                <th>Количество записей</th>
+              </tr>
+            </thead>
+            <tbody id="patientsTableBody">
+              <tr>
+                <td colspan="5" style="text-align: center; padding: 40px;">
+                  <i class="fas fa-spinner fa-spin" style="font-size: 24px; color: var(--text-secondary);"></i>
+                  <div style="margin-top: 12px; color: var(--text-secondary);">Загрузка пациентов...</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Patient Data Section -->
+        <div class="patient-data-section" id="patientDataSection">
+          <div class="patient-header">
+            <h2 class="patient-header-title" id="patientHeaderTitle">Данные пациента</h2>
+            <button class="btn-back" id="backBtn">
+              <i class="fas fa-arrow-left"></i>
+              <span>Назад к списку</span>
+            </button>
+          </div>
+          <!-- Abnormal Tests Section -->
+          <div class="abnormal-tests" id="abnormalTestsSection" style="display: none;">
+            <div class="abnormal-tests-title">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>Анализы не в норме</span>
+            </div>
+            <div class="abnormal-tests-list" id="abnormalTestsList"></div>
+          </div>
+
+          <!-- Groups Section -->
+          <div class="groups-section" id="groupsSection"></div>
+
+          <!-- Charts Section -->
+          <div class="charts-section" id="chartsSection"></div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const API_BASE = 'http://localhost:8000';
+      const DEMO_VERSION = '2'; // Версия демо для этой страницы
+      let patientData = null;
+      let chartInstances = {}; // Храним инстансы графиков
+      let currentPatientId = null;
+      
+      // Load patients list on page load
+      window.addEventListener('DOMContentLoaded', async () => {
+        await loadPatientsList();
+      });
+      
+      // Download file
+      document.getElementById('downloadBtn').addEventListener('click', async () => {
+        try {
+          const response = await fetch(`${API_BASE}/api/demo/download-file?demo_version=${DEMO_VERSION}`);
+          if (!response.ok) throw new Error('Ошибка загрузки файла');
+          
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'more_patients.csv';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+        } catch (error) {
+          console.error('Ошибка:', error);
+          alert('Не удалось скачать файл');
+        }
+      });
+      
+      // Back button
+      document.getElementById('backBtn').addEventListener('click', () => {
+        const patientSection = document.getElementById('patientDataSection');
+        const tableSection = document.getElementById('patientsTableSection');
+        
+        patientSection.classList.remove('active');
+        tableSection.style.display = 'block';
+        
+        // Clear patient data
+        patientData = null;
+        currentPatientId = null;
+        chartInstances = {};
+      });
+      
+      // Load patients list
+      async function loadPatientsList() {
+        const tbody = document.getElementById('patientsTableBody');
+        
+        try {
+          const response = await fetch(`${API_BASE}/api/demo/patients-list`);
+          if (!response.ok) throw new Error('Ошибка загрузки списка пациентов');
+          
+          const patients = await response.json();
+          
+          if (patients.length === 0) {
+            tbody.innerHTML = `
+              <tr>
+                <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                  Пациенты не найдены
+                </td>
+              </tr>
+            `;
+            return;
+          }
+          
+          tbody.innerHTML = '';
+          
+          patients.forEach(patient => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td><strong>${patient.patient_id}</strong></td>
+              <td>${patient.first_date || '—'}</td>
+              <td>${patient.last_date || '—'}</td>
+              <td>${patient.test_count}</td>
+              <td>${patient.record_count}</td>
+            `;
+            
+            row.addEventListener('click', () => {
+              loadPatientData(patient.patient_id);
+              
+              // Update selected row
+              document.querySelectorAll('.patients-table tbody tr').forEach(r => {
+                r.classList.remove('selected');
+              });
+              row.classList.add('selected');
+            });
+            
+            tbody.appendChild(row);
+          });
+        } catch (error) {
+          console.error('Ошибка:', error);
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" style="text-align: center; padding: 40px; color: #dc2626;">
+                <i class="fas fa-exclamation-circle"></i>
+                <div style="margin-top: 12px;">Не удалось загрузить список пациентов</div>
+              </td>
+            </tr>
+          `;
+        }
+      }
+      
+      // Load patient data
+      async function loadPatientData(patientId) {
+        const patientSection = document.getElementById('patientDataSection');
+        const tableSection = document.getElementById('patientsTableSection');
+        const headerTitle = document.getElementById('patientHeaderTitle');
+        
+        // Show loading state
+        patientSection.classList.add('active');
+        tableSection.style.display = 'none';
+        headerTitle.textContent = `Данные пациента: ${patientId}`;
+        
+        // Clear previous data
+        document.getElementById('abnormalTestsList').innerHTML = '';
+        document.getElementById('groupsSection').innerHTML = '';
+        chartInstances = {};
+        
+        try {
+          const response = await fetch(`${API_BASE}/api/demo/patient-data-by-id?patient_id=${patientId}`);
+          if (!response.ok) throw new Error('Ошибка загрузки данных пациента');
+          
+          const data = await response.json();
+          patientData = data; // Сохраняем данные
+          currentPatientId = patientId;
+          renderPatientData(data);
+        } catch (error) {
+          console.error('Ошибка:', error);
+          alert('Не удалось загрузить данные пациента');
+          patientSection.classList.remove('active');
+          tableSection.style.display = 'block';
+        }
+      }
+      
+      function renderPatientData(data) {
+        // Render abnormal tests
+        renderAbnormalTests(data.abnormal_tests || []);
+        
+        // Render groups
+        renderGroups(data.groups || {});
+        
+        // Render charts
+        renderCharts(data.charts || {});
+      }
+      
+      function renderAbnormalTests(abnormalTests) {
+        const section = document.getElementById('abnormalTestsSection');
+        const list = document.getElementById('abnormalTestsList');
+        
+        if (abnormalTests.length === 0) {
+          section.style.display = 'none';
+          return;
+        }
+        
+        section.style.display = 'block';
+        list.innerHTML = '';
+        
+        abnormalTests.forEach(test => {
+          const item = document.createElement('div');
+          item.className = 'abnormal-test-item';
+          const normText = test.norm_min !== null && test.norm_max !== null 
+            ? `Норма: ${test.norm_min} - ${test.norm_max} ${test.unit || ''}`
+            : test.norm_min !== null 
+            ? `Норма: ≥${test.norm_min} ${test.unit || ''}`
+            : test.norm_max !== null 
+            ? `Норма: ≤${test.norm_max} ${test.unit || ''}`
+            : '';
+          item.innerHTML = `
+            <span class="test-name">${test.name}</span>
+            <span class="test-value">${test.value} ${test.unit || ''} (${test.status === 'HIGH' ? 'Выше нормы' : 'Ниже нормы'})</span>
+            <span class="test-norm" style="display: block; margin-top: 4px; font-size: 12px; color: var(--text-secondary);">${normText}</span>
+          `;
+          list.appendChild(item);
+        });
+      }
+      
+      function renderGroups(groups) {
+        const section = document.getElementById('groupsSection');
+        section.innerHTML = '';
+        
+        const groupNames = {
+          'demography': 'Демография',
+          'anthropometry': 'Антропометрия',
+          'biochemistry': 'Биохимия',
+          'blood_count': 'Общий анализ крови',
+          'infections': 'Инфекции',
+          'inflammation': 'Воспаление/ревматология',
+          'lipid_profile': 'Липидный профиль'
+        };
+        
+        Object.keys(groups).forEach(groupKey => {
+          const groupData = groups[groupKey];
+          if (!groupData || !Array.isArray(groupData) || groupData.length === 0) return;
+          
+          const card = document.createElement('div');
+          card.className = 'group-card';
+          
+          const title = document.createElement('div');
+          title.className = 'group-title';
+          title.innerHTML = `
+            <span>${groupNames[groupKey] || groupKey}</span>
+            <i class="fas fa-chevron-down"></i>
+          `;
+          
+          // Обработчик клика для открытия/закрытия группы
+          title.addEventListener('click', () => {
+            title.classList.toggle('collapsed');
+            const dataDiv = card.querySelector('.group-data');
+            dataDiv.classList.toggle('collapsed');
+          });
+          
+          card.appendChild(title);
+          
+          const dataDiv = document.createElement('div');
+          dataDiv.className = 'group-data';
+          
+          groupData.forEach(test => {
+            const item = document.createElement('div');
+            item.className = 'test-item';
+            
+            // Заголовок элемента с данными
+            const header = document.createElement('div');
+            header.className = 'test-item-header';
+            
+            const info = document.createElement('div');
+            info.className = 'test-info';
+            
+            const name = document.createElement('div');
+            name.className = 'test-name';
+            name.textContent = test.name;
+            info.appendChild(name);
+            
+            const meta = document.createElement('div');
+            meta.className = 'test-meta';
+            meta.textContent = `Норма: ${test.norm_min || '—'} - ${test.norm_max || '—'} ${test.unit || ''}`;
+            info.appendChild(meta);
+            
+            // Добавляем индикатор динамики, если есть
+            if (test.has_dynamics) {
+              const dynamicsIndicator = document.createElement('div');
+              dynamicsIndicator.className = 'test-dynamics-indicator';
+              dynamicsIndicator.innerHTML = '<i class="fas fa-chart-line"></i> <span>Посмотреть динамику</span>';
+              info.appendChild(dynamicsIndicator);
+            }
+            
+            header.appendChild(info);
+            
+            const value = document.createElement('div');
+            value.className = 'test-value';
+            value.textContent = test.value !== null && test.value !== undefined ? `${test.value} ${test.unit || ''}` : '—';
+            header.appendChild(value);
+            
+            const status = document.createElement('div');
+            status.className = `test-status ${test.status?.toLowerCase() || 'normal'}`;
+            status.textContent = test.status === 'HIGH' ? 'Выше нормы' : 
+                                test.status === 'LOW' ? 'Ниже нормы' : 'В норме';
+            header.appendChild(status);
+            
+            item.appendChild(header);
+            
+            // Контейнер для графика
+            const chartContainer = document.createElement('div');
+            chartContainer.className = 'test-item-chart';
+            chartContainer.id = `chart-container-${test.test_code}`;
+            
+            const chartWrapper = document.createElement('div');
+            chartWrapper.className = 'test-item-chart-wrapper';
+            
+            const canvas = document.createElement('canvas');
+            canvas.id = `canvas-${test.test_code}`;
+            chartWrapper.appendChild(canvas);
+            chartContainer.appendChild(chartWrapper);
+            item.appendChild(chartContainer);
+            
+            // Обработчик клика на анализ
+            header.addEventListener('click', (e) => {
+              e.stopPropagation(); // Предотвращаем всплытие события
+              toggleTestChart(test.test_code, chartContainer, canvas);
+            });
+            
+            dataDiv.appendChild(item);
+          });
+          
+          card.appendChild(dataDiv);
+          section.appendChild(card);
+        });
+      }
+      
+      function toggleTestChart(testCode, chartContainer, canvas) {
+        if (!patientData || !patientData.charts || !patientData.charts[testCode]) {
+          console.warn('График для теста не найден:', testCode);
+          return;
+        }
+        
+        // Переключаем видимость графика
+        const isActive = chartContainer.classList.contains('active');
+        
+        if (isActive) {
+          // Скрываем график
+          chartContainer.classList.remove('active');
+        } else {
+          // Показываем график и создаем его, если еще не создан
+          chartContainer.classList.add('active');
+          
+          // Создаем график только если он еще не создан
+          if (!chartInstances[testCode]) {
+            const chartData = patientData.charts[testCode];
+            const ctx = canvas.getContext('2d');
+            
+            chartInstances[testCode] = new Chart(ctx, {
+              type: 'line',
+              data: chartData,
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    display: false // Скрываем легенду для маленького графика
+                  },
+                  tooltip: {
+                    mode: 'index',
+                    intersect: false
+                  }
+                },
+                scales: {
+                  x: {
+                    ticks: {
+                      maxRotation: 45,
+                      minRotation: 45,
+                      font: {
+                        size: 10
+                      }
+                    },
+                    title: {
+                      display: false
+                    }
+                  },
+                  y: {
+                    beginAtZero: false,
+                    ticks: {
+                      font: {
+                        size: 10
+                      }
+                    },
+                    title: {
+                      display: false
+                    }
+                  }
+                }
+              }
+            });
+          }
+        }
+      }
+      
+      // Функция renderCharts больше не используется, графики создаются динамически при клике
+      // Но оставим пустую функцию для совместимости
+      function renderCharts(chartsData) {
+        // Графики теперь отображаются динамически при клике на анализ
+        // Эта функция оставлена для совместимости, но не создает графики автоматически
+      }
+    </script>
+  </body>
+</html>
+
